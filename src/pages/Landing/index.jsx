@@ -42,6 +42,7 @@ const Landing = () => {
           onClick={() => navigate("/home")}
           className="mt-12 bg-white px-10 py-5 rounded-full transition transform hover:bg-gray-100 hover:scale-105 flex justify-center items-center
                   w-[180px] sm:w-[200px] md:w-[220px] lg:w-[240px] font-extrabold"
+                  Discover More
         ></button>
       </div>
     </div>
