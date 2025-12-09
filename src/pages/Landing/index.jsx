@@ -38,12 +38,14 @@ const Landing = () => {
         </div>
 
         {/* Button below */}
-        <button
-          onClick={() => navigate("/home")}
-          className="mt-12 bg-white px-10 py-5 rounded-full transition transform hover:bg-gray-100 hover:scale-105 flex justify-center items-center
-                  w-[180px] sm:w-[200px] md:w-[220px] lg:w-[240px] font-extrabold"
-                  Discover More
-        ></button>
+        <div className="py-20">
+                  <button 
+  className="bg-gradient-to-r from-[#ffffff] to-[#267bb4] text-white px-12 py-4 rounded-full font-semibold hover:scale-110 hover:shadow-[0_0_30px_rgba(13,104,165,0.5)] transition-all duration-300 shadow-lg"
+  onClick={() => navigate("/home")}
+>
+  Discover More
+</button>
+        </div>
       </div>
     </div>
   );
