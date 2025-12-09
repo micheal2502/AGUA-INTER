@@ -1,0 +1,1480 @@
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+import Carousel from "../../components/Layout/Carousel";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { useLanguage } from "../../contexts/LanguageContext"; // Import the LanguageContext
+import { Link } from "react-router-dom";
+
+const Home = () => {
+  const { language } = useLanguage(); // Get current language
+  
+  const geoUrl =
+    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+
+  const logos = [
+    { id: 1, name: "Vingroup", logo: "images/vinschool.png" },
+    { id: 2, name: "Sovico", logo: "images/FTU.png" },
+    { id: 3, name: "Other", logo: "images/HUST.png" },
+    { id: 4, name: "NEU", logo: "images/NEU.png" },
+    { id: 5, name: "Harvard", logo: "images/harvard.png" },
+    { id: 6, name: "MIT", logo: "images/MIT.png" },
+    { id: 7, name: "VUW", logo: "images/VUW.png" },
+    { id: 8, name: "UOA", logo: "images/UOA.png" },
+    { id: 9, name: "NUS", logo: "images/NUS.png" },
+  ];
+
+  const heroTextRef = useRef(null);
+  const scrollDotRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Refs cho tất cả các section
+  const firstSectionRef = useRef(null);
+  const secondSectionRef = useRef(null); // Các gói lộ trình
+  const thirdSectionRef = useRef(null); // Trải nghiệm thực tế
+  const fourthSectionRef = useRef(null); // Người dẫn dắt
+  const fifthSectionRef = useRef(null); // Câu chuyện giáo dục
+
+  const textContentRef = useRef(null);
+  const imageRef = useRef(null);
+
+  // Language-specific content
+  const content = {
+    vie: {
+      hero: {
+        title: "Nơi Kiến Tạo Cuộc Sống",
+        subtitle: "Hạnh phúc thông qua giáo dục",
+        scrollText: "Vuốt để xem tiếp"
+      },
+      firstSection: {
+        title: "Từ trái tim của đội ngũ",
+        mainText: "Chúng tôi khuyến khích học sinh cởi mở, dám thử, bộc lộ trong một môi trường có nền tảng - có định hướng",
+        bullet1: "Không chỉ là đồng hành cùng học sinh — mà là thật sự thấu hiểu và dẫn lối.",
+        bullet1Title: "Thấu hiểu & Dẫn lối",
+        bullet1Desc: "Chúng tôi không chỉ dừng lại ở việc đồng hành mà còn thấu hiểu sâu sắc những khó khăn, ước mơ và tiềm năng của từng học sinh.",
+        bullet2: "Châm ngòi hứng thú, khai phá tiềm năng, phát triển không giới hạn.",
+        bullet2Title: "Khai phá Tiềm năng",
+        bullet2Desc: "Mỗi học sinh đều sở hữu những tài năng đặc biệt. Chúng tôi giúp khơi dậy đam mê học tập và khai phá điểm mạnh riêng biệt.",
+        bullet3: "Một nền giáo dục tốt, song hành sự sáng tạo không ngừng.",
+        bullet3Title: "Giáo dục Hạnh phúc",
+        bullet3Desc: "Chúng tôi tin rằng một nền giáo dục chất lượng phải song hành cùng cuộc sống hạnh phúc và nuôi dưỡng tâm hồn học sinh.",
+        button: "Tìm hiểu thêm"
+      },
+      minimap: {
+        title: "Phạm vi Toàn cầu",
+        subtitle: "Làm việc với người giỏi nhất để trở thành người giỏi nhất",
+        description: "Những chuyên gia của Agua được chọn lọc hết sức kĩ càng, đến từ những trường đại học số 1 thế giới.",
+        networkTitle: "Mạng lưới Toàn cầu của Chúng tôi",
+        networkDesc: "Chúng tôi có mạng lưới chuyên gia tại các quốc gia hàng đầu về giáo dục:",
+        countries: [
+        "🇺🇸 Hoa Kỳ - Ivy League & Top 50",
+        "🇬🇧 Anh - Russell Group",
+        "🇦🇺 Úc - Group of Eight",
+        "🇨🇦 Canada - U15 Group",
+        "🇸🇬 Singapore - NUS, NTU",
+        "🇭🇰 Hong Kong - Các trường đại học hàng đầu châu Á",
+        "🇳🇿 New Zealand - Group of Eight"
+      ]
+    },
+      secondSection: {
+        title: "Các gói lộ trình",
+        description: "Mỗi lộ trình là một phương pháp được thiết kế riêng biệt, phù hợp với nhu cầu, độ tuổi và cá tính riêng biệt của từng học viên.",
+        subDescription: "Phương pháp chuyên biệt - lộ trình chuyên sâu. Khám phá 3 lộ trình:",
+        packages: ["Discovery", "Momentum", "Launch"],
+        explore: "Khám phá",
+        rightDescription: "Chỉ tham gia bằng lời mời. Ba lộ trình riêng biệt được thiết kế chuyên sâu dựa trên những giai đoạn phát triển khác nhau của sự phát triển trí tuệ và cảm xúc.",
+        journey: "Lộ Trình tỏa sáng - đồng hành chuyên sâu trong quá trình chuyển hóa tài năng của các học viên."
+      },
+      thirdSection: {
+        title1: "Trải Nghiệm",
+        title2: "Thực Tế",
+        description1: "Lộ trình dành cho những học viên mới bắt đầu, giúp khám phá tiềm năng và xác định hướng đi phù hợp nhất với khả năng và đam mê cá nhân.",
+        timeline1: "Thời gian: 3 tháng • Độ tuổi: 12-15 • Cấp độ: Cơ bản",
+        description2: "Xây dựng nền tảng vững chắc và phát triển toàn diện các kỹ năng cần thiết cho hành trình học tập dài hạn.",
+        timeline2: "Thời gian: 4 tháng • Độ tuổi: 15-17 • Cấp độ: Trung cấp",
+        introText: "Trải nghiệm những hành trình đặc biệt, những trải nghiệm mới lạ. Chúng tôi kiến tạo 1 hành trình nơi nuôi dưỡng trí tuệ, cảm xúc và tái tạo năng lượng toàn diện cho học viên.",
+        description3: "Lộ trình nâng cao dành cho học viên đã có nền tảng, tập trung vào phát triển chuyên sâu và hoàn thiện kỹ năng để đạt được mục tiêu cao hơn.",
+        timeline3: "Thời gian: 6 tháng • Độ tuổi: 16-18 • Cấp độ: Nâng cao",
+        button: "Tìm hiểu thêm"
+      },
+      fourthSection: {
+        title: "Người Dẫn Dắt",
+        description: "Những nhà giáo dục xuất sắc là những người dẫn đầu tư tưởng và nhà kiến tạo tầm nhìn.",
+        teamName: "Đội ngũ của Aqua",
+        rightDescription: "Những người dẫn dắt cuộc đồng của chúng tôi không chỉ làm việc bằng trí tuệ, kinh nghiệm, sự chân trình mà cả bằng tình yêu, sự tâm huyết với giáo dục.",
+        button: "Tìm hiểu thêm"
+      },
+      fifthSection: {
+        title: "Những câu chuyện về giáo dục",
+        description: "Những suy ngẫm, chiêm nghiệm và góc nhìn giáo dục đa chiều từ đội ngũ phía sau Agua — những con người tận tâm tìm kiếm những giá trị tốt đẹp nhất cho hành trình học tập của mỗi học sinh.",
+        button: "Tìm hiểu thêm"
+      },
+      inheritanceSection: {
+        title: "Từ những người tiền nghiệm",
+        subtitle: "Kế thừa và dẫn dắt",
+        description: "Học từ những người giỏi nhất để trở thành người giỏi nhất, tìm hiểu thêm về cơ hội ở Agua"
+      },
+      footer: {
+        companyName: "Agua International Education",
+        quickLinks: "Liên kết nhanh",
+        home: "Trang Chủ",
+        programs: "Gói Học Tập",
+        people: "Con Người",
+        opportunities: "Cơ Hội",
+        contact: "Liên hệ",
+        address: "123 Đường ABC, Quận XYZ<br />TP. Hồ Chí Minh, Việt Nam",
+        phone: "+84 28 1234 5678",
+        email: "info@agua.edu.vn",
+        copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
+        privacy: "Chính sách bảo mật",
+        terms: "Điều khoản sử dụng",
+        sitemap: "Sitemap"
+      }
+    },
+    en: {
+      hero: {
+        title: "Where Lives Are Built",
+        subtitle: "Happiness through education",
+        scrollText: "Scroll to continue"
+      },
+      firstSection: {
+        title: "From the heart of our team",
+        mainText: "We encourage students to be open, daring, expressive in an environment with foundation - with direction",
+        bullet1: "Not just accompanying students - but truly understanding and guiding.",
+        bullet1Title: "Understanding & Guidance",
+        bullet1Desc: "We don't just stop at accompanying students but deeply understand their difficulties, dreams, and potential.",
+        bullet2: "Ignite interest, unlock potential, develop without limits.",
+        bullet2Title: "Unlocking Potential",
+        bullet2Desc: "Every student possesses special talents. We help ignite learning passion and discover unique strengths.",
+        bullet3: "A good education, alongside continuous creativity.",
+        bullet3Title: "Happy Education",
+        bullet3Desc: "We believe that quality education must go hand in hand with a happy life and nurturing students' souls.",
+        button: "Learn more"
+      },
+      minimap: {
+        title: "Global Coverage",
+        subtitle: "Work with the best to become the best",
+        description: "Agua's experts are carefully selected from the world's top universities.",
+        networkTitle: "Our Global Network",
+        networkDesc: "We have a network of experts in the world's leading education countries:",
+        countries: [
+          "🇺🇸 USA - Ivy League & Top 50",
+          "🇬🇧 UK - Russell Group",
+          "🇦🇺 Australia - Group of Eight",
+          "🇨🇦 Canada - U15 Group",
+          "🇸🇬 Singapore - NUS, NTU",
+          "🇭🇰 Hong Kong - Top Asian Universities",
+          "🇳🇿 New Zealand - Group of Eight"
+        ]
+      },
+      secondSection: {
+        title: "Learning Pathways",
+        description: "Each pathway is a uniquely designed method, suitable for the individual needs, ages, and personalities of each student.",
+        subDescription: "Specialized method - intensive pathway. Explore 3 pathways:",
+        packages: ["Discovery", "Momentum", "Launch"],
+        explore: "Explore",
+        rightDescription: "Participation by invitation only. Three distinct pathways designed in-depth based on different stages of intellectual and emotional development.",
+        journey: "Shining Pathway - intensive companionship in the process of transforming students' talents."
+      },
+      thirdSection: {
+        title1: "Real World",
+        title2: "Experience",
+        description1: "A pathway for beginners to explore potential and determine the most suitable direction based on individual abilities and passions.",
+        timeline1: "Duration: 3 months • Age: 12-15 • Level: Basic",
+        description2: "Build a solid foundation and comprehensively develop necessary skills for long-term learning journey.",
+        timeline2: "Duration: 4 months • Age: 15-17 • Level: Intermediate",
+        introText: "Experience special journeys, new experiences. We create a journey that nurtures intelligence, emotions, and comprehensively regenerates energy for students.",
+        description3: "Advanced pathway for students with foundation, focusing on in-depth development and skill perfection to achieve higher goals.",
+        timeline3: "Duration: 6 months • Age: 16-18 • Level: Advanced",
+        button: "Learn more"
+      },
+      fourthSection: {
+        title: "Our Guides",
+        description: "Excellent educators are thought leaders and vision creators.",
+        teamName: "Aqua Team",
+        rightDescription: "Our journey guides work not only with intellect, experience, sincerity but also with love and dedication to education.",
+        button: "Learn more"
+      },
+      fifthSection: {
+        title: "Educational Stories",
+        description: "Reflections, contemplations, and multi-dimensional educational perspectives from the team behind Agua — dedicated people seeking the best values for each student's learning journey.",
+        button: "Learn more"
+      },
+      inheritanceSection: {
+        title: "From the Pioneers",
+        subtitle: "Inheritance and Guidance",
+        description: "Learn from the best to become the best, learn more about opportunities at Agua"
+      },
+      footer: {
+        companyName: "Agua International Education",
+        quickLinks: "Quick Links",
+        home: "Home",
+        programs: "Learning Packages",
+        people: "Our People",
+        opportunities: "Opportunities",
+        contact: "Contact",
+        address: "123 ABC Street, XYZ District<br />Ho Chi Minh City, Vietnam",
+        phone: "+84 28 1234 5678",
+        email: "info@agua.edu.vn",
+        copyright: "© {year} Agua International Education. All rights reserved.",
+        privacy: "Privacy Policy",
+        terms: "Terms of Use",
+        sitemap: "Sitemap"
+      }
+    }
+  };
+
+  // Get content based on current language
+  const t = content[language] || content.vie;
+
+  // Animation cho Section 1
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const sectionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: firstSectionRef.current,
+          start: "top 70%",
+          end: "bottom 30%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      sectionTl.fromTo(
+        textContentRef.current,
+        { y: 80, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+        0,
+      );
+
+      sectionTl.fromTo(
+        imageRef.current,
+        { y: 80, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+        0.2,
+      );
+
+      const listItems =
+        textContentRef.current?.querySelectorAll(".flex.items-start");
+      if (listItems) {
+        sectionTl.fromTo(
+          listItems,
+          { x: -30, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+          0.4,
+        );
+      }
+
+      const button = textContentRef.current?.querySelector("button");
+      if (button) {
+        sectionTl.fromTo(
+          button,
+          { y: 30, opacity: 0, scale: 0.9 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.7)" },
+          0.8,
+        );
+      }
+    }, firstSectionRef);
+
+    return () => ctx.revert();
+  }, [language]); // Add language as dependency
+
+  // Animation cho Section 2 (Các gói lộ trình)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const sectionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: secondSectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      sectionTl.fromTo(
+        secondSectionRef.current.querySelector(".lg\\:col-span-2"),
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
+        0,
+      );
+
+      sectionTl.fromTo(
+        secondSectionRef.current.querySelector(".space-y-8"),
+        { x: 100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
+        0.3,
+      );
+
+      const leftElements = secondSectionRef.current?.querySelectorAll(
+        ".lg\\:col-span-2 > *",
+      );
+      if (leftElements) {
+        sectionTl.fromTo(
+          leftElements,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power2.out" },
+          0.5,
+        );
+      }
+
+      const rightElements =
+        secondSectionRef.current?.querySelectorAll(".space-y-8 > *");
+      if (rightElements) {
+        sectionTl.fromTo(
+          rightElements,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power2.out" },
+          0.8,
+        );
+      }
+    }, secondSectionRef);
+
+    return () => ctx.revert();
+  }, [language]);
+
+  // Animation cho Section 3 (Trải nghiệm thực tế)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const sectionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: thirdSectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      sectionTl.fromTo(
+        thirdSectionRef.current.querySelector(".grid > div:nth-child(1)"),
+        { y: 100, opacity: 0, rotation: -5 },
+        { y: 0, opacity: 1, rotation: 0, duration: 1, ease: "back.out(1.4)" },
+        0,
+      );
+
+      sectionTl.fromTo(
+        thirdSectionRef.current.querySelector(".grid > div:nth-child(2)"),
+        { y: 100, opacity: 0, scale: 0.9 },
+        { y: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" },
+        0.2,
+      );
+
+      sectionTl.fromTo(
+        thirdSectionRef.current.querySelector(".grid > div:nth-child(3)"),
+        { y: 100, opacity: 0, rotation: 5 },
+        { y: 0, opacity: 1, rotation: 0, duration: 1, ease: "back.out(1.4)" },
+        0.4,
+      );
+
+      const gridItems =
+        thirdSectionRef.current?.querySelectorAll(".grid > div > *");
+      if (gridItems) {
+        sectionTl.fromTo(
+          gridItems,
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+          0.6,
+        );
+      }
+    }, thirdSectionRef);
+
+    return () => ctx.revert();
+  }, [language]);
+
+  // Animation cho Section 4 (Người dẫn dắt)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const sectionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: fourthSectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      // Animation cho title và button
+      sectionTl.fromTo(
+        fourthSectionRef.current.querySelector("h2"),
+        { y: -50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+        0,
+      );
+
+      sectionTl.fromTo(
+        fourthSectionRef.current.querySelector("button"),
+        { y: -50, opacity: 0, scale: 0.9 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" },
+        0.2,
+      );
+
+      // Animation cho grid lớn
+      sectionTl.fromTo(
+        fourthSectionRef.current.querySelector(".lg\\:col-span-2"),
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
+        0.4,
+      );
+
+      // Animation cho grid bé
+      sectionTl.fromTo(
+        fourthSectionRef.current.querySelector(".space-y-8"),
+        { x: 100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
+        0.6,
+      );
+    }, fourthSectionRef);
+
+    return () => ctx.revert();
+  }, [language]);
+
+  // Animation cho Section 5 (Câu chuyện giáo dục)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const sectionTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: fifthSectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      // Animation cho grid bé (bên trái)
+      sectionTl.fromTo(
+        fifthSectionRef.current.querySelector(".lg\\:col-span-1"),
+        { x: -100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
+        0,
+      );
+
+      // Animation cho grid lớn (bên phải)
+      sectionTl.fromTo(
+        fifthSectionRef.current.querySelector(".lg\\:col-span-2"),
+        { x: 100, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
+        0.3,
+      );
+
+      // Animation cho carousel
+      sectionTl.fromTo(
+        fifthSectionRef.current.querySelector(".max-w-full"),
+        { scale: 0.9, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.4)" },
+        0.6,
+      );
+
+      // Animation cho button
+      sectionTl.fromTo(
+        fifthSectionRef.current.querySelector("button"),
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        0.8,
+      );
+    }, fifthSectionRef);
+
+    return () => ctx.revert();
+  }, [language]);
+
+  // Effect để detect section đang active
+  useEffect(() => {
+    const sections = [
+      firstSectionRef,
+      secondSectionRef,
+      thirdSectionRef,
+      fourthSectionRef,
+      fifthSectionRef,
+    ];
+
+    const scrollTriggers = sections.map((sectionRef, index) => {
+      return ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 50%",
+        end: "bottom 50%",
+        onEnter: () => {
+          console.log(`Entering section ${index + 1}`);
+        },
+        onEnterBack: () => {
+          console.log(`Re-entering section ${index + 1}`);
+        },
+        onLeave: () => {
+          console.log(`Leaving section ${index + 1}`);
+        },
+        onLeaveBack: () => {
+          console.log(`Leaving back from section ${index + 1}`);
+        },
+      });
+    });
+
+    return () => {
+      scrollTriggers.forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50 && !scrolled) {
+        setScrolled(true);
+        const tl = gsap.timeline();
+        tl.to(heroTextRef.current, {
+          opacity: 0,
+          y: -30,
+          duration: 1.2,
+          ease: "power3.inOut",
+        });
+        tl.to(
+          ".hero-section",
+          { filter: "brightness(1.1)", duration: 1, ease: "power2.inOut" },
+          "-=0.8",
+        );
+      } else if (window.scrollY <= 50 && scrolled) {
+        setScrolled(false);
+        const tl = gsap.timeline();
+        tl.to(heroTextRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+        });
+        tl.to(
+          ".hero-section",
+          { filter: "brightness(0.7)", duration: 1, ease: "power2.out" },
+          "-=0.8",
+        );
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrolled]);
+
+  useEffect(() => {
+    gsap.to(scrollDotRef.current, {
+      y: 8,
+      duration: 0.8,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+  }, []);
+
+  return (
+    <div className={`home-page ${scrolled ? "scrolled" : ""}`}>
+      {/* Hero Section */}
+      <section className="hero-section relative w-full h-screen overflow-hidden">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src="/videos/intro.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
+        <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center">
+          <div
+            ref={heroTextRef}
+            className="text-center text-white space-y-4 px-4"
+          >
+            <h1 className="title-text text-lg md:text-2xl">
+              {t.hero.title}
+            </h1>
+            <p className="text-4xl md:text-6xl ">
+              <span className="highlight-text">{language === 'vie' ? 'Hạnh phúc ' : 'Happiness '}</span>
+              <span className="title-text">{language === 'vie' ? ' thông qua ' : ' through '}</span>
+              <span className="highlight-text">{language === 'vie' ? 'giáo dục' : 'education'}</span>
+            </p>
+          </div>
+          {/* Scroll Down Mouse Icon */}
+          <div className="flex flex-col items-center space-y-3 mt-10">
+            <div
+              className="w-8 h-14 border-2 border-white rounded-full flex items-start justify-center p-1 cursor-pointer group hover:border-[#ff8800] transition-colors duration-300"
+              onClick={() =>
+                window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+              }
+            >
+              <div
+                ref={scrollDotRef}
+                className="w-2 h-2 bg-white rounded-full group-hover:bg-amber-200 transition-colors duration-300"
+              ></div>
+            </div>
+            {/* Animated text */}
+            <div className="flex flex-col items-center">
+              <span className="text-white text-xs font-light tracking-widest opacity-80 group-hover:opacity-100 transition-opacity duration-300 mb-1">
+                {t.hero.scrollText}
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* First Section */}
+      <section
+        className="py-20 bg-gradient-to-b from-blue-300 via-blue-200 to-white"
+        ref={firstSectionRef}
+      >
+        <div className="container mx-auto px-6 md:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Phần text bên TRÁI */}
+            <div className="space-y-6" ref={textContentRef}>
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
+                  {t.firstSection.title}
+                </h2>
+              </div>
+
+              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed">
+                {t.firstSection.mainText}
+              </p>
+
+              <div className="space-y-4 relative">
+                {/* Item 1 */}
+                <div className="group flex items-start space-x-3 cursor-pointer relative z-30">
+                  {/* Bullet point với animation */}
+                  <div className="relative w-6 h-6 flex items-center justify-center mt-1 flex-shrink-0">
+                    <div
+                      className="absolute top-1 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1"
+                    />
+                    <div
+                      className="absolute top-3 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:w-3"
+                    />
+                    <div
+                      className="absolute top-5 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1"
+                    />
+                  </div>
+
+                  {/* Text với underline */}
+                  <p className="text-gray-700 relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
+                    {t.firstSection.bullet1}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-full"></span>
+                  </p>
+
+                  {/* Expanded content */}
+                  <div
+                    className="absolute top-full left-0 w-full max-w-2xl bg-white shadow-2xl rounded-lg p-6 mt-2 
+                        opacity-0 invisible scale-95 transition-all duration-500 ease-out
+                        group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:mt-4
+                        border border-gray-100 z-40 pointer-events-none
+                        group-hover:pointer-events-auto"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
+                        <img
+                          src="/images/collaboration.png"
+                          alt={language === 'vie' ? "Đồng hành cùng học sinh" : "Accompanying students"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      </div>
+
+                      <div className="flex flex-col justify-center">
+                        <h3 className="text-xl font-bold text-[#1B2340] mb-3">
+                          {t.firstSection.bullet1Title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {t.firstSection.bullet1Desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Item 2 - Fixed với z-index cao hơn */}
+                <div className="group flex items-start space-x-3 cursor-pointer relative z-20">
+                  <div className="relative w-6 h-6 flex items-center justify-center mt-1 flex-shrink-0">
+                    <div
+                      className="absolute top-1 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1"
+                    />
+                    <div
+                      className="absolute top-3 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:w-3"
+                    />
+                    <div
+                      className="absolute top-5 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1"
+                    />
+                  </div>
+
+                  <p className="text-gray-700 relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
+                    {t.firstSection.bullet2}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-full"></span>
+                  </p>
+
+                  <div
+                    className="absolute top-full left-0 w-full max-w-2xl bg-white shadow-2xl rounded-lg p-6 mt-2 
+                        opacity-0 invisible scale-95 transition-all duration-500 ease-out
+                        group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:mt-4
+                        border border-gray-100 z-30 pointer-events-none
+                        group-hover:pointer-events-auto"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
+                        <img
+                          src="/images/best.png"
+                          alt={language === 'vie' ? "Khai phá tiềm năng" : "Unlocking potential"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      </div>
+
+                      <div className="flex flex-col justify-center">
+                        <h3 className="text-xl font-bold text-[#1B2340] mb-3">
+                          {t.firstSection.bullet2Title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {t.firstSection.bullet2Desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Item 3 - Fixed với z-index thấp hơn */}
+                <div className="group flex items-start space-x-3 cursor-pointer relative z-10">
+                  <div className="relative w-6 h-6 flex items-center justify-center mt-1 flex-shrink-0">
+                    <div
+                      className="absolute top-1 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1"
+                    />
+                    <div
+                      className="absolute top-3 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:w-3"
+                    />
+                    <div
+                      className="absolute top-5 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
+                          group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1"
+                    />
+                  </div>
+
+                  <p className="text-gray-700 relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
+                    {t.firstSection.bullet3}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-full"></span>
+                  </p>
+
+                  <div
+                    className="absolute top-full left-0 w-full max-w-2xl bg-white shadow-2xl rounded-lg p-6 mt-2 
+                        opacity-0 invisible scale-95 transition-all duration-500 ease-out
+                        group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:mt-4
+                        border border-gray-100 z-20 pointer-events-none
+                        group-hover:pointer-events-auto"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
+                        <img
+                          src="/images/innovation.png"
+                          alt={language === 'vie' ? "Giáo dục hạnh phúc" : "Happy education"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      </div>
+
+                      <div className="flex flex-col justify-center">
+                        <h3 className="text-xl font-bold text-[#1B2340] mb-3">
+                          {t.firstSection.bullet3Title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {t.firstSection.bullet3Desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link to="/philosophy">
+                  <button className="bg-[#0d68a5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#267bb4] transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    {t.firstSection.button}
+                  </button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Phần hình ảnh bên PHẢI */}
+            <div className="relative" ref={imageRef}>
+              <div className="relative overflow-hidden rounded-2xl">
+                <img
+                  src="/images/Agua1.png"
+                  alt="Agua International Education"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="minimap-section ">
+        <div className="grid-container">
+          {/* Hàng 1 - tỉ lệ 6:4 */}
+          <div className="grid-row first-row">
+            {/* Ô 1 - 60% */}
+            <div className="grid-cell cell-60 dotted-border-right">
+              <div className="map-container">
+                <div className="map-layout">
+                  <div className="map-content">
+                    <h2 className="missions-title">{t.minimap.title}</h2>
+                    <h3 className="section-description">{t.minimap.subtitle}</h3>
+                    <p>{t.minimap.description}</p>
+
+                    <div className="highlighted-countries">
+                      <div className="country-item">
+                        <span className="country-dot usa-dot"></span>
+                        <span className="country-name">United States</span>
+                      </div>
+                      <div className="country-item">
+                        <span className="country-dot uk-dot"></span>
+                        <span className="country-name">United Kingdom</span>
+                      </div>
+                      <div className="country-item">
+                        <span className="country-dot aus-dot"></span>
+                        <span className="country-name">Australia</span>
+                      </div>
+                      <div className="country-item">
+                        <span className="country-dot canada-dot"></span>
+                        <span className="country-name">Canada</span>
+                      </div>
+                      <div className="country-item">
+                        <span className="country-dot singapore-dot"></span>
+                        <span className="country-name">Singapore</span>
+                      </div>
+                      <div className="country-item">
+                        <span className="country-dot nz-dot"></span>
+                        <span className="country-name">New Zealand</span>
+                      </div>
+                      <div className="country-item">
+                        <span className="country-dot hk-dot"></span>
+                        <span className="country-name">Hong Kong</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="map-visual">
+                    <ComposableMap
+                      projectionConfig={{ scale: 100, center: [0, 20] }}
+                      width={500}
+                      height={280}
+                    >
+                      <Geographies geography={geoUrl}>
+                        {({ geographies }) =>
+                          geographies.map((geo) => {
+                            const countryName = geo.properties.name;
+                            let fillColor = "#EAEAEC";
+
+                            if (countryName.includes("United States")) {
+                              fillColor = "#FF6B6B";
+                            } else if (countryName.includes("United Kingdom")) {
+                              fillColor = "#74B9FF";
+                            } else if (countryName.includes("Australia")) {
+                              fillColor = "#A29BFE";
+                            } else if (countryName.includes("Canada")) {
+                              fillColor = "#55E6C1";
+                            } else if (countryName.includes("Singapore")) {
+                              fillColor = "#FDCB6E";
+                            } else if (countryName.includes("New Zealand")) {
+                              fillColor = "#6EE7B7";
+                            } else if (countryName.includes("Hong Kong")) {
+                              fillColor = "#FF7675";
+                            }
+
+                            return (
+                              <Geography
+                                key={geo.rsmKey}
+                                geography={geo}
+                                fill={fillColor}
+                                stroke="transparent"
+                                style={{
+                                  default: { outline: "none" },
+                                  hover: { outline: "none" },
+                                }}
+                              />
+                            );
+                          })
+                        }
+                      </Geographies>
+                    </ComposableMap>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Ô 2 - 40% */}
+            <div className="grid-cell cell-40">
+              <div className="content">
+                <h2>{t.minimap.networkTitle}</h2>
+                <p>{t.minimap.networkDesc}</p>
+                <ul className="special-text country-list">
+                  {t.minimap.countries.map((country, index) => (
+                    <li key={index}>{country}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/*Second Section*/}
+      <section
+        className="py-16 bg-gradient-to-b from-white via-blue-200 to-blue-300"
+        ref={secondSectionRef}
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Grid lớn - 2/3 */}
+            <div className="lg:col-span-2">
+              <div className="space-y-6">
+                {/* Title và Subtitle */}
+                <div className="space-y-4">
+                  <h2 className="section-description text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
+                    {t.secondSection.title}
+                  </h2>
+                  <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed">
+                    {t.secondSection.description}
+                  </p>
+                </div>
+
+                {/* Ảnh */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-transform duration-500 ease-out hover:scale-105">
+                  <img
+                    src="/images/plan.jpg"
+                    alt={language === 'vie' ? "Hành trình giáo dục" : "Educational journey"}
+                    className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                </div>
+
+                {/* Description */}
+                <div className="space-y-4">
+                  {/* Phiên bản desktop - hiển thị trên cùng 1 dòng */}
+                  <div className="hidden md:block">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2 sm:gap-3">
+                      <p className="text-gray-700 leading-relaxed text-lg sm:mr-2">
+                        {t.secondSection.subDescription}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                        {t.secondSection.packages.map((pkg, index) => (
+                          <span
+                            key={index}
+                            className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
+                            cursor-pointer transition-all duration-300 ease-in-out
+                            hover:text-[#2c5a8a] hover:scale-105 hover:underline
+                            active:scale-95"
+                          >
+                            {pkg}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Phiên bản mobile - hiển thị thành 2 dòng */}
+                  <div className="block md:hidden">
+                    <p className="text-gray-700 leading-relaxed text-lg mb-3">
+                      {t.secondSection.subDescription}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                      {t.secondSection.packages.map((pkg, index) => (
+                        <span key={index} className="plan-text text-xl font-bold text-[#3d76b8]">
+                          {pkg}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2 text-[#3d76b8] font-medium cursor-pointer group">
+                <span>{t.secondSection.explore}</span>
+                <svg
+                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Grid bé - 1/3 */}
+            <div className="space-y-8">
+              {/* Description trên ảnh */}
+              <div className="space-y-4">
+                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed">
+                  {t.secondSection.rightDescription}
+                </p>
+              </div>
+
+              {/* Ảnh ở giữa */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg ">
+                <img
+                  src="/images/flower.png"
+                  alt={language === 'vie' ? "Phương pháp học tập" : "Learning method"}
+                  className="w-full h-64 object-cover transition-transform duration-500 ease-out hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
+              </div>
+
+              {/* Description dưới ảnh */}
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed">
+                  {t.secondSection.journey}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="py-16 bg-gradient-to-b from-blue-300 via-blue-200 to-white"
+        ref={thirdSectionRef}
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Grid 1 */}
+            <div className="space-y-6">
+              {/* Title */}
+              <h3 className="section-description text-5xl md:text-6xl font-bold text-[#3d76b8]">
+                {t.thirdSection.title1}
+              </h3>
+              <h3 className="section-description text-5xl md:text-6xl font-bold text-[#3d76b8]">
+                {t.thirdSection.title2}
+              </h3>
+              {/* Ảnh */}
+              <div className="relative rounded-2xl overflow-hidden shadow-lg transition-transform duration-500 ease-out hover:scale-105">
+                <img
+                  src="/images/plan.jpg"
+                  alt={language === 'vie' ? "Lộ trình Khám phá" : "Discovery Pathway"}
+                  className="w-full h-100 object-cover"
+                />
+              </div>
+
+              {/* Description */}
+              <div className="space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  {t.thirdSection.description1}
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  {t.thirdSection.timeline1}
+                </p>
+              </div>
+            </div>
+
+            {/* Grid 2 */}
+            <div className="space-y-6 pt-30">
+              {/* Ảnh */}
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/images/flower.png"
+                  alt={language === 'vie' ? "Lộ trình Momentum" : "Momentum Pathway"}
+                  className="w-full h-60 object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent"></div>
+              </div>
+
+              {/* Description */}
+              <div className="space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  {t.thirdSection.description2}
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  {t.thirdSection.timeline2}
+                </p>
+              </div>
+            </div>
+
+            {/* Grid 3 */}
+            <div className="space-y-6">
+              {/* Title */}
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed">
+                {t.thirdSection.introText}
+              </p>
+              <div className="flex justify-end items-center">
+                <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
+                  {t.thirdSection.button}
+                </button>
+              </div>
+              {/* Ảnh */}
+              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+                <img
+                  src="/images/dive.png"
+                  alt={language === 'vie' ? "Lộ trình Launch" : "Launch Pathway"}
+                  className="w-full h-80 object-cover transition-transform duration-700 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent"></div>
+              </div>
+
+              {/* Description */}
+              <div className="space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  {t.thirdSection.description3}
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  {t.thirdSection.timeline3}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="py-16 bg-gradient-to-b from-white via-blue-200 to-blue-300"
+        ref={fourthSectionRef}
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Grid lớn - 2/3 */}
+            <div className="lg:col-span-2">
+              <div className="space-y-6">
+                {/* Title và Subtitle */}
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center">
+                    <h2 className="section-description text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
+                      {t.fourthSection.title}
+                    </h2>
+                    <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
+                      {t.fourthSection.button}
+                    </button>
+                  </div>
+                </div>
+                {/* Ảnh */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img
+                    src="/images/plan.jpg"
+                    alt={language === 'vie' ? "Hành trình giáo dục" : "Educational journey"}
+                    className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                </div>
+
+                {/* Description */}
+                <div className="space-y-4">
+                  {/* Phiên bản desktop - hiển thị trên cùng 1 dòng */}
+                  <div className="hidden md:block">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2 sm:gap-3">
+                      <p className="text-gray-700 leading-relaxed text-lg sm:mr-2">
+                        {t.fourthSection.description}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                        <span
+                          className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
+                        cursor-pointer transition-all duration-300 ease-in-out
+                        hover:text-[#2c5a8a] hover:scale-105 hover:underline
+                        active:scale-95"
+                        >
+                          {t.fourthSection.teamName}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Phiên bản mobile - hiển thị thành 2 dòng */}
+                  <div className="block md:hidden">
+                    <p className="text-gray-700 leading-relaxed text-lg mb-3">
+                      {t.fourthSection.description}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                      <span className="plan-text text-xl font-bold text-[#3d76b8]">
+                        {t.fourthSection.teamName}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Grid bé - 1/3 */}
+            <div className="space-y-8">
+              {/* Description trên ảnh */}
+              <div className="space-y-4">
+                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed">
+                  {t.fourthSection.rightDescription}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="py-16 bg-gradient-to-b from-blue-300 via-blue-200 to-blue-300"
+        ref={fifthSectionRef}
+      >
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            {/* Grid bé - 1/3 */}
+            <div className="space-y-6 lg:space-y-8">
+              <div className="space-y-4">
+                <h2 className="section-description text-3xl sm:text-4xl md:text-5xl font-bold text-[#3d76b8]">
+                  {t.fifthSection.title}
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-3">
+                  {t.fifthSection.description}
+                </p>
+                <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md w-fit sm:w-auto text-sm sm:text-base">
+                  {t.fifthSection.button}
+                </button>
+              </div>
+            </div>
+
+            {/* Grid lớn - 2/3 - Mở rộng carousel */}
+            <div className="lg:col-span-2">
+              <div className="space-y-6">
+                {/* Title và Subtitle */}
+                <div className="space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-end sm:items-center gap-4"></div>
+                </div>
+
+                {/* Carousel - Mở rộng toàn bộ width */}
+                <div className="w-full">
+                  <Carousel baseWidth={1000} round={false} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-b from-blue-300 via-blue-200 to-blue-100">
+        <div className="section-description flex flex-col items-center space-y-4">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed">
+            {t.inheritanceSection.subtitle}
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#3d76b8]">
+            {t.inheritanceSection.title}
+          </h2>
+          <p className="text-gray-700 leading-relaxed text-lg">
+            {t.inheritanceSection.description}
+          </p>
+        </div>
+      </section>
+      <section className="bg-gradient-to-b from-blue-100 via-blue-200 to-blue-300">
+        <div className="flex flex-col items-center space-y-4">
+          {" "}
+          <div className="marquee-content">
+            {/* Original logos */}
+            {logos.map((logo) => (
+              <div key={logo.id} className="logo-item">
+                <img src={logo.logo} alt={logo.name} className="logo-image" />
+              </div>
+            ))}
+            {/* Duplicate logos for seamless loop */}
+            {logos.map((logo) => (
+              <div key={`${logo.id}-duplicate`} className="logo-item">
+                <img src={logo.logo} alt={logo.name} className="logo-image" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#1B2340] text-white">
+        {/* Main Footer Content */}
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center mb-4">
+                <img
+                  src="/images/logo2.png"
+                  alt="Agua International Education"
+                  className="h-10 w-auto mr-3"
+                />
+                <h3 className="text-2xl font-semibold">
+                  {t.footer.companyName}
+                </h3>
+              </div>
+
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">Facebook</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">YouTube</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">LinkedIn</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">{t.footer.quickLinks}</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="/about"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.footer.home}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/programs"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.footer.programs}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/news"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.footer.people}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/careers"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {t.footer.opportunities}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">{t.footer.contact}</h4>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start">
+                  <svg
+                    className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span dangerouslySetInnerHTML={{ __html: t.footer.address }} />
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="h-5 w-5 mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <span>{t.footer.phone}</span>
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="h-5 w-5 mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>{t.footer.email}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-800">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="text-center md:text-left mb-4 md:mb-0">
+                <p className="text-gray-400 text-sm">
+                  {t.footer.copyright.replace('{year}', new Date().getFullYear())}
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center space-x-6 text-sm">
+                <a
+                  href="/privacy"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {t.footer.privacy}
+                </a>
+                <a
+                  href="/terms"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {t.footer.terms}
+                </a>
+                <a
+                  href="/sitemap"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {t.footer.sitemap}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;
