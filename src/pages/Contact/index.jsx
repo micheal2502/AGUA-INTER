@@ -103,7 +103,9 @@ const Contact = () => {
       );
 
       // Animation cho các phần tử bên trong card
-      const cardElements = contactInfoRef.current?.querySelectorAll(".lg\\:col-span-2 .bg-white > *");
+      const cardElements = contactInfoRef.current?.querySelectorAll(
+        ".lg\\:col-span-2 .bg-white > *",
+      );
       if (cardElements) {
         sectionTl.fromTo(
           cardElements,
@@ -114,7 +116,8 @@ const Contact = () => {
       }
 
       // Animation cho department contacts
-      const departmentCards = contactInfoRef.current?.querySelectorAll(".grid > div");
+      const departmentCards =
+        contactInfoRef.current?.querySelectorAll(".grid > div");
       if (departmentCards) {
         sectionTl.fromTo(
           departmentCards,
@@ -225,7 +228,9 @@ const Contact = () => {
 
       // Animation cho left content
       sectionTl.fromTo(
-        contactMapRef.current.querySelector(".lg\\:grid-cols-2 > div:first-child"),
+        contactMapRef.current.querySelector(
+          ".lg\\:grid-cols-2 > div:first-child",
+        ),
         { x: -100, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
         0.4,
@@ -233,7 +238,9 @@ const Contact = () => {
 
       // Animation cho right map
       sectionTl.fromTo(
-        contactMapRef.current.querySelector(".lg\\:grid-cols-2 > div:last-child"),
+        contactMapRef.current.querySelector(
+          ".lg\\:grid-cols-2 > div:last-child",
+        ),
         { x: 100, opacity: 0, scale: 0.9 },
         { x: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" },
         0.6,
@@ -272,18 +279,19 @@ const Contact = () => {
       );
 
       // Animation cho office cards
-      const officeCards = globalNetworkRef.current?.querySelectorAll(".grid > div");
+      const officeCards =
+        globalNetworkRef.current?.querySelectorAll(".grid > div");
       if (officeCards) {
         sectionTl.fromTo(
           officeCards,
           { y: 100, opacity: 0, scale: 0.9 },
-          { 
-            y: 0, 
-            opacity: 1, 
-            scale: 1, 
-            duration: 0.8, 
-            stagger: 0.15, 
-            ease: "back.out(1.4)" 
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "back.out(1.4)",
           },
           0.3,
         );
@@ -296,14 +304,14 @@ const Contact = () => {
           sectionTl.fromTo(
             cardContent,
             { y: 30, opacity: 0 },
-            { 
-              y: 0, 
-              opacity: 1, 
-              duration: 0.6, 
-              stagger: 0.1, 
-              ease: "power2.out" 
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: "power2.out",
             },
-            0.6 + (index * 0.1),
+            0.6 + index * 0.1,
           );
         }
       });
@@ -349,290 +357,305 @@ const Contact = () => {
   const translations = {
     vi: {
       heroTitle: "Kết nối với chúng tôi",
-      heroSubtitle: "Chúng tôi luôn sẵn sàng đồng hành cùng bạn trên hành trình giáo dục quốc tế",
+      heroSubtitle:
+        "Chúng tôi luôn sẵn sàng đồng hành cùng bạn trên hành trình giáo dục quốc tế",
       scrollText: "Vuốt để xem tiếp",
-      
+
       sectionTitle: "Liên hệ với chúng tôi",
-      sectionDescription: "Agua International Education luôn sẵn sàng lắng nghe và hỗ trợ bạn trên hành trình giáo dục quốc tế. Chúng tôi cam kết mang đến những giải pháp giáo dục tốt nhất cho tương lai của bạn.",
-      
+      sectionDescription:
+        "Agua International Education luôn sẵn sàng lắng nghe và hỗ trợ bạn trên hành trình giáo dục quốc tế. Chúng tôi cam kết mang đến những giải pháp giáo dục tốt nhất cho tương lai của bạn.",
+
       contactInfoTitle: "Thông tin liên hệ chi tiết",
       headquarters: "Trụ sở chính tại Việt Nam",
-      address: "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+      address:
+        "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
       workingHours: "Giờ làm việc: Thứ 2 - Thứ 6: 8:00 - 17:00",
-      
+
       phone: "Điện thoại",
       vietnamPhone: "Việt Nam:",
       internationalPhone: "Quốc tế:",
       hotline: "Hotline:",
-      
+
       email: "Email",
       generalInquiry: "Tổng đài:",
       admission: "Tư vấn:",
       partnership: "Hợp tác:",
-      
+
       departmentContacts: "Liên hệ theo bộ phận",
       departments: [
         {
           name: "Tuyển sinh & Học thuật",
           email: "admission@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "101"
+          ext: "101",
         },
         {
           name: "Hỗ trợ học sinh quốc tế",
           email: "international@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "102"
+          ext: "102",
         },
         {
           name: "Đối tác & Hợp tác",
           email: "partnership@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "103"
+          ext: "103",
         },
         {
           name: "Truyền thông & Marketing",
           email: "marketing@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "104"
-        }
+          ext: "104",
+        },
       ],
-      
+
       quickContactTitle: "Gửi tin nhắn cho chúng tôi",
-      quickContactSubtitle: "Để lại thông tin, chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ",
-      
+      quickContactSubtitle:
+        "Để lại thông tin, chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ",
+
       formLabels: {
         name: "Họ và tên *",
         email: "Email *",
         phone: "Số điện thoại",
         subject: "Chủ đề *",
         message: "Nội dung *",
-        submit: "Gửi tin nhắn"
+        submit: "Gửi tin nhắn",
       },
-      
+
       subjectOptions: [
         { value: "", label: "Chọn chủ đề" },
         { value: "admission", label: "Tư vấn tuyển sinh" },
         { value: "program", label: "Thông tin chương trình" },
         { value: "partnership", label: "Hợp tác đối tác" },
-        { value: "other", label: "Khác" }
+        { value: "other", label: "Khác" },
       ],
-      
+
       responseTime: "Thời gian phản hồi",
       responseItems: [
         "Email: Phản hồi trong vòng 24 giờ",
         "Điện thoại: Trong giờ hành chính",
-        "Tin nhắn trực tuyến: 24/7"
+        "Tin nhắn trực tuyến: 24/7",
       ],
-      
+
       mapTitle: "Mạng lưới toàn cầu của chúng tôi",
-      mapDescription: "Agua International Education có mặt tại hơn 20 quốc gia với mạng lưới đối tác giáo dục uy tín trên toàn thế giới",
-      
+      mapDescription:
+        "Agua International Education có mặt tại hơn 20 quốc gia với mạng lưới đối tác giáo dục uy tín trên toàn thế giới",
+
       mainOffice: "Trụ sở chính tại Việt Nam",
-      officeDescription1: "Tọa lạc tại khu đô thị hiện đại Phú Mỹ Hưng, trụ sở chính của Agua International Education được thiết kế với không gian học tập và làm việc tiêu chuẩn quốc tế.",
-      officeDescription2: "Với vị trí thuận lợi, dễ dàng kết nối với các trường quốc tế, đại sứ quán và các tổ chức giáo dục hàng đầu.",
-      
+      officeDescription1:
+        "Tọa lạc tại khu đô thị hiện đại Phú Mỹ Hưng, trụ sở chính của Agua International Education được thiết kế với không gian học tập và làm việc tiêu chuẩn quốc tế.",
+      officeDescription2:
+        "Với vị trí thuận lợi, dễ dàng kết nối với các trường quốc tế, đại sứ quán và các tổ chức giáo dục hàng đầu.",
+
       travelGuide: "Hướng dẫn di chuyển",
       travelItems: [
         "Từ sân bay Tân Sơn Nhất: 15-20 phút",
         "Gần trạm xe buýt: 500m",
-        "Bãi đậu xe miễn phí cho khách tham quan"
+        "Bãi đậu xe miễn phí cho khách tham quan",
       ],
-      
+
       branchOffices: "Các văn phòng đại diện",
       branches: [
         {
           city: "London",
           country: "Anh",
           email: "uk@agua.edu.vn",
-          phone: "+44 20 1234 5678"
+          phone: "+44 20 1234 5678",
         },
         {
           city: "Sydney",
           country: "Úc",
           email: "aus@agua.edu.vn",
-          phone: "+61 2 1234 5678"
+          phone: "+61 2 1234 5678",
         },
         {
           city: "Toronto",
           country: "Canada",
           email: "ca@agua.edu.vn",
-          phone: "+1 416 123 4567"
+          phone: "+1 416 123 4567",
         },
         {
           city: "Singapore",
           country: "Singapore",
           email: "sg@agua.edu.vn",
-          phone: "+65 6123 4567"
-        }
+          phone: "+65 6123 4567",
+        },
       ],
-      
+
       footerLinks: {
         home: "Trang Chủ",
         programs: "Gói Học Tập",
         people: "Con Người",
-        opportunities: "Cơ Hội"
+        opportunities: "Cơ Hội",
       },
-      
+
       footerContact: {
-        address: "123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh, Việt Nam",
+        address:
+          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
         phone: "+84 28 1234 5678",
-        email: "info@agua.edu.vn"
+        email: "info@agua.edu.vn",
       },
-      
+
       footerBottom: {
         copyright: `© ${new Date().getFullYear()} Agua International Education. Bảo lưu mọi quyền.`,
         privacy: "Chính sách bảo mật",
         terms: "Điều khoản sử dụng",
-        sitemap: "Sitemap"
-      }
+        sitemap: "Sitemap",
+      },
     },
     en: {
       heroTitle: "Connect With Us",
-      heroSubtitle: "We're always ready to accompany you on your international education journey",
+      heroSubtitle:
+        "We're always ready to accompany you on your international education journey",
       scrollText: "Scroll to continue",
-      
+
       sectionTitle: "Contact Us",
-      sectionDescription: "Agua International Education is always ready to listen and support you on your international education journey. We are committed to providing the best educational solutions for your future.",
-      
+      sectionDescription:
+        "Agua International Education is always ready to listen and support you on your international education journey. We are committed to providing the best educational solutions for your future.",
+
       contactInfoTitle: "Detailed Contact Information",
       headquarters: "Headquarters in Vietnam",
-      address: "20 My Giang 2A, Phu My Hung Urban Area, District 7, Ho Chi Minh City",
+      address:
+        "20 My Giang 2A, Phu My Hung Urban Area, District 7, Ho Chi Minh City",
       workingHours: "Working Hours: Monday - Friday: 8:00 AM - 5:00 PM",
-      
+
       phone: "Phone",
       vietnamPhone: "Vietnam:",
       internationalPhone: "International:",
       hotline: "Hotline:",
-      
+
       email: "Email",
       generalInquiry: "General Inquiry:",
       admission: "Admission:",
       partnership: "Partnership:",
-      
+
       departmentContacts: "Contact by Department",
       departments: [
         {
           name: "Admission & Academic",
           email: "admission@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "101"
+          ext: "101",
         },
         {
           name: "International Student Support",
           email: "international@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "102"
+          ext: "102",
         },
         {
           name: "Partnership & Cooperation",
           email: "partnership@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "103"
+          ext: "103",
         },
         {
           name: "Media & Marketing",
           email: "marketing@agua.edu.vn",
           phone: "028 1234 5678",
-          ext: "104"
-        }
+          ext: "104",
+        },
       ],
-      
+
       quickContactTitle: "Send Us a Message",
-      quickContactSubtitle: "Leave your information and we'll contact you within 24 hours",
-      
+      quickContactSubtitle:
+        "Leave your information and we'll contact you within 24 hours",
+
       formLabels: {
         name: "Full Name *",
         email: "Email *",
         phone: "Phone Number",
         subject: "Subject *",
         message: "Message *",
-        submit: "Send Message"
+        submit: "Send Message",
       },
-      
+
       subjectOptions: [
         { value: "", label: "Select a subject" },
         { value: "admission", label: "Admission Consultation" },
         { value: "program", label: "Program Information" },
         { value: "partnership", label: "Partnership" },
-        { value: "other", label: "Other" }
+        { value: "other", label: "Other" },
       ],
-      
+
       responseTime: "Response Time",
       responseItems: [
         "Email: Response within 24 hours",
         "Phone: During business hours",
-        "Online Message: 24/7"
+        "Online Message: 24/7",
       ],
-      
+
       mapTitle: "Our Global Network",
-      mapDescription: "Agua International Education operates in over 20 countries with a network of trusted education partners worldwide",
-      
+      mapDescription:
+        "Agua International Education operates in over 20 countries with a network of trusted education partners worldwide",
+
       mainOffice: "Headquarters in Vietnam",
-      officeDescription1: "Located in the modern Phu My Hung urban area, Agua International Education's headquarters is designed with international-standard learning and working spaces.",
-      officeDescription2: "With a convenient location, it's easy to connect with international schools, embassies, and leading educational organizations.",
-      
+      officeDescription1:
+        "Located in the modern Phu My Hung urban area, Agua International Education's headquarters is designed with international-standard learning and working spaces.",
+      officeDescription2:
+        "With a convenient location, it's easy to connect with international schools, embassies, and leading educational organizations.",
+
       travelGuide: "Travel Guide",
       travelItems: [
         "From Tan Son Nhat Airport: 15-20 minutes",
         "Near bus station: 500m",
-        "Free parking for visitors"
+        "Free parking for visitors",
       ],
-      
+
       branchOffices: "Representative Offices",
       branches: [
         {
           city: "London",
           country: "UK",
           email: "uk@agua.edu.vn",
-          phone: "+44 20 1234 5678"
+          phone: "+44 20 1234 5678",
         },
         {
           city: "Sydney",
           country: "Australia",
           email: "aus@agua.edu.vn",
-          phone: "+61 2 1234 5678"
+          phone: "+61 2 1234 5678",
         },
         {
           city: "Toronto",
           country: "Canada",
           email: "ca@agua.edu.vn",
-          phone: "+1 416 123 4567"
+          phone: "+1 416 123 4567",
         },
         {
           city: "Singapore",
           country: "Singapore",
           email: "sg@agua.edu.vn",
-          phone: "+65 6123 4567"
-        }
+          phone: "+65 6123 4567",
+        },
       ],
-      
+
       footerLinks: {
         home: "Home",
         programs: "Study Packages",
         people: "Our People",
-        opportunities: "Opportunities"
+        opportunities: "Opportunities",
       },
-      
+
       footerContact: {
-        address: "123 ABC Street, XYZ District, Ho Chi Minh City, Vietnam",
+        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
         phone: "+84 28 1234 5678",
-        email: "info@agua.edu.vn"
+        email: "info@agua.edu.vn",
       },
-      
+
       footerBottom: {
         copyright: `© ${new Date().getFullYear()} Agua International Education. All rights reserved.`,
         privacy: "Privacy Policy",
         terms: "Terms of Use",
-        sitemap: "Sitemap"
-      }
-    }
+        sitemap: "Sitemap",
+      },
+    },
   };
 
   const tContent = translations[language] || translations.vi;
 
   return (
-<div className={`contact-page ${scrolled ? "scrolled" : ""}`}>
+    <div className={`contact-page ${scrolled ? "scrolled" : ""}`}>
       {/* Hero Section với animation giống Home */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden hero-section">
         {/* Background Image with Overlay */}
@@ -646,7 +669,10 @@ const Contact = () => {
         </div>
 
         {/* Hero Content với animation */}
-        <div ref={heroTextRef} className="relative z-10 container mx-auto px-5 text-center text-white">
+        <div
+          ref={heroTextRef}
+          className="relative z-10 container mx-auto px-5 text-center text-white"
+        >
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
               {tContent.heroTitle}
@@ -731,9 +757,13 @@ const Contact = () => {
                           {tContent.address}
                           <br />
                           <span className="font-medium">
-                            {language === 'vi' ? 'Giờ làm việc:' : 'Working Hours:'}
+                            {language === "vi"
+                              ? "Giờ làm việc:"
+                              : "Working Hours:"}
                           </span>{" "}
-                          {language === 'vi' ? 'Thứ 2 - Thứ 6: 8:00 - 17:00' : 'Monday - Friday: 8:00 AM - 5:00 PM'}
+                          {language === "vi"
+                            ? "Thứ 2 - Thứ 6: 8:00 - 17:00"
+                            : "Monday - Friday: 8:00 AM - 5:00 PM"}
                         </p>
                       </div>
                     </div>
@@ -881,7 +911,9 @@ const Contact = () => {
                                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                               />
                             </svg>
-                            {dept.phone} {language === 'vi' ? '(ext:' : '(extension:'} {dept.ext})
+                            {dept.phone}{" "}
+                            {language === "vi" ? "(ext:" : "(extension:"}{" "}
+                            {dept.ext})
                           </p>
                         </div>
                       </div>
@@ -891,7 +923,10 @@ const Contact = () => {
               </div>
 
               {/* Quick Contact Form với ref riêng */}
-              <div ref={contactFormRef} className="bg-gradient-to-br from-blue-500 to-blue-400 to-blue-300 text-white p-10 rounded-2xl shadow-xl">
+              <div
+                ref={contactFormRef}
+                className="bg-gradient-to-br from-blue-500 to-blue-400 to-blue-300 text-white p-10 rounded-2xl shadow-xl"
+              >
                 <h3 className="text-2xl font-bold mb-6">
                   {tContent.quickContactTitle}
                 </h3>
@@ -907,7 +942,9 @@ const Contact = () => {
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                      placeholder={language === 'vi' ? "Nguyễn Văn A" : "John Smith"}
+                      placeholder={
+                        language === "vi" ? "Nguyễn Văn A" : "John Smith"
+                      }
                       required
                     />
                   </div>
@@ -941,7 +978,11 @@ const Contact = () => {
                     </label>
                     <select className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all">
                       {tContent.subjectOptions.map((option, index) => (
-                        <option key={index} value={option.value} className="text-gray-800">
+                        <option
+                          key={index}
+                          value={option.value}
+                          className="text-gray-800"
+                        >
                           {option.label}
                         </option>
                       ))}
@@ -955,7 +996,11 @@ const Contact = () => {
                     <textarea
                       rows="4"
                       className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                      placeholder={language === 'vi' ? "Xin chào Agua, tôi quan tâm đến..." : "Hello Agua, I'm interested in..."}
+                      placeholder={
+                        language === "vi"
+                          ? "Xin chào Agua, tôi quan tâm đến..."
+                          : "Hello Agua, I'm interested in..."
+                      }
                       required
                     ></textarea>
                   </div>
@@ -1011,20 +1056,16 @@ const Contact = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-6">
-                {tContent.mainOffice}
-              </h3>
+              <h3 className="text-2xl font-bold mb-6">{tContent.mainOffice}</h3>
               <div className="space-y-4 mb-8">
-                <p className="text-gray-700">
-                  {tContent.officeDescription1}
-                </p>
-                <p className="text-gray-700">
-                  {tContent.officeDescription2}
-                </p>
+                <p className="text-gray-700">{tContent.officeDescription1}</p>
+                <p className="text-gray-700">{tContent.officeDescription2}</p>
               </div>
 
               <div className="bg-gray-50 p-6 rounded-xl">
-                <h4 className="font-bold mb-4 text-lg">{tContent.travelGuide}</h4>
+                <h4 className="font-bold mb-4 text-lg">
+                  {tContent.travelGuide}
+                </h4>
                 <ul className="space-y-3">
                   {tContent.travelItems.map((item, index) => (
                     <li key={index} className="flex items-center">
@@ -1075,12 +1116,14 @@ const Contact = () => {
                 >
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={[
-                        "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1534237710431-e2fc698436d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-                        "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                      ][index]}
+                      src={
+                        [
+                          "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                          "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                          "https://images.unsplash.com/photo-1534237710431-e2fc698436d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                          "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        ][index]
+                      }
                       alt={`${office.city} office`}
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                     />
@@ -1130,7 +1173,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
 
       {/* Footer */}
       <footer className="bg-[#1B2340] text-white">
@@ -1196,12 +1238,12 @@ const Contact = () => {
             {/* Quick Links */}
             <div>
               <h4 className="text-lg font-semibold mb-4">
-                {language === 'vi' ? 'Liên kết nhanh' : 'Quick Links'}
+                {language === "vi" ? "Liên kết nhanh" : "Quick Links"}
               </h4>
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="/"
+                    href="/home"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.home}
@@ -1209,7 +1251,7 @@ const Contact = () => {
                 </li>
                 <li>
                   <a
-                    href="/programs"
+                    href="/services"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.programs}
@@ -1217,7 +1259,7 @@ const Contact = () => {
                 </li>
                 <li>
                   <a
-                    href="/people"
+                    href="/about"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.people}
@@ -1237,7 +1279,7 @@ const Contact = () => {
             {/* Contact Info */}
             <div>
               <h4 className="text-lg font-semibold mb-4">
-                {language === 'vi' ? 'Liên hệ' : 'Contact'}
+                {language === "vi" ? "Liên hệ" : "Contact"}
               </h4>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start">
@@ -1260,9 +1302,7 @@ const Contact = () => {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span>
-                    {tContent.footerContact.address}
-                  </span>
+                  <span>{tContent.footerContact.address}</span>
                 </li>
                 <li className="flex items-center">
                   <svg

@@ -207,7 +207,10 @@ export const luminaryData = {
       content: [
         {
           title: "Niềm vui học tập",
-          items: ["Curiosity Walks", "Thử thách 21 ngày về thói quen hạnh phúc"],
+          items: [
+            "Curiosity Walks",
+            "Thử thách 21 ngày về thói quen hạnh phúc",
+          ],
         },
         {
           title: "Tư duy sáng tạo",
@@ -692,7 +695,7 @@ export const faqData = {
 };
 
 // Helper function to get data based on language
-export const getDataByLanguage = (language = 'vie') => {
+export const getDataByLanguage = (language = "vie") => {
   return {
     comparisonTable: comparisonTable[language] || comparisonTable.vie,
     luminaryData: luminaryData[language] || luminaryData.vie,

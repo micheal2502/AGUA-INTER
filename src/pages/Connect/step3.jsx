@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useLanguage } from "../../contexts/LanguageContext"; 
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const ContactStep3 = () => {
   const { language, t } = useLanguage();
@@ -10,7 +10,7 @@ const ContactStep3 = () => {
     challenges: "",
     mentorHelp: "",
     programPriorities: [],
-    changeLearning: ""
+    changeLearning: "",
   });
 
   // Translations
@@ -21,195 +21,230 @@ const ContactStep3 = () => {
       processFeatures: [
         "Lắng nghe nhu cầu",
         "Giải pháp cá nhân hóa",
-        "Đồng hành thực tế"
+        "Đồng hành thực tế",
       ],
-      
+
       progressTitle: "Tiến trình của bạn",
       progressStatus: "Hoàn thành 3/4 bước",
-      
+
       steps: [
         { number: 1, label: "Thông tin cơ bản" },
         { number: 2, label: "Quan điểm giáo dục" },
         { number: 3, label: "Nhu cầu học tập" },
-        { number: 4, label: "Hoàn tất" }
+        { number: 4, label: "Hoàn tất" },
       ],
-      
+
       currentStep: 3,
       activeStep: 3,
-      
+
       sectionTitle: "03 / Nhịp sóng hiện tại",
       sectionSubtitle: "Nhu cầu & mong muốn hiện tại",
-      sectionDescription: "Giữa hành trình ra khơi, mỗi gia đình đều mang trong mình những ngọn sóng riêng, là mong muốn, kỳ vọng và những thử thách đang cùng con chuyển động. Hãy cùng AGUA nhìn rõ nhịp sóng ấy, để hành trình phía trước luôn được cân bằng giữa mục tiêu và niềm vui học tập.",
-      
+      sectionDescription:
+        "Giữa hành trình ra khơi, mỗi gia đình đều mang trong mình những ngọn sóng riêng, là mong muốn, kỳ vọng và những thử thách đang cùng con chuyển động. Hãy cùng AGUA nhìn rõ nhịp sóng ấy, để hành trình phía trước luôn được cân bằng giữa mục tiêu và niềm vui học tập.",
+
       questions: {
         q1: "Anh/chị mong con đạt được điều gì trong 1 năm tới?",
         q2: "Theo anh/chị, điều gì đang cản trở con đạt được điều đó?",
         q3: "Anh/chị mong đợi mentor sẽ giúp con ở khía cạnh nào nhất?",
         q4: "Khi lựa chọn chương trình học, anh/chị quan tâm nhất điều gì?",
-        q5: "Nếu có thể thay đổi một điều trong cách con đang học, anh/chị muốn thay đổi điều gì nhất?"
+        q5: "Nếu có thể thay đổi một điều trong cách con đang học, anh/chị muốn thay đổi điều gì nhất?",
       },
-      
+
       helperTexts: {
         challenges: "Chia sẻ những thách thức hiện tại...",
         mentorHelp: "Mô tả kỳ vọng của bạn...",
-        changeLearning: "Chia sẻ điều bạn muốn thay đổi..."
+        changeLearning: "Chia sẻ điều bạn muốn thay đổi...",
       },
-      
+
       placeholders: {
         challenges: "Mô tả những khó khăn, thách thức con đang gặp phải...",
         mentorHelp: "Những điều bạn mong đợi từ mentor sẽ giúp con...",
-        changeLearning: "Điều bạn mong muốn thay đổi nhất trong phương pháp học của con..."
+        changeLearning:
+          "Điều bạn mong muốn thay đổi nhất trong phương pháp học của con...",
       },
-      
+
       oneYearGoalsOptions: [
         "Tự tin và yêu thích học tập hơn",
         "Xác định định hướng học tập hoặc nghề nghiệp",
         "Rèn luyện kỹ năng mềm",
         "Cải thiện điểm / chứng chỉ quốc tế",
         "Xây dựng hồ sơ du học / học bổng",
-        "Khác..."
+        "Khác...",
       ],
-      
+
       programPriorityOptions: [
         "Mentor có chuyên môn & đồng hành thật sự",
         "Kết quả rõ ràng (Điểm số, học bổng)",
         "Sự kết nối cùng phụ huynh",
         "Chương trình cá nhân hóa, phù hợp với từng cá tính con",
         "Hành trình học tập vui vẻ & bền vững",
-        "Khác..."
+        "Khác...",
       ],
-      
+
       buttons: {
         back: "Quay lại",
         next: "Tiếp theo",
-        home: "Quay lại trang chủ"
+        home: "Quay lại trang chủ",
       },
-      
+
       footer: {
-        copyright: `© ${new Date().getFullYear()} AGUA International Education. Tất cả thông tin được bảo mật và chỉ sử dụng cho mục đích tư vấn giáo dục.`
-      }
+        companyName: "Agua International Education",
+        quickLinks: "Liên kết nhanh",
+        home: "Trang Chủ",
+        programs: "Gói Học Tập",
+        people: "Con Người",
+        opportunities: "Cơ Hội",
+        contact: "Liên hệ",
+        address:
+          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+        phone: "+84 28 1234 5678",
+        email: "info@agua.edu.vn",
+        copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
+        privacy: "Chính sách bảo mật",
+        terms: "Điều khoản sử dụng",
+        sitemap: "Sitemap",
+      },
     },
     en: {
       heroTitle: "Journey with AGUA",
-      heroSubtitle: "Understanding current needs to accompany you in the right direction",
+      heroSubtitle:
+        "Understanding current needs to accompany you in the right direction",
       processFeatures: [
         "Listening to needs",
         "Personalized solutions",
-        "Practical companionship"
+        "Practical companionship",
       ],
-      
+
       progressTitle: "Your Progress",
       progressStatus: "Completed 3/4 steps",
-      
+
       steps: [
         { number: 1, label: "Basic Information" },
         { number: 2, label: "Educational Philosophy" },
         { number: 3, label: "Learning Needs" },
-        { number: 4, label: "Completion" }
+        { number: 4, label: "Completion" },
       ],
-      
+
       currentStep: 3,
       activeStep: 3,
-      
+
       sectionTitle: "03 / Current Rhythm Waves",
       sectionSubtitle: "Current Needs & Desires",
-      sectionDescription: "In the midst of the journey out to sea, each family carries their own unique waves - desires, expectations, and challenges that move with their children. Let AGUA help you see these rhythms clearly, so that the journey ahead is always balanced between goals and the joy of learning.",
-      
+      sectionDescription:
+        "In the midst of the journey out to sea, each family carries their own unique waves - desires, expectations, and challenges that move with their children. Let AGUA help you see these rhythms clearly, so that the journey ahead is always balanced between goals and the joy of learning.",
+
       questions: {
         q1: "What do you hope your child achieves in the next year?",
         q2: "In your opinion, what is currently preventing your child from achieving that?",
         q3: "What aspect do you most expect a mentor to help your child with?",
         q4: "When choosing a learning program, what do you care about most?",
-        q5: "If you could change one thing about how your child is currently learning, what would you change most?"
+        q5: "If you could change one thing about how your child is currently learning, what would you change most?",
       },
-      
+
       helperTexts: {
         challenges: "Share current challenges...",
         mentorHelp: "Describe your expectations...",
-        changeLearning: "Share what you want to change..."
+        changeLearning: "Share what you want to change...",
       },
-      
+
       placeholders: {
-        challenges: "Describe the difficulties and challenges your child is facing...",
+        challenges:
+          "Describe the difficulties and challenges your child is facing...",
         mentorHelp: "What you expect from a mentor to help your child...",
-        changeLearning: "What you most want to change about your child's learning method..."
+        changeLearning:
+          "What you most want to change about your child's learning method...",
       },
-      
+
       oneYearGoalsOptions: [
         "More confident and enjoying learning",
         "Determining study or career direction",
         "Practicing soft skills",
         "Improving grades / international certificates",
         "Building study abroad / scholarship profiles",
-        "Other..."
+        "Other...",
       ],
-      
+
       programPriorityOptions: [
         "Professional mentor & real companionship",
         "Clear results (Grades, scholarships)",
         "Connection with parents",
         "Personalized program, suitable for each child's personality",
         "Joyful & sustainable learning journey",
-        "Other..."
+        "Other...",
       ],
-      
+
       buttons: {
         back: "Back",
         next: "Next Step",
-        home: "Back to Home"
+        home: "Back to Home",
       },
-      
+
       footer: {
-        copyright: `© ${new Date().getFullYear()} AGUA International Education. All information is confidential and used only for educational consultation purposes.`
-      }
-    }
+        companyName: "Agua International Education",
+        quickLinks: "Quick Links",
+        home: "Home",
+        programs: "Learning Packages",
+        people: "Our People",
+        opportunities: "Opportunities",
+        contact: "Contact",
+        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
+        phone: "+84 28 1234 5678",
+        email: "info@agua.edu.vn",
+        copyright:
+          "© {year} Agua International Education. All rights reserved.",
+        privacy: "Privacy Policy",
+        terms: "Terms of Use",
+        sitemap: "Sitemap",
+      },
+    },
   };
 
-  const tContent = translations[language] || translations.vi;
+  const tContent =
+    translations[language === "vie" ? "vi" : language] || translations.vi;
 
   const handleGoalChange = (goal) => {
-    setFormData(prev => {
+    setFormData((prev) => {
       const newGoals = prev.oneYearGoals.includes(goal)
-        ? prev.oneYearGoals.filter(g => g !== goal)
+        ? prev.oneYearGoals.filter((g) => g !== goal)
         : [...prev.oneYearGoals, goal];
       return {
         ...prev,
-        oneYearGoals: newGoals
+        oneYearGoals: newGoals,
       };
     });
   };
 
   const handlePriorityChange = (priority) => {
-    setFormData(prev => {
+    setFormData((prev) => {
       const newPriorities = prev.programPriorities.includes(priority)
-        ? prev.programPriorities.filter(p => p !== priority)
+        ? prev.programPriorities.filter((p) => p !== priority)
         : [...prev.programPriorities, priority];
       return {
         ...prev,
-        programPriorities: newPriorities
+        programPriorities: newPriorities,
       };
     });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Step 3 data:", formData);
-    
+
     // Get data from previous steps
-    const step1Data = JSON.parse(localStorage.getItem('contactInfo') || '{}');
-    
+    const step1Data = JSON.parse(localStorage.getItem("contactInfo") || "{}");
+
     // Merge data
     const allData = { ...step1Data, ...formData };
-    localStorage.setItem('contactInfo', JSON.stringify(allData));
-    
+    localStorage.setItem("contactInfo", JSON.stringify(allData));
+
     // Navigate to final step
     navigate("/connect/complete");
   };
@@ -228,7 +263,7 @@ const ContactStep3 = () => {
           <div className="absolute top-1/3 -right-40 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-300/5 rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left side: Title and description */}
@@ -239,7 +274,7 @@ const ContactStep3 = () => {
               <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl">
                 {tContent.heroSubtitle}
               </p>
-              
+
               <div className="flex flex-wrap gap-6 pt-4">
                 {tContent.processFeatures.map((feature, index) => (
                   <div key={index} className="flex items-center">
@@ -249,7 +284,7 @@ const ContactStep3 = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Right side: Dot indicator with 4 steps */}
             <div className="lg:pl-12">
               <div className="max-w-md mx-auto lg:mx-0">
@@ -261,40 +296,59 @@ const ContactStep3 = () => {
                     {tContent.progressStatus}
                   </p>
                 </div>
-                
+
                 {/* Dot indicator with 4 steps */}
                 <div className="relative">
                   {/* Progress line */}
                   <div className="absolute top-5 left-0 right-0 h-1 bg-gray-200">
                     <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 w-3/4"></div>
                   </div>
-                  
+
                   <div className="flex justify-between relative z-10">
                     {tContent.steps.map((step, index) => (
                       <div key={index} className="flex flex-col items-center">
                         {step.number === tContent.activeStep ? (
                           // Active step
                           <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center mb-3 shadow-xl relative">
-                            <span className="text-white font-bold text-lg">{step.number}</span>
+                            <span className="text-white font-bold text-lg">
+                              {step.number}
+                            </span>
                             <div className="absolute -inset-2 border-2 border-blue-200 rounded-full animate-pulse"></div>
                           </div>
                         ) : step.number < tContent.activeStep ? (
                           // Completed step
                           <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mb-3 shadow-lg">
-                            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                            <svg
+                              className="w-5 h-5 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              />
                             </svg>
                           </div>
                         ) : (
                           // Future step
                           <div className="w-10 h-10 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center mb-3">
-                            <span className="text-gray-400 font-bold">{step.number}</span>
+                            <span className="text-gray-400 font-bold">
+                              {step.number}
+                            </span>
                           </div>
                         )}
-                        <span className={`text-sm font-medium ${
-                          step.number === tContent.activeStep ? "text-blue-700 font-semibold" :
-                          step.number < tContent.activeStep ? "text-blue-600" : "text-gray-500"
-                        }`}>
+                        <span
+                          className={`text-sm font-medium ${
+                            step.number === tContent.activeStep
+                              ? "text-blue-700 font-semibold"
+                              : step.number < tContent.activeStep
+                                ? "text-blue-600"
+                                : "text-gray-500"
+                          }`}
+                        >
                           {step.label}
                         </span>
                       </div>
@@ -315,27 +369,47 @@ const ContactStep3 = () => {
               {/* Step 1 - Completed */}
               <div className="flex flex-col items-center relative z-10">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mb-3 shadow-lg">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
                 <span className="text-sm font-medium text-gray-600">
                   {tContent.steps[0].label}
                 </span>
               </div>
-              
+
               {/* Step 2 - Completed */}
               <div className="flex flex-col items-center relative z-10">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mb-3 shadow-lg">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
                 <span className="text-sm font-medium text-gray-600">
                   {tContent.steps[1].label}
                 </span>
               </div>
-              
+
               {/* Step 3 - Active */}
               <div className="flex flex-col items-center relative z-10">
                 <div className="w-16 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mb-3"></div>
@@ -343,7 +417,7 @@ const ContactStep3 = () => {
                   {tContent.steps[2].label}
                 </span>
               </div>
-              
+
               {/* Step 4 */}
               <div className="flex flex-col items-center relative z-10">
                 <div className="w-3 h-3 rounded-full bg-gray-300 mb-3"></div>
@@ -364,12 +438,12 @@ const ContactStep3 = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               {tContent.sectionTitle}
             </h1>
-            
+
             {/* Sub-description */}
             <p className="text-xl font-medium text-blue-600 mb-6">
               {tContent.sectionSubtitle}
             </p>
-            
+
             {/* Description paragraph */}
             <div className="max-w-4xl">
               <p className="text-lg text-gray-700 leading-relaxed mb-6 italic">
@@ -383,7 +457,10 @@ const ContactStep3 = () => {
       {/* Form Section */}
       <div className="container mx-auto px-4 mb-20">
         <div className="max-w-6xl mx-auto">
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white rounded-2xl p-6 md:p-8 shadow-lg"
+          >
             {/* Question 1: 1-year goals */}
             <div className="mb-10">
               <label className="block text-lg font-semibold text-gray-900 mb-4">
@@ -391,12 +468,12 @@ const ContactStep3 = () => {
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {tContent.oneYearGoalsOptions.map((goal, index) => (
-                  <label 
-                    key={index} 
+                  <label
+                    key={index}
                     className={`flex items-center p-4 rounded-xl border transition-all cursor-pointer ${
                       formData.oneYearGoals.includes(goal)
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-200 bg-gray-50 hover:bg-gray-100"
                     }`}
                   >
                     <input
@@ -456,12 +533,12 @@ const ContactStep3 = () => {
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {tContent.programPriorityOptions.map((priority, index) => (
-                  <label 
-                    key={index} 
+                  <label
+                    key={index}
                     className={`flex items-center p-4 rounded-xl border transition-all cursor-pointer ${
                       formData.programPriorities.includes(priority)
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-200 bg-gray-50 hover:bg-gray-100"
                     }`}
                   >
                     <input
@@ -470,7 +547,9 @@ const ContactStep3 = () => {
                       onChange={() => handlePriorityChange(priority)}
                       className="w-5 h-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
                     />
-                    <span className="ml-3 text-gray-700 flex-1">{priority}</span>
+                    <span className="ml-3 text-gray-700 flex-1">
+                      {priority}
+                    </span>
                   </label>
                 ))}
               </div>
@@ -502,30 +581,40 @@ const ContactStep3 = () => {
                 onClick={handleBack}
                 className="group flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-full font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-300 w-full md:w-auto"
               >
-                <svg 
-                  className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className="w-5 h-5 mr-3 group-hover:-translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
                 </svg>
                 {tContent.buttons.back}
               </button>
-              
+
               <button
                 type="submit"
                 className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-12 py-4 rounded-full font-semibold text-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-xl w-full md:w-auto"
               >
                 <span className="flex items-center justify-center">
                   {tContent.buttons.next}
-                  <svg 
-                    className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <svg
+                    className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
                   </svg>
                 </span>
               </button>
@@ -534,12 +623,22 @@ const ContactStep3 = () => {
 
           {/* Back Link */}
           <div className="mt-8 text-center">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors font-medium"
             >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+              <svg
+                className="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                />
               </svg>
               {tContent.buttons.home}
             </Link>
@@ -548,20 +647,209 @@ const ContactStep3 = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#1B2340] text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="flex items-center justify-center mb-6">
-              <img 
-                src="/images/logo2.png" 
-                alt="AGUA Logo"
-                className="h-10 w-auto mr-4"
-              />
-              <span className="text-xl font-semibold">AGUA International Education</span>
+      <footer className="bg-[#1B2340] text-white">
+        {/* Main Footer Content */}
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Company Info */}
+            <div className="lg:col-span-2">
+              <div className="flex items-center mb-4">
+                <img
+                  src="/images/logo2.png"
+                  alt="Agua International Education"
+                  className="h-10 w-auto mr-3"
+                />
+                <h3 className="text-2xl font-semibold">
+                  {tContent.footer.companyName}
+                </h3>
+              </div>
+
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">Facebook</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">YouTube</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">LinkedIn</span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+              </div>
             </div>
-            <p className="text-gray-400 text-base max-w-2xl mx-auto">
-              {tContent.footer.copyright}
-            </p>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">
+                {tContent.footer.quickLinks}
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    to="/"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {tContent.footer.home}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/services"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {tContent.footer.programs}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {tContent.footer.people}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/philosophy"
+                    className="text-gray-300 hover:text-white transition-colors"
+                  >
+                    {tContent.footer.opportunities}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">
+                {tContent.footer.contact}
+              </h4>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start">
+                  <svg
+                    className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: tContent.footer.address,
+                    }}
+                  />
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="h-5 w-5 mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <span>{tContent.footer.phone}</span>
+                </li>
+                <li className="flex items-center">
+                  <svg
+                    className="h-5 w-5 mr-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>{tContent.footer.email}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-800">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="text-center md:text-left mb-4 md:mb-0">
+                <p className="text-gray-400 text-sm">
+                  {tContent.footer.copyright.replace(
+                    "{year}",
+                    new Date().getFullYear(),
+                  )}
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center space-x-6 text-sm">
+                <a
+                  href="/privacy"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {tContent.footer.privacy}
+                </a>
+                <a
+                  href="/terms"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {tContent.footer.terms}
+                </a>
+                <a
+                  href="/sitemap"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {tContent.footer.sitemap}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

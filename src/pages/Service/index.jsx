@@ -4,114 +4,132 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { comparisonTable, luminaryData, faqData } from "../../constants";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext"; // Add this import
-import { comparisonTable as comparisonTableData, luminaryData as luminaryDataAll, faqData as faqDataAll } from "../../constants";
+import {
+  comparisonTable as comparisonTableData,
+  luminaryData as luminaryDataAll,
+  faqData as faqDataAll,
+} from "../../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
   const { language } = useLanguage();
-const comparisonTable = comparisonTableData[language] || comparisonTableData.vie;
-const luminaryData = luminaryDataAll[language] || luminaryDataAll.vie;
-const faqData = faqDataAll[language] || faqDataAll.vie;
-  
+  const comparisonTable =
+    comparisonTableData[language] || comparisonTableData.vie;
+  const luminaryData = luminaryDataAll[language] || luminaryDataAll.vie;
+  const faqData = faqDataAll[language] || faqDataAll.vie;
+
   // Language-specific content
   const content = {
     vie: {
       hero: {
         title: "Các chương trình học",
         subtitle: "Các gói học tập thiết kế riêng",
-        description: "cho từng học sinh"
+        description: "cho từng học sinh",
       },
       comparisonSection: {
         title: "So Sánh Các Lộ Trình Giáo Dục",
-        description: "Lựa chọn lộ trình phù hợp với độ tuổi và mục tiêu phát triển của học sinh"
+        description:
+          "Lựa chọn lộ trình phù hợp với độ tuổi và mục tiêu phát triển của học sinh",
       },
       luminarySection: {
         title: "LỘ TRÌNH TỎA SÁNG VÔ TẬN",
-        subtitle: "Chương trình thành viên trọn đời - Đầu tư một lần, đồng hành suốt đời"
+        subtitle:
+          "Chương trình thành viên trọn đời - Đầu tư một lần, đồng hành suốt đời",
       },
       faqSection: {
         title: "Câu Hỏi Thường Gặp",
-        description: "Tìm câu trả lời cho những thắc mắc phổ biến về chương trình AGUA"
+        description:
+          "Tìm câu trả lời cho những thắc mắc phổ biến về chương trình AGUA",
       },
       ctaSection: {
         title: "Bắt Đầu Hành Trình Cùng AGUA",
-        description: "Đăng ký khảo sát miễn phí để nhận đánh giá toàn diện và lộ trình học tập cá nhân hóa cho con bạn.",
+        description:
+          "Đăng ký khảo sát miễn phí để nhận đánh giá toàn diện và lộ trình học tập cá nhân hóa cho con bạn.",
         benefits: [
           "Đánh giá năng lực toàn diện miễn phí",
           "Tư vấn 1-1 với chuyên gia giáo dục",
-          "Lộ trình học tập cá nhân hóa"
+          "Lộ trình học tập cá nhân hóa",
         ],
         button: "Đăng Ký Khảo Sát Miễn Phí",
-        quote: "\"Giáo dục không phải là đổ đầy một cái bình, mà là thắp sáng một ngọn lửa\"",
-        author: "William Butler Yeats"
+        quote:
+          '"Giáo dục không phải là đổ đầy một cái bình, mà là thắp sáng một ngọn lửa"',
+        author: "William Butler Yeats",
       },
       footer: {
         companyName: "AGUA EDUCATION",
-        description: "AGUA - Nơi kiến tạo cuộc sống hạnh phúc thông qua giáo dục. Chúng tôi đồng hành cùng học sinh trên hành trình khám phá bản thân và chinh phục ước mơ.",
+        description:
+          "AGUA - Nơi kiến tạo cuộc sống hạnh phúc thông qua giáo dục. Chúng tôi đồng hành cùng học sinh trên hành trình khám phá bản thân và chinh phục ước mơ.",
         quickLinks: "Liên kết nhanh",
         home: "Trang Chủ",
         programs: "Gói Học Tập",
         people: "Con Người",
         opportunities: "Cơ Hội",
         contact: "Liên hệ",
-        address: "123 Đường ABC, Quận XYZ<br />TP. Hồ Chí Minh, Việt Nam",
+        address:
+          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
         phone: "+84 28 1234 5678",
         email: "info@agua.edu.vn",
         copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
         privacy: "Chính sách bảo mật",
         terms: "Điều khoản sử dụng",
-        sitemap: "Sitemap"
-      }
+        sitemap: "Sitemap",
+      },
     },
     en: {
       hero: {
         title: "Learning Programs",
         subtitle: "Personalized learning packages designed",
-        description: "for each student"
+        description: "for each student",
       },
       comparisonSection: {
         title: "Compare Education Pathways",
-        description: "Choose the pathway that fits your child's age and development goals"
+        description:
+          "Choose the pathway that fits your child's age and development goals",
       },
       luminarySection: {
         title: "ENDLESS SHINING PATHWAY",
-        subtitle: "Lifetime membership program - One-time investment, lifelong companionship"
+        subtitle:
+          "Lifetime membership program - One-time investment, lifelong companionship",
       },
       faqSection: {
         title: "Frequently Asked Questions",
-        description: "Find answers to common questions about the AGUA program"
+        description: "Find answers to common questions about the AGUA program",
       },
       ctaSection: {
         title: "Start Your Journey with AGUA",
-        description: "Register for a free survey to receive a comprehensive assessment and personalized learning pathway for your child.",
+        description:
+          "Register for a free survey to receive a comprehensive assessment and personalized learning pathway for your child.",
         benefits: [
           "Comprehensive free ability assessment",
           "1-1 consultation with education experts",
-          "Personalized learning pathway"
+          "Personalized learning pathway",
         ],
         button: "Register for Free Survey",
-        quote: "\"Education is not the filling of a pail, but the lighting of a fire\"",
-        author: "William Butler Yeats"
+        quote:
+          '"Education is not the filling of a pail, but the lighting of a fire"',
+        author: "William Butler Yeats",
       },
       footer: {
         companyName: "AGUA EDUCATION",
-        description: "AGUA - Where happy lives are created through education. We accompany students on their journey of self-discovery and dream achievement.",
+        description:
+          "AGUA - Where happy lives are created through education. We accompany students on their journey of self-discovery and dream achievement.",
         quickLinks: "Quick Links",
         home: "Home",
         programs: "Learning Packages",
         people: "Our People",
         opportunities: "Opportunities",
         contact: "Contact",
-        address: "123 ABC Street, XYZ District<br />Ho Chi Minh City, Vietnam",
+        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
         phone: "+84 28 1234 5678",
         email: "info@agua.edu.vn",
-        copyright: "© {year} Agua International Education. All rights reserved.",
+        copyright:
+          "© {year} Agua International Education. All rights reserved.",
         privacy: "Privacy Policy",
         terms: "Terms of Use",
-        sitemap: "Sitemap"
-      }
-    }
+        sitemap: "Sitemap",
+      },
+    },
   };
 
   // Get content based on current language
@@ -308,9 +326,13 @@ const faqData = faqDataAll[language] || faqDataAll.vie;
       {/* Hero Section với ảnh */}
       <section className="relative min-h-[70vh] overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-            alt={language === 'vie' ? "Khái niệm giáo dục kỹ thuật số" : "Digital education concept"}
+          <img
+            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt={
+              language === "vie"
+                ? "Khái niệm giáo dục kỹ thuật số"
+                : "Digital education concept"
+            }
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/60"></div>
@@ -318,9 +340,7 @@ const faqData = faqDataAll[language] || faqDataAll.vie;
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <div className="text-center text-white space-y-6 px-4 max-w-6xl">
             <h1 className="hero-title">{t.hero.title}</h1>
-            <p className="hero-subtitle">
-              {t.hero.subtitle}
-            </p>
+            <p className="hero-subtitle">{t.hero.subtitle}</p>
             <p className="section-title text-xl md:text-2xl text-blue-100 leading-relaxed">
               {t.hero.description}
             </p>
@@ -822,7 +842,9 @@ const faqData = faqDataAll[language] || faqDataAll.vie;
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">{t.footer.quickLinks}</h4>
+              <h4 className="text-lg font-semibold mb-4">
+                {t.footer.quickLinks}
+              </h4>
               <ul className="space-y-2">
                 <li>
                   <a
@@ -883,7 +905,9 @@ const faqData = faqDataAll[language] || faqDataAll.vie;
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span dangerouslySetInnerHTML={{ __html: t.footer.address }} />
+                  <span
+                    dangerouslySetInnerHTML={{ __html: t.footer.address }}
+                  />
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -928,7 +952,10 @@ const faqData = faqDataAll[language] || faqDataAll.vie;
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-center md:text-left mb-4 md:mb-0">
                 <p className="text-gray-400 text-sm">
-                  {t.footer.copyright.replace('{year}', new Date().getFullYear())}
+                  {t.footer.copyright.replace(
+                    "{year}",
+                    new Date().getFullYear(),
+                  )}
                 </p>
               </div>
               <div className="flex flex-wrap justify-center space-x-6 text-sm">

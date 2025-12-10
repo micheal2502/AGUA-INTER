@@ -165,7 +165,8 @@
 /* ============ Hero ============ */
 @layer components {
   .hero-section {
-    @apply relative w-full h-screen flex items-center justify-start bg-[#222] transition duration-700 ease-in-out overflow-hidden;
+    @apply relative w-full h-screen flex items-center justify-start overflow-hidden transition duration-700 ease-in-out;
+    background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #111827 100%);
   }
   .hero-video {
     @apply absolute inset-0 w-full h-full object-cover -z-10;
@@ -197,12 +198,14 @@
   /* Hoặc với background highlight tinh tế */
   .title-text {
     font-family: "Bodoni Moda", "Source Serif Pro", serif;
-    color: #ffffff; /* amber-600 - màu vàng đậm hơn, elegant hơn */
-    font-weight: 1000;
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 0.03em; /* Slight letter spacing */
     background-repeat: no-repeat;
     background-size: 100% 0.3em;
     background-position: 0 88%;
     padding: 0.1em 0.2em;
+    font-variation-settings: "wght" 250; /* More precise control */
   }
 
   .content-text {
@@ -859,7 +862,6 @@
     font-family: "Arial", sans-serif;
   }
 
-  
   /* Hero Section */
   .philosophy-hero {
     position: relative;
@@ -1847,21 +1849,20 @@
   }
 }
 
-
-.inner{
-    background-color: black;
-    .page{
-        background-color: white;
-    }
-    .slide{
-        height: 100vh;
-        width: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        background-color: white;
-        z-index: 1;
-    }
+.inner {
+  background-color: black;
+  .page {
+    background-color: white;
+  }
+  .slide {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
 }
 
 /* index.css
@@ -1880,3 +1881,92 @@ a {
   color: inherit;
 } */
 
+/* Add to your global CSS file */
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes pulse-slower {
+  0%,
+  100% {
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.07;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-slower {
+  animation: pulse-slower 6s ease-in-out infinite;
+}
+
+/* Tape Cover Styles */
+.tape-cover {
+  background: linear-gradient(135deg, #000000 0%, #111111 50%, #000000 100%);
+  background-size: 200% 200%;
+  animation: tapeShimmer 3s ease-in-out infinite;
+}
+
+.tape-texture {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 15px,
+      rgba(255, 255, 255, 0.02) 15px,
+      rgba(255, 255, 255, 0.02) 30px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(255, 255, 255, 0.01) 20px,
+      rgba(255, 255, 255, 0.01) 40px
+    );
+}
+
+.tape-edge {
+  background: linear-gradient(
+    90deg,
+    rgba(80, 80, 80, 0.9) 0%,
+    rgba(180, 180, 180, 0.8) 50%,
+    rgba(80, 80, 80, 0.9) 100%
+  );
+  box-shadow:
+    2px 0 20px rgba(0, 0, 0, 0.8),
+    inset -1px 0 3px rgba(255, 255, 255, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.1);
+}
+
+.tape-edge-highlight {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  box-shadow:
+    inset 0 0 15px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes tapeShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

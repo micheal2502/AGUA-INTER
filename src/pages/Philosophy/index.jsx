@@ -6,7 +6,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 
 const Philosophy = () => {
   const { language } = useLanguage();
-  
+
   // Refs for animations
   const heroTextRef = useRef(null);
   const scrollDotRef = useRef(null);
@@ -19,11 +19,12 @@ const Philosophy = () => {
     vie: {
       hero: {
         title: "Triết lí Agua",
-        subtitle: "Agua muốn nuôi dưỡng những game changer, không phải followers",
-        scrollText: "Vuốt để xem tiếp"
+        subtitle:
+          "Agua muốn nuôi dưỡng những game changer, không phải followers",
+        scrollText: "Vuốt để xem tiếp",
       },
       main: {
-        visionTitle: "Tầm Nhìn & Định hướng"
+        visionTitle: "Tầm Nhìn & Định hướng",
       },
       footer: {
         companyName: "Agua International Education",
@@ -33,23 +34,24 @@ const Philosophy = () => {
         people: "Con Người",
         opportunities: "Cơ Hội",
         contact: "Liên hệ",
-        address: "123 Đường ABC, Quận XYZ<br />TP. Hồ Chí Minh, Việt Nam",
+        address:
+          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
         phone: "+84 28 1234 5678",
         email: "info@agua.edu.vn",
         copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
         privacy: "Chính sách bảo mật",
         terms: "Điều khoản sử dụng",
-        sitemap: "Sitemap"
-      }
+        sitemap: "Sitemap",
+      },
     },
     en: {
       hero: {
         title: "Agua Philosophy",
         subtitle: "Agua wants to nurture game changers, not followers",
-        scrollText: "Scroll to continue"
+        scrollText: "Scroll to continue",
       },
       main: {
-        visionTitle: "Vision & Direction"
+        visionTitle: "Vision & Direction",
       },
       footer: {
         companyName: "Agua International Education",
@@ -59,15 +61,16 @@ const Philosophy = () => {
         people: "Our People",
         opportunities: "Opportunities",
         contact: "Contact",
-        address: "123 ABC Street, XYZ District<br />Ho Chi Minh City, Vietnam",
+        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
         phone: "+84 28 1234 5678",
         email: "info@agua.edu.vn",
-        copyright: "© {year} Agua International Education. All rights reserved.",
+        copyright:
+          "© {year} Agua International Education. All rights reserved.",
         privacy: "Privacy Policy",
         terms: "Terms of Use",
-        sitemap: "Sitemap"
-      }
-    }
+        sitemap: "Sitemap",
+      },
+    },
   };
 
   // Get content based on current language
@@ -136,7 +139,7 @@ const Philosophy = () => {
       <section className="philosophy-hero relative w-full h-screen overflow-hidden">
         <img
           src="/images/Philosophy.jpg"
-          alt={language === 'vie' ? "Triết lý" : "Philosophy"}
+          alt={language === "vie" ? "Triết lý" : "Philosophy"}
           className={`hero-image w-full h-full object-cover ${imageLoaded ? "loaded" : ""}`}
           onLoad={() => setImageLoaded(true)}
         />
@@ -153,7 +156,7 @@ const Philosophy = () => {
               {t.hero.subtitle}
             </p>
           </div>
-          
+
           {/* Scroll Down Indicator */}
           <div className="flex flex-col items-center space-y-3 mt-10">
             <div
@@ -184,7 +187,7 @@ const Philosophy = () => {
           {tabComponents[activeTab]}
         </div>
       </main>
-      
+
       {/* Footer */}
       <footer className="bg-[#1B2340] text-white">
         {/* Main Footer Content */}
@@ -248,11 +251,13 @@ const Philosophy = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">{t.footer.quickLinks}</h4>
+              <h4 className="text-lg font-semibold mb-4">
+                {t.footer.quickLinks}
+              </h4>
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="/about"
+                    href="/home"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.home}
@@ -260,7 +265,7 @@ const Philosophy = () => {
                 </li>
                 <li>
                   <a
-                    href="/programs"
+                    href="/services"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.programs}
@@ -268,7 +273,7 @@ const Philosophy = () => {
                 </li>
                 <li>
                   <a
-                    href="/news"
+                    href="/about"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.people}
@@ -276,7 +281,7 @@ const Philosophy = () => {
                 </li>
                 <li>
                   <a
-                    href="/careers"
+                    href="/philosophy"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.opportunities}
@@ -309,7 +314,9 @@ const Philosophy = () => {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span dangerouslySetInnerHTML={{ __html: t.footer.address }} />
+                  <span
+                    dangerouslySetInnerHTML={{ __html: t.footer.address }}
+                  />
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -354,7 +361,10 @@ const Philosophy = () => {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-center md:text-left mb-4 md:mb-0">
                 <p className="text-gray-400 text-sm">
-                  {t.footer.copyright.replace('{year}', new Date().getFullYear())}
+                  {t.footer.copyright.replace(
+                    "{year}",
+                    new Date().getFullYear(),
+                  )}
                 </p>
               </div>
               <div className="flex flex-wrap justify-center space-x-6 text-sm">

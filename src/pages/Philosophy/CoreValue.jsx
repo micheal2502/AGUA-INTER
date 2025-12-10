@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const CoreValue = () => {
   const { language } = useLanguage(); // Get current language
-  
+
   // Language-specific content
   const content = {
     vie: {
@@ -31,45 +31,45 @@ const CoreValue = () => {
         "Integrity - Chính Trực": "/images/integrity.jpg",
         "Creativity - Sáng Tạo": "/images/creativity.jpg",
         "Respect - Tôn Trọng": "/images/respect.jpg",
-      }
+      },
     },
     en: {
       title: "Core Values",
       subtitle: "The principles and values that shape Agua's culture",
       values: {
-        "Proactiveness":
+        Proactiveness:
           "Agua-ers are confident and decisive, daring to speak their minds and defend their viewpoints. We are creative and innovative, accepting risks and proactively seeking resources to turn ideas into reality.",
-        "Inquisitiveness":
+        Inquisitiveness:
           "Agua-ers are curious and eager to acquire new knowledge, continually applying critical thinking by always asking questions. We value self-learning and have a passion for lifelong learning.",
-        "Integrity":
+        Integrity:
           "Agua-ers live responsibly towards themselves, family, and community. We take responsibility for our actions and always keep promises. Honesty is a core value, daring to speak up against wrongdoings and defend what is right.",
-        "Creativity":
+        Creativity:
           "Agua-ers have the ability to go beyond traditional patterns and ideas to create new concepts, methods, and solutions that have value for themselves and others.",
-        "Respect":
+        Respect:
           "Agua-ers care about the feelings, rights, and safety of themselves and others. We respect family culture, national identity, and have deep insight into different cultures, religions, and gender identities.",
       },
       images: {
-        "Proactiveness": "/images/proactive.jpg",
-        "Inquisitiveness": "/images/learning.jpg",
-        "Integrity": "/images/integrity.jpg",
-        "Creativity": "/images/creativity.jpg",
-        "Respect": "/images/respect.jpg",
-      }
-    }
+        Proactiveness: "/images/proactive.jpg",
+        Inquisitiveness: "/images/learning.jpg",
+        Integrity: "/images/integrity.jpg",
+        Creativity: "/images/creativity.jpg",
+        Respect: "/images/respect.jpg",
+      },
+    },
   };
 
   // Get content based on current language
   const t = content[language] || content.vie;
-  
+
   // Function to get value keys based on language
   const getValueKeys = () => {
-    if (language === 'vie') {
+    if (language === "vie") {
       return [
         "Proactiveness - Chủ Động",
-        "Inquisitiveness - Ham Học Hỏi", 
+        "Inquisitiveness - Ham Học Hỏi",
         "Integrity - Chính Trực",
         "Creativity - Sáng Tạo",
-        "Respect - Tôn Trọng"
+        "Respect - Tôn Trọng",
       ];
     } else {
       return [
@@ -77,7 +77,7 @@ const CoreValue = () => {
         "Inquisitiveness",
         "Integrity",
         "Creativity",
-        "Respect"
+        "Respect",
       ];
     }
   };
@@ -139,7 +139,7 @@ const CoreValue = () => {
             duration: 0.8,
             ease: "back.out(1.4)",
           },
-          0
+          0,
         );
 
         // Animation cho title (slide từ trái)
@@ -155,7 +155,7 @@ const CoreValue = () => {
             duration: 0.6,
             ease: "power2.out",
           },
-          0.2
+          0.2,
         );
 
         // Animation cho description (fade in)
@@ -171,7 +171,7 @@ const CoreValue = () => {
             duration: 0.8,
             ease: "power2.out",
           },
-          0.4
+          0.4,
         );
 
         // Animation cho hình ảnh (scale từ nhỏ)
@@ -189,7 +189,7 @@ const CoreValue = () => {
             duration: 1,
             ease: "power2.out",
           },
-          0.6
+          0.6,
         );
 
         // Hiệu ứng hover cho từng item
@@ -199,19 +199,19 @@ const CoreValue = () => {
             duration: 0.3,
             ease: "power2.out",
           });
-          
+
           gsap.to(icon, {
             rotation: 360,
             duration: 0.8,
             ease: "power2.out",
           });
-          
+
           gsap.to(title, {
             color: "#3d76b8",
             duration: 0.3,
             ease: "power2.out",
           });
-          
+
           gsap.to(image, {
             scale: 1.1,
             duration: 0.5,
@@ -225,13 +225,13 @@ const CoreValue = () => {
             duration: 0.3,
             ease: "power2.out",
           });
-          
+
           gsap.to(title, {
             color: "#1B2340",
             duration: 0.3,
             ease: "power2.out",
           });
-          
+
           gsap.to(image, {
             scale: 1,
             duration: 0.5,
@@ -245,8 +245,8 @@ const CoreValue = () => {
   }, [language]); // Add language as dependency
 
   return (
-    <div 
-      className="gia-tri-container py-20 bg-gradient-to-b from-blue-100 via-white to-blue-50" 
+    <div
+      className="gia-tri-container py-20 bg-gradient-to-b from-blue-100 via-white to-blue-50"
       ref={containerRef}
     >
       <div className="container mx-auto px-6">
@@ -262,8 +262,8 @@ const CoreValue = () => {
 
         <div className="values-layout max-w-6xl mx-auto">
           {getValueKeys().map((key, index) => (
-            <div 
-              key={key} 
+            <div
+              key={key}
               className={`value-item value-${index % 5} mb-12 bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl`}
               ref={addToRefs}
             >
@@ -276,7 +276,7 @@ const CoreValue = () => {
                         {index + 1}
                       </div>
                     </div>
-                    
+
                     <div className="value-content flex-1">
                       <h3 className="value-title text-2xl md:text-3xl font-bold text-[#1B2340] mb-4">
                         {key}
@@ -287,7 +287,7 @@ const CoreValue = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Phần bên phải: Image */}
                 <div className="value-image md:w-1/3 relative overflow-hidden min-h-[200px] md:min-h-full">
                   <div className="absolute inset-0 bg-gradient-to-l from-blue-100/20 to-transparent z-10"></div>

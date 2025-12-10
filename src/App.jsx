@@ -1,5 +1,10 @@
 // App.jsx
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Navigation } from "./components/Navbar";
 import { LanguageProvider } from "./contexts/LanguageContext"; // Import the provider
@@ -13,13 +18,16 @@ import ContactInfoForm from "./pages/Connect";
 import ContactStep2 from "./pages/Connect/step2";
 import ContactStep3 from "./pages/Connect/step3";
 import ContactStep4 from "./pages/Connect/step4";
+import ContactComplete from "./pages/Connect/complete";
 
 const App = () => {
   const location = useLocation();
   const isLandingPage = location.pathname === "/";
 
   return (
-    <LanguageProvider> {/* Wrap everything with LanguageProvider */}
+    <LanguageProvider>
+      {" "}
+      {/* Wrap everything with LanguageProvider */}
       {!isLandingPage && <Navigation />}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
@@ -33,6 +41,7 @@ const App = () => {
           <Route path="/connect/step2" element={<ContactStep2 />} />
           <Route path="/connect/step3" element={<ContactStep3 />} />
           <Route path="/connect/complete" element={<ContactStep4 />} />
+          <Route path="/contact/complete" element={<ContactComplete />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </AnimatePresence>

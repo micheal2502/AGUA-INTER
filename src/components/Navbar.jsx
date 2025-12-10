@@ -16,7 +16,54 @@ export const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
   const location = useLocation();
-  
+
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // NEW: Add scroll effect handler - UPDATED LOGIC
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show/hide navbar based on scroll direction
+      // Always show when scrolling up, regardless of position
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past 100px - hide navbar
+        setIsHidden(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up (anywhere on page) - show navbar
+        setIsHidden(false);
+      }
+
+      // Set background color when scrolled past a threshold
+      setIsScrolled(currentScrollY > 10); // Reduced threshold for faster color change
+
+      setLastScrollY(currentScrollY);
+    };
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", throttledHandleScroll);
+
+    // Initial check
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", throttledHandleScroll);
+    };
+  }, [lastScrollY]);
+
   // Use language from context instead of local state
   const { language, toggleLanguage } = useLanguage();
 
@@ -37,7 +84,7 @@ export const Navigation = () => {
       { path: "/contact", label: "Contact" },
       { path: "/about", label: "Our People" },
       { path: "/connect/step1", label: "Get Started" },
-    ]
+    ],
   };
 
   const toggleMenu = () => {
@@ -62,12 +109,12 @@ export const Navigation = () => {
   const LanguageDropdown = ({ textColor = "text-white" }) => {
     // Convert language code to display format
     const getDisplayLanguage = () => {
-      return language === 'en' ? 'EN' : 'VN';
+      return language === "en" ? "EN" : "VN";
     };
 
     const changeLanguage = (lang) => {
       // lang is 'en' or 'vie' for the context
-      const langCode = lang === 'EN' ? 'en' : 'vie';
+      const langCode = lang === "EN" ? "en" : "vie";
       toggleLanguage(langCode);
     };
 
@@ -104,10 +151,22 @@ export const Navigation = () => {
   const currentNavLinks = navLinks[language] || navLinks.en;
 
   // Get social media follow text based on language
-  const followText = language === 'vie' ? 'Theo dõi chúng tôi' : 'Follow Us';
+  const followText = language === "vie" ? "Theo dõi chúng tôi" : "Follow Us";
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-transparent">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+        isHidden ? "-translate-y-full" : "translate-y-0"
+      } ${
+        // KEY FIX: When menu is open, always show white background
+        menuOpen
+          ? "bg-white"
+          : isScrolled
+            ? "bg-[#1B2340] shadow-lg"
+            : "bg-transparent"
+      }`}
+    >
+      {" "}
       {/* Top navbar */}
       <div className="relative flex items-center justify-between py-6 px-6 md:px-20">
         {/* Left: Animated Hamburger */}
@@ -154,10 +213,9 @@ export const Navigation = () => {
         {/* Right: Language dropdown */}
         <LanguageDropdown textColor="text-white" />
       </div>
-
       {/* Full-screen overlay menu */}
       <div
-        className={`fixed top-0 right-0 w-full h-full bg-white flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] z-40 ${
+        className={`fixed top-0 left-0 w-full h-screen bg-white flex flex-col transition-transform duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] z-40 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

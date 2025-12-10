@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const { language } = useLanguage(); // Get current language
-  
+
   const geoUrl =
     "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
@@ -45,75 +45,95 @@ const Home = () => {
       hero: {
         title: "Nơi Kiến Tạo Cuộc Sống",
         subtitle: "Hạnh phúc thông qua giáo dục",
-        scrollText: "Vuốt để xem tiếp"
+        scrollText: "Vuốt để xem tiếp",
       },
       firstSection: {
         title: "Từ trái tim của đội ngũ",
-        mainText: "Chúng tôi khuyến khích học sinh cởi mở, dám thử, bộc lộ trong một môi trường có nền tảng - có định hướng",
-        bullet1: "Không chỉ là đồng hành cùng học sinh — mà là thật sự thấu hiểu và dẫn lối.",
+        mainText:
+          "Chúng tôi khuyến khích học sinh cởi mở, dám thử, bộc lộ trong một môi trường có nền tảng - có định hướng",
+        bullet1:
+          "Không chỉ là đồng hành cùng học sinh — mà là thật sự thấu hiểu và dẫn lối.",
         bullet1Title: "Thấu hiểu & Dẫn lối",
-        bullet1Desc: "Chúng tôi không chỉ dừng lại ở việc đồng hành mà còn thấu hiểu sâu sắc những khó khăn, ước mơ và tiềm năng của từng học sinh.",
-        bullet2: "Châm ngòi hứng thú, khai phá tiềm năng, phát triển không giới hạn.",
+        bullet1Desc:
+          "Chúng tôi không chỉ dừng lại ở việc đồng hành mà còn thấu hiểu sâu sắc những khó khăn, ước mơ và tiềm năng của từng học sinh.",
+        bullet2:
+          "Châm ngòi hứng thú, khai phá tiềm năng, phát triển không giới hạn.",
         bullet2Title: "Khai phá Tiềm năng",
-        bullet2Desc: "Mỗi học sinh đều sở hữu những tài năng đặc biệt. Chúng tôi giúp khơi dậy đam mê học tập và khai phá điểm mạnh riêng biệt.",
+        bullet2Desc:
+          "Mỗi học sinh đều sở hữu những tài năng đặc biệt. Chúng tôi giúp khơi dậy đam mê học tập và khai phá điểm mạnh riêng biệt.",
         bullet3: "Một nền giáo dục tốt, song hành sự sáng tạo không ngừng.",
         bullet3Title: "Giáo dục Hạnh phúc",
-        bullet3Desc: "Chúng tôi tin rằng một nền giáo dục chất lượng phải song hành cùng cuộc sống hạnh phúc và nuôi dưỡng tâm hồn học sinh.",
-        button: "Tìm hiểu thêm"
+        bullet3Desc:
+          "Chúng tôi tin rằng một nền giáo dục chất lượng phải song hành cùng cuộc sống hạnh phúc và nuôi dưỡng tâm hồn học sinh.",
+        button: "Tìm hiểu thêm",
       },
       minimap: {
         title: "Phạm vi Toàn cầu",
         subtitle: "Làm việc với người giỏi nhất để trở thành người giỏi nhất",
-        description: "Những chuyên gia của Agua được chọn lọc hết sức kĩ càng, đến từ những trường đại học số 1 thế giới.",
+        description:
+          "Những chuyên gia của Agua được chọn lọc hết sức kĩ càng, đến từ những trường đại học số 1 thế giới.",
         networkTitle: "Mạng lưới Toàn cầu của Chúng tôi",
-        networkDesc: "Chúng tôi có mạng lưới chuyên gia tại các quốc gia hàng đầu về giáo dục:",
+        networkDesc:
+          "Chúng tôi có mạng lưới chuyên gia tại các quốc gia hàng đầu về giáo dục:",
         countries: [
-        "🇺🇸 Hoa Kỳ - Ivy League & Top 50",
-        "🇬🇧 Anh - Russell Group",
-        "🇦🇺 Úc - Group of Eight",
-        "🇨🇦 Canada - U15 Group",
-        "🇸🇬 Singapore - NUS, NTU",
-        "🇭🇰 Hong Kong - Các trường đại học hàng đầu châu Á",
-        "🇳🇿 New Zealand - Group of Eight"
-      ]
-    },
+          "🇺🇸 Hoa Kỳ - Ivy League & Top 50",
+          "🇬🇧 Anh - Russell Group",
+          "🇦🇺 Úc - Group of Eight",
+          "🇨🇦 Canada - U15 Group",
+          "🇸🇬 Singapore - NUS, NTU",
+          "🇭🇰 Hong Kong - Các trường đại học hàng đầu châu Á",
+          "🇳🇿 New Zealand - Group of Eight",
+        ],
+      },
       secondSection: {
         title: "Các gói lộ trình",
-        description: "Mỗi lộ trình là một phương pháp được thiết kế riêng biệt, phù hợp với nhu cầu, độ tuổi và cá tính riêng biệt của từng học viên.",
-        subDescription: "Phương pháp chuyên biệt - lộ trình chuyên sâu. Khám phá 3 lộ trình:",
+        description:
+          "Mỗi lộ trình là một phương pháp được thiết kế riêng biệt, phù hợp với nhu cầu, độ tuổi và cá tính riêng biệt của từng học viên.",
+        subDescription:
+          "Phương pháp chuyên biệt - lộ trình chuyên sâu. Khám phá 3 lộ trình:",
         packages: ["Discovery", "Momentum", "Launch"],
         explore: "Khám phá",
-        rightDescription: "Chỉ tham gia bằng lời mời. Ba lộ trình riêng biệt được thiết kế chuyên sâu dựa trên những giai đoạn phát triển khác nhau của sự phát triển trí tuệ và cảm xúc.",
-        journey: "Lộ Trình tỏa sáng - đồng hành chuyên sâu trong quá trình chuyển hóa tài năng của các học viên."
+        rightDescription:
+          "Chỉ tham gia bằng lời mời. Ba lộ trình riêng biệt được thiết kế chuyên sâu dựa trên những giai đoạn phát triển khác nhau của sự phát triển trí tuệ và cảm xúc.",
+        journey:
+          "Lộ Trình tỏa sáng - đồng hành chuyên sâu trong quá trình chuyển hóa tài năng của các học viên.",
       },
       thirdSection: {
         title1: "Trải Nghiệm",
         title2: "Thực Tế",
-        description1: "Lộ trình dành cho những học viên mới bắt đầu, giúp khám phá tiềm năng và xác định hướng đi phù hợp nhất với khả năng và đam mê cá nhân.",
+        description1:
+          "Lộ trình dành cho những học viên mới bắt đầu, giúp khám phá tiềm năng và xác định hướng đi phù hợp nhất với khả năng và đam mê cá nhân.",
         timeline1: "Thời gian: 3 tháng • Độ tuổi: 12-15 • Cấp độ: Cơ bản",
-        description2: "Xây dựng nền tảng vững chắc và phát triển toàn diện các kỹ năng cần thiết cho hành trình học tập dài hạn.",
+        description2:
+          "Xây dựng nền tảng vững chắc và phát triển toàn diện các kỹ năng cần thiết cho hành trình học tập dài hạn.",
         timeline2: "Thời gian: 4 tháng • Độ tuổi: 15-17 • Cấp độ: Trung cấp",
-        introText: "Trải nghiệm những hành trình đặc biệt, những trải nghiệm mới lạ. Chúng tôi kiến tạo 1 hành trình nơi nuôi dưỡng trí tuệ, cảm xúc và tái tạo năng lượng toàn diện cho học viên.",
-        description3: "Lộ trình nâng cao dành cho học viên đã có nền tảng, tập trung vào phát triển chuyên sâu và hoàn thiện kỹ năng để đạt được mục tiêu cao hơn.",
+        introText:
+          "Trải nghiệm những hành trình đặc biệt, những trải nghiệm mới lạ. Chúng tôi kiến tạo 1 hành trình nơi nuôi dưỡng trí tuệ, cảm xúc và tái tạo năng lượng toàn diện cho học viên.",
+        description3:
+          "Lộ trình nâng cao dành cho học viên đã có nền tảng, tập trung vào phát triển chuyên sâu và hoàn thiện kỹ năng để đạt được mục tiêu cao hơn.",
         timeline3: "Thời gian: 6 tháng • Độ tuổi: 16-18 • Cấp độ: Nâng cao",
-        button: "Tìm hiểu thêm"
+        button: "Tìm hiểu thêm",
       },
       fourthSection: {
         title: "Người Dẫn Dắt",
-        description: "Những nhà giáo dục xuất sắc là những người dẫn đầu tư tưởng và nhà kiến tạo tầm nhìn.",
+        description:
+          "Những nhà giáo dục xuất sắc là những người dẫn đầu tư tưởng và nhà kiến tạo tầm nhìn.",
         teamName: "Đội ngũ của Aqua",
-        rightDescription: "Những người dẫn dắt cuộc đồng của chúng tôi không chỉ làm việc bằng trí tuệ, kinh nghiệm, sự chân trình mà cả bằng tình yêu, sự tâm huyết với giáo dục.",
-        button: "Tìm hiểu thêm"
+        rightDescription:
+          "Những người dẫn dắt cuộc đồng của chúng tôi không chỉ làm việc bằng trí tuệ, kinh nghiệm, sự chân trình mà cả bằng tình yêu, sự tâm huyết với giáo dục.",
+        button: "Tìm hiểu thêm",
       },
       fifthSection: {
         title: "Những câu chuyện về giáo dục",
-        description: "Những suy ngẫm, chiêm nghiệm và góc nhìn giáo dục đa chiều từ đội ngũ phía sau Agua — những con người tận tâm tìm kiếm những giá trị tốt đẹp nhất cho hành trình học tập của mỗi học sinh.",
-        button: "Tìm hiểu thêm"
+        description:
+          "Những suy ngẫm, chiêm nghiệm và góc nhìn giáo dục đa chiều từ đội ngũ phía sau Agua — những con người tận tâm tìm kiếm những giá trị tốt đẹp nhất cho hành trình học tập của mỗi học sinh.",
+        button: "Tìm hiểu thêm",
       },
       inheritanceSection: {
         title: "Từ những người tiền nghiệm",
         subtitle: "Kế thừa và dẫn dắt",
-        description: "Học từ những người giỏi nhất để trở thành người giỏi nhất, tìm hiểu thêm về cơ hội ở Agua"
+        description:
+          "Học từ những người giỏi nhất để trở thành người giỏi nhất, tìm hiểu thêm về cơ hội ở Agua",
       },
       footer: {
         companyName: "Agua International Education",
@@ -123,41 +143,49 @@ const Home = () => {
         people: "Con Người",
         opportunities: "Cơ Hội",
         contact: "Liên hệ",
-        address: "123 Đường ABC, Quận XYZ<br />TP. Hồ Chí Minh, Việt Nam",
+        address:
+          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
         phone: "+84 28 1234 5678",
         email: "info@agua.edu.vn",
         copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
         privacy: "Chính sách bảo mật",
         terms: "Điều khoản sử dụng",
-        sitemap: "Sitemap"
-      }
+        sitemap: "Sitemap",
+      },
     },
     en: {
       hero: {
         title: "Where Lives Are Built",
         subtitle: "Happiness through education",
-        scrollText: "Scroll to continue"
+        scrollText: "Scroll to continue",
       },
       firstSection: {
         title: "From the heart of our team",
-        mainText: "We encourage students to be open, daring, expressive in an environment with foundation - with direction",
-        bullet1: "Not just accompanying students - but truly understanding and guiding.",
+        mainText:
+          "We encourage students to be open, daring, expressive in an environment with foundation - with direction",
+        bullet1:
+          "Not just accompanying students - but truly understanding and guiding.",
         bullet1Title: "Understanding & Guidance",
-        bullet1Desc: "We don't just stop at accompanying students but deeply understand their difficulties, dreams, and potential.",
+        bullet1Desc:
+          "We don't just stop at accompanying students but deeply understand their difficulties, dreams, and potential.",
         bullet2: "Ignite interest, unlock potential, develop without limits.",
         bullet2Title: "Unlocking Potential",
-        bullet2Desc: "Every student possesses special talents. We help ignite learning passion and discover unique strengths.",
+        bullet2Desc:
+          "Every student possesses special talents. We help ignite learning passion and discover unique strengths.",
         bullet3: "A good education, alongside continuous creativity.",
         bullet3Title: "Happy Education",
-        bullet3Desc: "We believe that quality education must go hand in hand with a happy life and nurturing students' souls.",
-        button: "Learn more"
+        bullet3Desc:
+          "We believe that quality education must go hand in hand with a happy life and nurturing students' souls.",
+        button: "Learn more",
       },
       minimap: {
         title: "Global Coverage",
         subtitle: "Work with the best to become the best",
-        description: "Agua's experts are carefully selected from the world's top universities.",
+        description:
+          "Agua's experts are carefully selected from the world's top universities.",
         networkTitle: "Our Global Network",
-        networkDesc: "We have a network of experts in the world's leading education countries:",
+        networkDesc:
+          "We have a network of experts in the world's leading education countries:",
         countries: [
           "🇺🇸 USA - Ivy League & Top 50",
           "🇬🇧 UK - Russell Group",
@@ -165,46 +193,58 @@ const Home = () => {
           "🇨🇦 Canada - U15 Group",
           "🇸🇬 Singapore - NUS, NTU",
           "🇭🇰 Hong Kong - Top Asian Universities",
-          "🇳🇿 New Zealand - Group of Eight"
-        ]
+          "🇳🇿 New Zealand - Group of Eight",
+        ],
       },
       secondSection: {
         title: "Learning Pathways",
-        description: "Each pathway is a uniquely designed method, suitable for the individual needs, ages, and personalities of each student.",
-        subDescription: "Specialized method - intensive pathway. Explore 3 pathways:",
+        description:
+          "Each pathway is a uniquely designed method, suitable for the individual needs, ages, and personalities of each student.",
+        subDescription:
+          "Specialized method - intensive pathway. Explore 3 pathways:",
         packages: ["Discovery", "Momentum", "Launch"],
         explore: "Explore",
-        rightDescription: "Participation by invitation only. Three distinct pathways designed in-depth based on different stages of intellectual and emotional development.",
-        journey: "Shining Pathway - intensive companionship in the process of transforming students' talents."
+        rightDescription:
+          "Participation by invitation only. Three distinct pathways designed in-depth based on different stages of intellectual and emotional development.",
+        journey:
+          "Shining Pathway - intensive companionship in the process of transforming students' talents.",
       },
       thirdSection: {
         title1: "Real World",
         title2: "Experience",
-        description1: "A pathway for beginners to explore potential and determine the most suitable direction based on individual abilities and passions.",
+        description1:
+          "A pathway for beginners to explore potential and determine the most suitable direction based on individual abilities and passions.",
         timeline1: "Duration: 3 months • Age: 12-15 • Level: Basic",
-        description2: "Build a solid foundation and comprehensively develop necessary skills for long-term learning journey.",
+        description2:
+          "Build a solid foundation and comprehensively develop necessary skills for long-term learning journey.",
         timeline2: "Duration: 4 months • Age: 15-17 • Level: Intermediate",
-        introText: "Experience special journeys, new experiences. We create a journey that nurtures intelligence, emotions, and comprehensively regenerates energy for students.",
-        description3: "Advanced pathway for students with foundation, focusing on in-depth development and skill perfection to achieve higher goals.",
+        introText:
+          "Experience special journeys, new experiences. We create a journey that nurtures intelligence, emotions, and comprehensively regenerates energy for students.",
+        description3:
+          "Advanced pathway for students with foundation, focusing on in-depth development and skill perfection to achieve higher goals.",
         timeline3: "Duration: 6 months • Age: 16-18 • Level: Advanced",
-        button: "Learn more"
+        button: "Learn more",
       },
       fourthSection: {
         title: "Our Guides",
-        description: "Excellent educators are thought leaders and vision creators.",
+        description:
+          "Excellent educators are thought leaders and vision creators.",
         teamName: "Aqua Team",
-        rightDescription: "Our journey guides work not only with intellect, experience, sincerity but also with love and dedication to education.",
-        button: "Learn more"
+        rightDescription:
+          "Our journey guides work not only with intellect, experience, sincerity but also with love and dedication to education.",
+        button: "Learn more",
       },
       fifthSection: {
         title: "Educational Stories",
-        description: "Reflections, contemplations, and multi-dimensional educational perspectives from the team behind Agua — dedicated people seeking the best values for each student's learning journey.",
-        button: "Learn more"
+        description:
+          "Reflections, contemplations, and multi-dimensional educational perspectives from the team behind Agua — dedicated people seeking the best values for each student's learning journey.",
+        button: "Learn more",
       },
       inheritanceSection: {
         title: "From the Pioneers",
         subtitle: "Inheritance and Guidance",
-        description: "Learn from the best to become the best, learn more about opportunities at Agua"
+        description:
+          "Learn from the best to become the best, learn more about opportunities at Agua",
       },
       footer: {
         companyName: "Agua International Education",
@@ -214,15 +254,16 @@ const Home = () => {
         people: "Our People",
         opportunities: "Opportunities",
         contact: "Contact",
-        address: "123 ABC Street, XYZ District<br />Ho Chi Minh City, Vietnam",
+        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
         phone: "+84 28 1234 5678",
         email: "info@agua.edu.vn",
-        copyright: "© {year} Agua International Education. All rights reserved.",
+        copyright:
+          "© {year} Agua International Education. All rights reserved.",
         privacy: "Privacy Policy",
         terms: "Terms of Use",
-        sitemap: "Sitemap"
-      }
-    }
+        sitemap: "Sitemap",
+      },
+    },
   };
 
   // Get content based on current language
@@ -574,13 +615,17 @@ const Home = () => {
             ref={heroTextRef}
             className="text-center text-white space-y-4 px-4"
           >
-            <h1 className="title-text text-lg md:text-2xl">
-              {t.hero.title}
-            </h1>
+            <h1 className="title-text text-lg md:text-2xl">{t.hero.title}</h1>
             <p className="text-4xl md:text-6xl ">
-              <span className="highlight-text">{language === 'vie' ? 'Hạnh phúc ' : 'Happiness '}</span>
-              <span className="title-text">{language === 'vie' ? ' thông qua ' : ' through '}</span>
-              <span className="highlight-text">{language === 'vie' ? 'giáo dục' : 'education'}</span>
+              <span className="highlight-text">
+                {language === "vie" ? "Hạnh phúc " : "Happiness "}
+              </span>
+              <span className="title-text">
+                {language === "vie" ? " thông qua " : " through "}
+              </span>
+              <span className="highlight-text">
+                {language === "vie" ? "giáo dục" : "education"}
+              </span>
             </p>
           </div>
           {/* Scroll Down Mouse Icon */}
@@ -662,7 +707,11 @@ const Home = () => {
                       <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
                         <img
                           src="/images/collaboration.png"
-                          alt={language === 'vie' ? "Đồng hành cùng học sinh" : "Accompanying students"}
+                          alt={
+                            language === "vie"
+                              ? "Đồng hành cùng học sinh"
+                              : "Accompanying students"
+                          }
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -713,7 +762,11 @@ const Home = () => {
                       <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
                         <img
                           src="/images/best.png"
-                          alt={language === 'vie' ? "Khai phá tiềm năng" : "Unlocking potential"}
+                          alt={
+                            language === "vie"
+                              ? "Khai phá tiềm năng"
+                              : "Unlocking potential"
+                          }
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -764,7 +817,11 @@ const Home = () => {
                       <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
                         <img
                           src="/images/innovation.png"
-                          alt={language === 'vie' ? "Giáo dục hạnh phúc" : "Happy education"}
+                          alt={
+                            language === "vie"
+                              ? "Giáo dục hạnh phúc"
+                              : "Happy education"
+                          }
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -816,7 +873,9 @@ const Home = () => {
                 <div className="map-layout">
                   <div className="map-content">
                     <h2 className="missions-title">{t.minimap.title}</h2>
-                    <h3 className="section-description">{t.minimap.subtitle}</h3>
+                    <h3 className="section-description">
+                      {t.minimap.subtitle}
+                    </h3>
                     <p>{t.minimap.description}</p>
 
                     <div className="highlighted-countries">
@@ -937,15 +996,22 @@ const Home = () => {
                 </div>
 
                 {/* Ảnh */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-transform duration-500 ease-out hover:scale-105">
-                  <img
-                    src="/images/plan.jpg"
-                    alt={language === 'vie' ? "Hành trình giáo dục" : "Educational journey"}
-                    className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                </div>
-
+                <Link to="/services">
+                  {" "}
+                  {/* or whatever route you want to link to */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-transform duration-500 ease-out hover:scale-105">
+                    <img
+                      src="/images/plan.jpg"
+                      alt={
+                        language === "vie"
+                          ? "Hành trình giáo dục"
+                          : "Educational journey"
+                      }
+                      className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                  </div>
+                </Link>
                 {/* Description */}
                 <div className="space-y-4">
                   {/* Phiên bản desktop - hiển thị trên cùng 1 dòng */}
@@ -955,29 +1021,40 @@ const Home = () => {
                         {t.secondSection.subDescription}
                       </p>
                       <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                        {t.secondSection.packages.map((pkg, index) => (
-                          <span
-                            key={index}
-                            className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
+                        <Link to="/services">
+                          {" "}
+                          {/* or whatever route you want to link to */}
+                          {t.secondSection.packages.map((pkg, index) => (
+                            <span
+                              key={index}
+                              className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
                             cursor-pointer transition-all duration-300 ease-in-out
                             hover:text-[#2c5a8a] hover:scale-105 hover:underline
                             active:scale-95"
-                          >
-                            {pkg}
-                          </span>
-                        ))}
+                            >
+                              {pkg}
+                            </span>
+                          ))}
+                        </Link>
                       </div>
                     </div>
                   </div>
 
                   {/* Phiên bản mobile - hiển thị thành 2 dòng */}
                   <div className="block md:hidden">
-                    <p className="text-gray-700 leading-relaxed text-lg mb-3">
-                      {t.secondSection.subDescription}
-                    </p>
+                    <Link to="/services">
+                      {" "}
+                      {/* or whatever route you want to link to */}
+                      <p className="text-gray-700 leading-relaxed text-lg mb-3">
+                        {t.secondSection.subDescription}
+                      </p>
+                    </Link>
                     <div className="flex flex-wrap items-center gap-3 md:gap-4">
                       {t.secondSection.packages.map((pkg, index) => (
-                        <span key={index} className="plan-text text-xl font-bold text-[#3d76b8]">
+                        <span
+                          key={index}
+                          className="plan-text text-xl font-bold text-[#3d76b8]"
+                        >
                           {pkg}
                         </span>
                       ))}
@@ -986,20 +1063,22 @@ const Home = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-2 text-[#3d76b8] font-medium cursor-pointer group">
-                <span>{t.secondSection.explore}</span>
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                <Link to="/services" className="flex items-center space-x-2">
+                  <span>{t.secondSection.explore}</span>
+                  <svg
+                    className="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
               </div>
             </div>
 
@@ -1016,7 +1095,11 @@ const Home = () => {
               <div className="relative rounded-xl overflow-hidden shadow-lg ">
                 <img
                   src="/images/flower.png"
-                  alt={language === 'vie' ? "Phương pháp học tập" : "Learning method"}
+                  alt={
+                    language === "vie"
+                      ? "Phương pháp học tập"
+                      : "Learning method"
+                  }
                   className="w-full h-64 object-cover transition-transform duration-500 ease-out hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
@@ -1051,8 +1134,12 @@ const Home = () => {
               {/* Ảnh */}
               <div className="relative rounded-2xl overflow-hidden shadow-lg transition-transform duration-500 ease-out hover:scale-105">
                 <img
-                  src="/images/plan.jpg"
-                  alt={language === 'vie' ? "Lộ trình Khám phá" : "Discovery Pathway"}
+                  src="/images/R0003935.JPG"
+                  alt={
+                    language === "vie"
+                      ? "Lộ trình Khám phá"
+                      : "Discovery Pathway"
+                  }
                   className="w-full h-100 object-cover"
                 />
               </div>
@@ -1073,8 +1160,12 @@ const Home = () => {
               {/* Ảnh */}
               <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/images/flower.png"
-                  alt={language === 'vie' ? "Lộ trình Momentum" : "Momentum Pathway"}
+                  src="/images/R0003260.JPG"
+                  alt={
+                    language === "vie"
+                      ? "Lộ trình Momentum"
+                      : "Momentum Pathway"
+                  }
                   className="w-full h-60 object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent"></div>
@@ -1098,15 +1189,21 @@ const Home = () => {
                 {t.thirdSection.introText}
               </p>
               <div className="flex justify-end items-center">
-                <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
-                  {t.thirdSection.button}
-                </button>
+                <Link to="/services">
+                  {" "}
+                  {/* ADD THIS LINK WRAPPER */}
+                  <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md text-sm sm:text-base">
+                    {t.thirdSection.button}
+                  </button>
+                </Link>
               </div>
               {/* Ảnh */}
               <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="/images/dive.png"
-                  alt={language === 'vie' ? "Lộ trình Launch" : "Launch Pathway"}
+                  alt={
+                    language === "vie" ? "Lộ trình Launch" : "Launch Pathway"
+                  }
                   className="w-full h-80 object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent"></div>
@@ -1141,20 +1238,32 @@ const Home = () => {
                     <h2 className="section-description text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
                       {t.fourthSection.title}
                     </h2>
-                    <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
-                      {t.fourthSection.button}
-                    </button>
+                    <Link to="/about">
+                      {" "}
+                      {/* or whatever route you want to link to */}
+                      <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
+                        {t.fourthSection.button}
+                      </button>
+                    </Link>
                   </div>
                 </div>
                 {/* Ảnh */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="/images/plan.jpg"
-                    alt={language === 'vie' ? "Hành trình giáo dục" : "Educational journey"}
-                    className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                </div>
+                <Link to="/about">
+                  {" "}
+                  {/* or whatever route you want to link to */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <img
+                      src="/images/Mentor1.png"
+                      alt={
+                        language === "vie"
+                          ? "Hành trình giáo dục"
+                          : "Educational journey"
+                      }
+                      className="w-full h-180 object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                  </div>
+                </Link>
 
                 {/* Description */}
                 <div className="space-y-4">
@@ -1165,14 +1274,18 @@ const Home = () => {
                         {t.fourthSection.description}
                       </p>
                       <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                        <span
-                          className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
+                        <Link to="/about">
+                          {" "}
+                          {/* or whatever route you want to link to */}
+                          <span
+                            className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
                         cursor-pointer transition-all duration-300 ease-in-out
                         hover:text-[#2c5a8a] hover:scale-105 hover:underline
                         active:scale-95"
-                        >
-                          {t.fourthSection.teamName}
-                        </span>
+                          >
+                            {t.fourthSection.teamName}
+                          </span>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -1183,9 +1296,13 @@ const Home = () => {
                       {t.fourthSection.description}
                     </p>
                     <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                      <span className="plan-text text-xl font-bold text-[#3d76b8]">
-                        {t.fourthSection.teamName}
-                      </span>
+                      <Link to="/about">
+                        {" "}
+                        {/* or whatever route you want to link to */}
+                        <span className="plan-text text-xl font-bold text-[#3d76b8]">
+                          {t.fourthSection.teamName}
+                        </span>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -1220,9 +1337,13 @@ const Home = () => {
                 <p className="text-gray-700 leading-relaxed text-lg mb-3">
                   {t.fifthSection.description}
                 </p>
-                <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md w-fit sm:w-auto text-sm sm:text-base">
-                  {t.fifthSection.button}
-                </button>
+                <Link to="/philosophy">
+                  {" "}
+                  {/* Add appropriate route */}
+                  <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md w-full sm:w-auto text-sm sm:text-base text-center">
+                    {t.fifthSection.button}
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -1340,11 +1461,13 @@ const Home = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-4">{t.footer.quickLinks}</h4>
+              <h4 className="text-lg font-semibold mb-4">
+                {t.footer.quickLinks}
+              </h4>
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="/about"
+                    href="/home"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.home}
@@ -1352,7 +1475,7 @@ const Home = () => {
                 </li>
                 <li>
                   <a
-                    href="/programs"
+                    href="/services"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.programs}
@@ -1360,7 +1483,7 @@ const Home = () => {
                 </li>
                 <li>
                   <a
-                    href="/news"
+                    href="/about"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.people}
@@ -1368,7 +1491,7 @@ const Home = () => {
                 </li>
                 <li>
                   <a
-                    href="/careers"
+                    href="/Philosophy"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {t.footer.opportunities}
@@ -1401,7 +1524,9 @@ const Home = () => {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span dangerouslySetInnerHTML={{ __html: t.footer.address }} />
+                  <span
+                    dangerouslySetInnerHTML={{ __html: t.footer.address }}
+                  />
                 </li>
                 <li className="flex items-center">
                   <svg
@@ -1446,7 +1571,10 @@ const Home = () => {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-center md:text-left mb-4 md:mb-0">
                 <p className="text-gray-400 text-sm">
-                  {t.footer.copyright.replace('{year}', new Date().getFullYear())}
+                  {t.footer.copyright.replace(
+                    "{year}",
+                    new Date().getFullYear(),
+                  )}
                 </p>
               </div>
               <div className="flex flex-wrap justify-center space-x-6 text-sm">

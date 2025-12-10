@@ -68,13 +68,16 @@ const About = () => {
   // Animation cho Stats Section
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const stats = document.querySelectorAll('.backdrop-blur-sm.bg-white\\/10');
+      const stats = document.querySelectorAll(
+        ".backdrop-blur-sm.bg-white\\/10",
+      );
       if (stats.length > 0) {
-        gsap.fromTo(stats,
+        gsap.fromTo(
+          stats,
           {
             y: 100,
             opacity: 0,
-            scale: 0.8
+            scale: 0.8,
           },
           {
             y: 0,
@@ -84,12 +87,12 @@ const About = () => {
             stagger: 0.1,
             ease: "back.out(1.4)",
             scrollTrigger: {
-              trigger: '.hero-section',
+              trigger: ".hero-section",
               start: "bottom 70%",
               end: "bottom 30%",
               toggleActions: "play reverse play reverse",
-            }
-          }
+            },
+          },
         );
       }
     }, heroTextRef);
@@ -127,7 +130,9 @@ const About = () => {
 
       // Animation cho main image (left column)
       sectionTl.fromTo(
-        whyMentorsRef.current.querySelector(".lg\\:col-span-2 .relative.rounded-2xl"),
+        whyMentorsRef.current.querySelector(
+          ".lg\\:col-span-2 .relative.rounded-2xl",
+        ),
         { x: -100, opacity: 0, scale: 0.9 },
         { x: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" },
         0.4,
@@ -137,7 +142,14 @@ const About = () => {
       sectionTl.fromTo(
         whyMentorsRef.current.querySelector(".absolute.-bottom-8"),
         { x: 100, y: 50, opacity: 0, rotation: 5 },
-        { x: 0, y: 0, opacity: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          rotation: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+        },
         0.6,
       );
 
@@ -206,7 +218,7 @@ const About = () => {
             y: 100,
             opacity: 0,
             scale: 0.9,
-            rotation: index => index % 2 === 0 ? -3 : 3
+            rotation: (index) => (index % 2 === 0 ? -3 : 3),
           },
           {
             y: 0,
@@ -225,13 +237,13 @@ const About = () => {
       mentorCards?.forEach((card, index) => {
         const cardImage = card.querySelector(".relative.h-96");
         const cardContent = card.querySelector(".p-6");
-        
+
         if (cardImage) {
           sectionTl.fromTo(
             cardImage,
             { scale: 0.8, opacity: 0 },
             { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out" },
-            0.5 + (index * 0.1),
+            0.5 + index * 0.1,
           );
         }
 
@@ -240,8 +252,14 @@ const About = () => {
           sectionTl.fromTo(
             contentElements,
             { y: 20, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
-            0.7 + (index * 0.1),
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: "power2.out",
+            },
+            0.7 + index * 0.1,
           );
         }
       });
@@ -264,7 +282,9 @@ const About = () => {
 
       // Animation cho left column content
       sectionTl.fromTo(
-        mentorMatchingRef.current.querySelector(".lg\\:grid-cols-2 > div:first-child"),
+        mentorMatchingRef.current.querySelector(
+          ".lg\\:grid-cols-2 > div:first-child",
+        ),
         { x: -100, opacity: 0 },
         { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
         0,
@@ -272,7 +292,9 @@ const About = () => {
 
       // Animation cho title
       sectionTl.fromTo(
-        mentorMatchingRef.current.querySelector(".lg\\:grid-cols-2 > div:first-child h2"),
+        mentorMatchingRef.current.querySelector(
+          ".lg\\:grid-cols-2 > div:first-child h2",
+        ),
         { y: -30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "back.out(1.4)" },
         0.2,
@@ -280,7 +302,9 @@ const About = () => {
 
       // Animation cho subtitle
       sectionTl.fromTo(
-        mentorMatchingRef.current.querySelector(".lg\\:grid-cols-2 > div:first-child p.text-lg"),
+        mentorMatchingRef.current.querySelector(
+          ".lg\\:grid-cols-2 > div:first-child p.text-lg",
+        ),
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
         0.3,
@@ -304,7 +328,9 @@ const About = () => {
 
       // Animation cho right column (logo)
       sectionTl.fromTo(
-        mentorMatchingRef.current.querySelector(".lg\\:grid-cols-2 > div:last-child"),
+        mentorMatchingRef.current.querySelector(
+          ".lg\\:grid-cols-2 > div:last-child",
+        ),
         { x: 100, opacity: 0, scale: 0.8 },
         { x: 0, opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.4)" },
         0.4,
@@ -322,7 +348,13 @@ const About = () => {
       sectionTl.fromTo(
         mentorMatchingRef.current.querySelector("img.w-80"),
         { scale: 0.5, opacity: 0, rotation: -180 },
-        { scale: 1, opacity: 1, rotation: 0, duration: 1, ease: "back.out(1.7)" },
+        {
+          scale: 1,
+          opacity: 1,
+          rotation: 0,
+          duration: 1,
+          ease: "back.out(1.7)",
+        },
         0.8,
       );
 
@@ -340,11 +372,7 @@ const About = () => {
 
   // Effect để detect section đang active
   useEffect(() => {
-    const sections = [
-      whyMentorsRef,
-      mentorsRef,
-      mentorMatchingRef,
-    ];
+    const sections = [whyMentorsRef, mentorsRef, mentorMatchingRef];
 
     const scrollTriggers = sections.map((sectionRef, index) => {
       return ScrollTrigger.create({
@@ -375,27 +403,31 @@ const About = () => {
     vi: {
       heroTitle: "Đội ngũ ",
       heroTitleHighlight: "Mentor",
-      heroSubtitle: "Những chuyên gia giàu kinh nghiệm, từng trải và tận tâm đồng hành cùng bạn",
+      heroSubtitle:
+        "Những chuyên gia giàu kinh nghiệm, từng trải và tận tâm đồng hành cùng bạn",
       scrollText: "Vuốt để xem tiếp",
-      
+
       stats: [
         { number: "100+", label: "Năm kinh nghiệm tổng" },
         { number: "20+", label: "Trường đại học từng học" },
         { number: "15+", label: "Quốc gia từng sống và làm việc" },
-        { number: "1000+", label: "Học sinh được mentor" }
+        { number: "1000+", label: "Học sinh được mentor" },
       ],
-      
+
       approachBadge: "Phương pháp đồng hành độc đáo",
-      approachQuote: "Chúng tôi không chỉ dạy bạn cách vào đại học, mà còn chuẩn bị cho bạn thành công trong cuộc sống",
-      
+      approachQuote:
+        "Chúng tôi không chỉ dạy bạn cách vào đại học, mà còn chuẩn bị cho bạn thành công trong cuộc sống",
+
       philosophyTitle: "Triết lí giáo dục ",
       philosophyTitleHighlight: "Agua",
-      philosophyText: "Với phương châm 'Giáo dục đi cùng sự hạnh phúc', đội ngũ của Agua luôn tin rằng chúng ta vừa có thể xuất sắc trong học tập đồng thời phát triển đồng độ cuộc sống để đạt được sự hạnh phúc.",
-      
+      philosophyText:
+        "Với phương châm 'Giáo dục đi cùng sự hạnh phúc', đội ngũ của Agua luôn tin rằng chúng ta vừa có thể xuất sắc trong học tập đồng thời phát triển đồng độ cuộc sống để đạt được sự hạnh phúc.",
+
       meetMentorsTitle: "Gặp gỡ đội ngũ ",
       meetMentorsHighlight: "Mentor",
-      meetMentorsSubtitle: "Những chuyên gia sẽ đồng hành cùng bạn trên hành trình du học",
-      
+      meetMentorsSubtitle:
+        "Những chuyên gia sẽ đồng hành cùng bạn trên hành trình du học",
+
       mentors: [
         {
           name: "Ms. Nguyễn Phương Ly",
@@ -437,56 +469,62 @@ const About = () => {
           quote: "Lựa chọn đúng đắn tạo nên tương lai khác biệt",
         },
       ],
-      
+
       matchingTitle: "Sẵn sàng khởi hành bắt đầu từ những làn sóng nhỏ",
-      matchingSubtitle: "Mỗi học sinh là duy nhất, mỗi hành trình cần một người đồng hành phù hợp.",
+      matchingSubtitle:
+        "Mỗi học sinh là duy nhất, mỗi hành trình cần một người đồng hành phù hợp.",
       buttonText: "Đăng ký match mentor miễn phí",
       privacyNote: "Cam kết bảo mật thông tin khách hàng",
-      
+
       footerLinks: {
         home: "Trang Chủ",
         programs: "Gói Học Tập",
         people: "Con Người",
-        opportunities: "Cơ Hội"
+        opportunities: "Cơ Hội",
       },
-      
+
       footerContact: {
-        address: "123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh, Việt Nam",
+        address:
+          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
         phone: "+84 28 1234 5678",
-        email: "info@agua.edu.vn"
+        email: "info@agua.edu.vn",
       },
-      
+
       footerBottom: {
         copyright: `© ${new Date().getFullYear()} Agua International Education. Bảo lưu mọi quyền.`,
         privacy: "Chính sách bảo mật",
         terms: "Điều khoản sử dụng",
-        sitemap: "Sitemap"
-      }
+        sitemap: "Sitemap",
+      },
     },
     en: {
       heroTitle: "Our ",
       heroTitleHighlight: "Mentor Team",
-      heroSubtitle: "Experienced, well-traveled, and dedicated experts ready to accompany you",
+      heroSubtitle:
+        "Experienced, well-traveled, and dedicated experts ready to accompany you",
       scrollText: "Scroll to continue",
-      
+
       stats: [
         { number: "100+", label: "Total years of experience" },
         { number: "20+", label: "Universities attended" },
         { number: "15+", label: "Countries lived and worked in" },
-        { number: "1000+", label: "Students mentored" }
+        { number: "1000+", label: "Students mentored" },
       ],
-      
+
       approachBadge: "Unique Mentorship Approach",
-      approachQuote: "We don't just teach you how to get into university, we prepare you for success in life",
-      
+      approachQuote:
+        "We don't just teach you how to get into university, we prepare you for success in life",
+
       philosophyTitle: "Agua's Educational ",
       philosophyTitleHighlight: "Philosophy",
-      philosophyText: "With the motto 'Education Goes Hand in Hand with Happiness', the Agua team believes that we can excel academically while developing a balanced life to achieve happiness.",
-      
+      philosophyText:
+        "With the motto 'Education Goes Hand in Hand with Happiness', the Agua team believes that we can excel academically while developing a balanced life to achieve happiness.",
+
       meetMentorsTitle: "Meet Our ",
       meetMentorsHighlight: "Mentors",
-      meetMentorsSubtitle: "The experts who will accompany you on your study abroad journey",
-      
+      meetMentorsSubtitle:
+        "The experts who will accompany you on your study abroad journey",
+
       mentors: [
         {
           name: "Ms. Nguyễn Phương Ly",
@@ -499,12 +537,14 @@ const About = () => {
             "Former lecturer at Stanford University",
             "Author of 'Successful Study Abroad'",
           ],
-          quote: "Every student is an infinite potential waiting to be discovered",
+          quote:
+            "Every student is an infinite potential waiting to be discovered",
         },
         {
           name: "Mr. Bob Zeng",
           title: "Senior Mentor - UK & Europe",
-          education: "Master's in Educational Management - University of Oxford",
+          education:
+            "Master's in Educational Management - University of Oxford",
           experience: "12 years working in the United Kingdom",
           specialty: "Russell Group Universities & Medical Schools",
           achievements: [
@@ -528,32 +568,33 @@ const About = () => {
           quote: "The right choices make a different future",
         },
       ],
-      
+
       matchingTitle: "Ready to embark, starting from small waves",
-      matchingSubtitle: "Every student is unique, every journey needs the right companion.",
+      matchingSubtitle:
+        "Every student is unique, every journey needs the right companion.",
       buttonText: "Register for free mentor matching",
       privacyNote: "Commitment to customer information security",
-      
+
       footerLinks: {
         home: "Home",
         programs: "Study Packages",
         people: "Our People",
-        opportunities: "Opportunities"
+        opportunities: "Opportunities",
       },
-      
+
       footerContact: {
-        address: "123 ABC Street, XYZ District, Ho Chi Minh City, Vietnam",
+        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
         phone: "+84 28 1234 5678",
-        email: "info@agua.edu.vn"
+        email: "info@agua.edu.vn",
       },
-      
+
       footerBottom: {
         copyright: `© ${new Date().getFullYear()} Agua International Education. All rights reserved.`,
         privacy: "Privacy Policy",
         terms: "Terms of Use",
-        sitemap: "Sitemap"
-      }
-    }
+        sitemap: "Sitemap",
+      },
+    },
   };
 
   const tContent = translations[language] || translations.vi;
@@ -573,7 +614,10 @@ const About = () => {
         </div>
 
         {/* Hero Content */}
-        <div ref={heroTextRef} className="relative z-10 container mx-auto px-5 text-center text-white">
+        <div
+          ref={heroTextRef}
+          className="relative z-10 container mx-auto px-5 text-center text-white"
+        >
           <div className="max-w-5xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               {tContent.heroTitle}
@@ -625,7 +669,10 @@ const About = () => {
       </section>
 
       {/* Why Our Mentors - Redesigned with 2/3 - 1/3 Grid */}
-      <section ref={whyMentorsRef} className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section
+        ref={whyMentorsRef}
+        className="py-20 bg-gradient-to-b from-white to-blue-50"
+      >
         <div className="container mx-auto px-5">
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             {/* Left Column - Image with Description (2/3 width) */}
@@ -674,15 +721,19 @@ const About = () => {
                   </div>
                   <div>
                     <div className="font-bold text-lg text-gray-900">
-                      {language === 'vi' ? 'Triết lý Agua' : 'Agua Philosophy'}
+                      {language === "vi" ? "Triết lý Agua" : "Agua Philosophy"}
                     </div>
                     <div className="text-sm text-blue-600 font-medium">
-                      {language === 'vi' ? 'Luôn như vậy' : 'Always has been'}
+                      {language === "vi" ? "Luôn như vậy" : "Always has been"}
                     </div>
                   </div>
                 </div>
                 <p className="text-gray-700 italic border-l-4 border-blue-300 pl-4 py-1">
-                  "{language === 'vi' ? 'Chúng tôi không chỉ dạy bạn cách học, mà còn cách sống' : 'We teach you not just how to learn, but how to live'}"
+                  "
+                  {language === "vi"
+                    ? "Chúng tôi không chỉ dạy bạn cách học, mà còn cách sống"
+                    : "We teach you not just how to learn, but how to live"}
+                  "
                 </p>
               </div>
             </div>
@@ -692,7 +743,9 @@ const About = () => {
               <div className="sticky top-24">
                 <h2 className="text-4xl font-bold mb-8 text-gray-900">
                   {tContent.philosophyTitle}
-                  <span className="text-blue-600">{tContent.philosophyTitleHighlight}</span>
+                  <span className="text-blue-600">
+                    {tContent.philosophyTitleHighlight}
+                  </span>
                 </h2>
 
                 <div className="space-y-6">
@@ -714,7 +767,9 @@ const About = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">
               {tContent.meetMentorsTitle}
-              <span className="text-blue-600">{tContent.meetMentorsHighlight}</span>
+              <span className="text-blue-600">
+                {tContent.meetMentorsHighlight}
+              </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {tContent.meetMentorsSubtitle}
@@ -724,8 +779,12 @@ const About = () => {
           {/* Mentors Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tContent.mentors.map((mentor, index) => {
-              const images = ["/images/Mentor1.png", "/images/Mentor2.png", "/images/Mentor3.png"];
-              
+              const images = [
+                "/images/Mentor1.png",
+                "/images/Mentor2.png",
+                "/images/Mentor3.png",
+              ];
+
               return (
                 <div
                   key={index}
@@ -743,7 +802,9 @@ const About = () => {
                     {/* Mentor Info Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                       <h3 className="font-bold text-2xl mb-1">{mentor.name}</h3>
-                      <p className="text-blue-200 font-medium">{mentor.title}</p>
+                      <p className="text-blue-200 font-medium">
+                        {mentor.title}
+                      </p>
                     </div>
                   </div>
 
@@ -805,7 +866,9 @@ const About = () => {
                             />
                           </svg>
                           <span className="font-bold text-blue-700">
-                            {language === 'vi' ? 'Chuyên môn chính:' : 'Main Specialty:'}
+                            {language === "vi"
+                              ? "Chuyên môn chính:"
+                              : "Main Specialty:"}
                           </span>
                         </div>
                         <p className="text-blue-800 font-medium">
@@ -830,7 +893,9 @@ const About = () => {
                             d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                           />
                         </svg>
-                        {language === 'vi' ? 'Thành tựu nổi bật' : 'Notable Achievements'}
+                        {language === "vi"
+                          ? "Thành tựu nổi bật"
+                          : "Notable Achievements"}
                       </h4>
                       <ul className="space-y-2">
                         {mentor.achievements.map((achievement, idx) => (
@@ -943,9 +1008,7 @@ const About = () => {
                     {/* Logo Text - Minimal */}
                     <div className="text-center">
                       <div className="text-3xl font-bold mb-1">AGUA</div>
-                      <div className="text-lg">
-                        International Education
-                      </div>
+                      <div className="text-lg">International Education</div>
                     </div>
                   </div>
                 </div>
@@ -1025,12 +1088,12 @@ const About = () => {
             {/* Quick Links */}
             <div>
               <h4 className="text-lg font-semibold mb-4">
-                {language === 'vi' ? 'Liên kết nhanh' : 'Quick Links'}
+                {language === "vi" ? "Liên kết nhanh" : "Quick Links"}
               </h4>
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="/"
+                    href="/home"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.home}
@@ -1038,7 +1101,7 @@ const About = () => {
                 </li>
                 <li>
                   <a
-                    href="/programs"
+                    href="/services"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.programs}
@@ -1046,7 +1109,7 @@ const About = () => {
                 </li>
                 <li>
                   <a
-                    href="/people"
+                    href="/about"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.people}
@@ -1054,7 +1117,7 @@ const About = () => {
                 </li>
                 <li>
                   <a
-                    href="/opportunities"
+                    href="/philosophy"
                     className="text-gray-300 hover:text-white transition-colors"
                   >
                     {tContent.footerLinks.opportunities}
@@ -1066,7 +1129,7 @@ const About = () => {
             {/* Contact Info */}
             <div>
               <h4 className="text-lg font-semibold mb-4">
-                {language === 'vi' ? 'Liên hệ' : 'Contact'}
+                {language === "vi" ? "Liên hệ" : "Contact"}
               </h4>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start">
@@ -1089,9 +1152,7 @@ const About = () => {
                       d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span>
-                    {tContent.footerContact.address}
-                  </span>
+                  <span>{tContent.footerContact.address}</span>
                 </li>
                 <li className="flex items-center">
                   <svg
