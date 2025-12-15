@@ -297,21 +297,6 @@ const ContactComplete = () => {
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <footer className="mt-12 text-center">
-          <div className="flex items-center justify-center mb-4">
-            <img
-              src="/images/logo2.png"
-              alt="AGUA Logo"
-              className="h-8 w-auto mr-3"
-            />
-            <span className="text-lg font-semibold text-gray-800">
-              {t.footer.companyName}
-            </span>
-          </div>
-          <p className="text-gray-600 text-sm">{t.footer.copyright}</p>
-        </footer>
       </div>
 
       {/* Add CSS for confetti animation */}

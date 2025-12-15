@@ -426,7 +426,7 @@ const About = () => {
       meetMentorsTitle: "Gặp gỡ đội ngũ ",
       meetMentorsHighlight: "Mentor",
       meetMentorsSubtitle:
-        "Những chuyên gia sẽ đồng hành cùng bạn trên hành trình du học",
+        "Các nhà giáo dục, nhà lãnh đạo tư tưởng và người truyền cảm hứng cùng nhau tạo nên những làn sóng học tập bền vững, đồng hành với học sinh trên hành trình trưởng thành và khai mở tiềm năng",
 
       mentors: [
         {
@@ -498,7 +498,7 @@ const About = () => {
       },
     },
     en: {
-      heroTitle: "Our ",
+      heroTitle: "Our Team",
       heroTitleHighlight: "Mentor Team",
       heroSubtitle:
         "Experienced, well-traveled, and dedicated experts ready to accompany you",
@@ -523,7 +523,7 @@ const About = () => {
       meetMentorsTitle: "Meet Our ",
       meetMentorsHighlight: "Mentors",
       meetMentorsSubtitle:
-        "The experts who will accompany you on your study abroad journey",
+        "Our educators, thought leaders, and inspirers work together to build a lasting foundation for learning — accompanying students as they grow and unlock their potential.",
 
       mentors: [
         {
@@ -600,260 +600,192 @@ const About = () => {
   const tContent = translations[language] || translations.vi;
 
   return (
-    <div className={`about-page ${scrolled ? "scrolled" : ""}`}>
-      {/* Hero Section - Focus on Mentors */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden hero-section">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-            alt="Agua Mentors Team"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-800/70 to-purple-900/80"></div>
-        </div>
-
-        {/* Hero Content */}
-        <div
-          ref={heroTextRef}
-          className="relative z-10 container mx-auto px-5 text-center text-white"
+    <div className="manrope-regular">
+      <div className="py-20"></div>
+      <div className={`about-page ${scrolled ? "scrolled" : ""}`}>
+        {/* Why Our Mentors - Redesigned with 2/3 - 1/3 Grid */}
+        <section
+          ref={whyMentorsRef}
+          className="py-20 bg-gradient-to-b from-white to-blue-50 manrope-regular"
         >
-          <div className="max-w-5xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              {tContent.heroTitle}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-cyan-200">
-                {tContent.heroTitleHighlight}
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 font-light max-w-3xl mx-auto">
-              {tContent.heroSubtitle}
-            </p>
-
-            {/* Mentor Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-              {tContent.stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="backdrop-blur-sm bg-white/10 rounded-xl p-4 border border-white/20 hover:border-white/40 transition-colors"
-                >
-                  <div className="text-3xl md:text-4xl font-bold mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm md:text-base text-blue-100">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-col items-center space-y-3 mt-10">
-            <div
-              className="w-8 h-14 border-2 border-white rounded-full flex items-start justify-center p-1 cursor-pointer group hover:border-[#ff8800] transition-colors duration-300"
-              onClick={() =>
-                window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
-              }
+          <div className="text-center max-w-5xl mx-auto">
+            <h1
+              className="manrope-extrabold text-[#0974B6] 
+          text-3xl md:text-4xl lg:text-5xl xl:text-6xl
+          leading-none mb-6 md:mb-8"
             >
-              <div
-                ref={scrollDotRef}
-                className="w-2 h-2 bg-white rounded-full group-hover:bg-amber-200 transition-colors duration-300"
-              ></div>
-            </div>
-            {/* Animated text */}
-            <div className="flex flex-col items-center">
-              <span className="text-white text-xs font-light tracking-widest opacity-80 group-hover:opacity-100 transition-opacity duration-300 mb-1">
-                {tContent.scrollText}
-              </span>
-            </div>
+              {tContent.heroTitle}
+            </h1>
           </div>
-        </div>
-      </section>
 
-      {/* Why Our Mentors - Redesigned with 2/3 - 1/3 Grid */}
-      <section
-        ref={whyMentorsRef}
-        className="py-20 bg-gradient-to-b from-white to-blue-50"
-      >
-        <div className="container mx-auto px-5">
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
-            {/* Left Column - Image with Description (2/3 width) */}
-            <div className="lg:col-span-2 relative">
-              {/* Small Description Above Image */}
-              <div className="mb-8">
-                <div className="inline-flex items-center bg-blue-100 text-blue-700 px-5 py-2.5 rounded-full text-sm font-semibold mb-4">
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  {tContent.approachBadge}
-                </div>
-                <p className="text-xl text-gray-700 italic leading-relaxed">
-                  "{tContent.approachQuote}"
-                </p>
-              </div>
-
-              {/* Main Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                  alt="Agua Mentorship Approach"
-                  className="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-
-              {/* Floating Quote */}
-              <div className="absolute -bottom-8 -right-8 bg-white p-7 rounded-2xl shadow-2xl max-w-sm z-10 border border-gray-100">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center border-2 border-blue-200">
-                    <img
-                      src="/images/logo2.png"
-                      alt="Agua Logo"
-                      className="w-10 h-10 object-contain"
-                    />
+          <div className="container mx-auto px-5">
+            <div className="grid lg:grid-cols-3 gap-12 items-center">
+              {/* Left Column - Image with Description (2/3 width) */}
+              <div className="lg:col-span-2 relative">
+                {/* Small Description Above Image */}
+                <div className="mb-8">
+                  <div className="inline-flex items-center bg-blue-100 text-blue-700 px-5 py-2.5 rounded-full text-sm manrope-semibold mb-4">
+                    <svg
+                      className="w-5 h-5 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
+                    {tContent.approachBadge}
                   </div>
-                  <div>
-                    <div className="font-bold text-lg text-gray-900">
-                      {language === "vi" ? "Triết lý Agua" : "Agua Philosophy"}
+                  <p className="text-xl text-gray-700 italic leading-relaxed manrope-light">
+                    "{tContent.approachQuote}"
+                  </p>
+                </div>
+
+                {/* Main Image */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                  <img
+                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                    alt="Agua Mentorship Approach"
+                    className="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+
+                {/* Floating Quote */}
+                <div className="absolute -bottom-8 -right-8 bg-white p-7 rounded-2xl shadow-2xl max-w-sm z-10 border border-gray-100">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center border-2 border-blue-200">
+                      <img
+                        src="/images/logo2.png"
+                        alt="Agua Logo"
+                        className="w-10 h-10 object-contain"
+                      />
                     </div>
-                    <div className="text-sm text-blue-600 font-medium">
-                      {language === "vi" ? "Luôn như vậy" : "Always has been"}
+                    <div>
+                      <div className="manrope-bold text-lg text-gray-900">
+                        {language === "vi"
+                          ? "Triết lý Agua"
+                          : "Agua Philosophy"}
+                      </div>
+                      <div className="text-sm text-[#0974B6] manrope-medium">
+                        {language === "vi" ? "Luôn như vậy" : "Always has been"}
+                      </div>
                     </div>
                   </div>
+                  <p className="text-gray-700 italic border-l-4 border-blue-300 pl-4 py-1 manrope-light">
+                    "
+                    {language === "vi"
+                      ? "Chúng tôi không chỉ dạy bạn cách học, mà còn cách sống"
+                      : "We teach you not just how to learn, but how to live"}
+                    "
+                  </p>
                 </div>
-                <p className="text-gray-700 italic border-l-4 border-blue-300 pl-4 py-1">
-                  "
-                  {language === "vi"
-                    ? "Chúng tôi không chỉ dạy bạn cách học, mà còn cách sống"
-                    : "We teach you not just how to learn, but how to live"}
-                  "
-                </p>
               </div>
-            </div>
 
-            {/* Right Column - Educational Philosophy (1/3 width) */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24">
-                <h2 className="text-4xl font-bold mb-8 text-gray-900">
-                  {tContent.philosophyTitle}
-                  <span className="text-blue-600">
+              {/* Right Column - Educational Philosophy (1/3 width) */}
+              <div className="lg:col-span-1">
+                <div className="sticky top-24">
+                  <h2 className="text-4xl manrope-bold mb-8 text-[#0974B6]">
+                    {tContent.philosophyTitle}
                     {tContent.philosophyTitleHighlight}
-                  </span>
-                </h2>
+                  </h2>
 
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-gray-700 leading-relaxed">
-                      {tContent.philosophyText}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Meet Our Mentors - Detailed */}
-      <section ref={mentorsRef} className="py-20 bg-white">
-        <div className="container mx-auto px-5">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">
-              {tContent.meetMentorsTitle}
-              <span className="text-blue-600">
-                {tContent.meetMentorsHighlight}
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {tContent.meetMentorsSubtitle}
-            </p>
-          </div>
-
-          {/* Mentors Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {tContent.mentors.map((mentor, index) => {
-              const images = [
-                "/images/Mentor1.png",
-                "/images/Mentor2.png",
-                "/images/Mentor3.png",
-              ];
-
-              return (
-                <div
-                  key={index}
-                  className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100"
-                >
-                  {/* Mentor Image */}
-                  <div className="relative h-96 overflow-hidden">
-                    <img
-                      src={images[index]}
-                      alt={mentor.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-                    {/* Mentor Info Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h3 className="font-bold text-2xl mb-1">{mentor.name}</h3>
-                      <p className="text-blue-200 font-medium">
-                        {mentor.title}
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-gray-700 leading-relaxed manrope-regular">
+                        {tContent.philosophyText}
                       </p>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                  {/* Mentor Details */}
-                  <div className="p-6">
-                    {/* Education & Experience */}
-                    <div className="mb-6">
-                      <div className="flex items-center mb-4">
-                        <svg
-                          className="w-5 h-5 text-blue-500 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M12 14l9-5-9-5-9 5 9 5z"
-                          />
-                        </svg>
-                        <span className="font-medium text-gray-900">
-                          {mentor.education}
-                        </span>
+        {/* Meet Our Mentors - Detailed */}
+        <section ref={mentorsRef} className="py-20 bg-white manrope-regular">
+          <div className="container mx-auto px-5">
+            {/* Alternative version with better spacing */}
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-20">
+              {/* Left Column - Big Title with decorative element */}
+              <div className="relative">
+                <div className="absolute -left-4 top-0 w-1 h-20 bg-[#0974B6] hidden lg:block"></div>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl manrope-extrabold text-[#0974B6] leading-tight">
+                  <span className="block">{tContent.meetMentorsTitle}</span>
+                  {tContent.meetMentorsHighlight}
+                </h2>
+              </div>
+
+              {/* Right Column - Subtitle with icon */}
+              <div className="border-l-4 border-blue-200 pl-6 lg:pl-8 py-2">
+                <div className="flex items-center mb-3">
+                  <svg
+                    className="w-5 h-5 text-blue-500 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm manrope-semibold text-blue-700 uppercase tracking-wide">
+                    {language === "vi"
+                      ? "Tại sao chọn chúng tôi"
+                      : "Why Choose Us"}
+                  </span>
+                </div>
+                <p className="text-gray-600 manrope-regular text-lg leading-relaxed">
+                  {tContent.meetMentorsSubtitle}
+                </p>
+              </div>
+            </div>
+            {/* Mentors Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {tContent.mentors.map((mentor, index) => {
+                const images = [
+                  "/images/Mentor1.png",
+                  "/images/Mentor2.png",
+                  "/images/Mentor3.png",
+                ];
+
+                return (
+                  <div
+                    key={index}
+                    className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100"
+                  >
+                    {/* Mentor Image */}
+                    <div className="relative h-96 overflow-hidden">
+                      <img
+                        src={images[index]}
+                        alt={mentor.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+
+                      {/* Mentor Info Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                        <h3 className="manrope-bold text-2xl mb-1">
+                          {mentor.name}
+                        </h3>
+                        <p className="text-blue-200 manrope-medium">
+                          {mentor.title}
+                        </p>
                       </div>
+                    </div>
 
-                      <div className="flex items-center mb-4">
-                        <svg
-                          className="w-5 h-5 text-green-500 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
-                        <span className="font-medium text-gray-900">
-                          {mentor.experience}
-                        </span>
-                      </div>
-
-                      <div className="bg-blue-50 p-4 rounded-lg">
-                        <div className="flex items-center mb-2">
+                    {/* Mentor Details */}
+                    <div className="p-6">
+                      {/* Education & Experience */}
+                      <div className="mb-6">
+                        <div className="flex items-center mb-4">
                           <svg
-                            className="w-5 h-5 text-blue-600 mr-2"
+                            className="w-5 h-5 text-blue-500 mr-2"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -862,46 +794,37 @@ const About = () => {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth="2"
-                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                              d="M12 14l9-5-9-5-9 5 9 5z"
                             />
                           </svg>
-                          <span className="font-bold text-blue-700">
-                            {language === "vi"
-                              ? "Chuyên môn chính:"
-                              : "Main Specialty:"}
+                          <span className="manrope-medium text-gray-900">
+                            {mentor.education}
                           </span>
                         </div>
-                        <p className="text-blue-800 font-medium">
-                          {mentor.specialty}
-                        </p>
-                      </div>
-                    </div>
 
-                    {/* Achievements */}
-                    <div className="mb-6">
-                      <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                        <svg
-                          className="w-5 h-5 text-amber-500 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                          />
-                        </svg>
-                        {language === "vi"
-                          ? "Thành tựu nổi bật"
-                          : "Notable Achievements"}
-                      </h4>
-                      <ul className="space-y-2">
-                        {mentor.achievements.map((achievement, idx) => (
-                          <li key={idx} className="flex items-start">
+                        <div className="flex items-center mb-4">
+                          <svg
+                            className="w-5 h-5 text-green-500 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                          </svg>
+                          <span className="manrope-medium text-gray-900">
+                            {mentor.experience}
+                          </span>
+                        </div>
+
+                        <div className="bg-blue-50 p-4 rounded-lg">
+                          <div className="flex items-center mb-2">
                             <svg
-                              className="w-4 h-4 text-green-500 mr-2 mt-1 flex-shrink-0"
+                              className="w-5 h-5 text-blue-600 mr-2"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -910,231 +833,73 @@ const About = () => {
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 strokeWidth="2"
-                                d="M5 13l4 4L19 7"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                               />
                             </svg>
-                            <span className="text-sm text-gray-700">
-                              {achievement}
+                            <span className="manrope-bold text-blue-700">
+                              {language === "vi"
+                                ? "Chuyên môn chính:"
+                                : "Main Specialty:"}
                             </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                          </div>
+                          <p className="text-blue-800 manrope-medium">
+                            {mentor.specialty}
+                          </p>
+                        </div>
+                      </div>
 
-                    {/* Quote */}
-                    <div className="pt-4 border-t border-gray-100">
-                      <p className="text-gray-600 italic text-sm">
-                        "{mentor.quote}"
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Mentor Matching - Redesigned */}
-      <section ref={mentorMatchingRef} className="py-20">
-        <div className="container mx-auto px-5">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Content */}
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-gray-700 leading-relaxed">
-                {tContent.matchingTitle}
-              </h2>
-
-              <p className="text-lg mb-8 text-gray-700 leading-relaxed">
-                {tContent.matchingSubtitle}
-              </p>
-
-              {/* Button with Icon */}
-              <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md w-fit sm:w-auto text-sm sm:text-base">
-                <span className="flex items-center">
-                  <svg
-                    className="w-6 h-6 mr-3 group-hover:animate-pulse"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                    />
-                  </svg>
-                  {tContent.buttonText}
-                </span>
-              </button>
-
-              {/* Small note */}
-              <p className="py-10 text-gray-700 leading-relaxed text-sm flex items-center mb-12">
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-                {tContent.privacyNote}
-              </p>
-            </div>
-
-            {/* Right Column - Extra Large Logo */}
-            <div className="relative">
-              {/* Main Logo - Takes up most of the grid */}
-              <div className="relative flex items-center justify-center">
-                {/* Large Glow Effect */}
-                <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-blue-500/30 via-purple-500/20 to-cyan-500/30 rounded-full blur-3xl opacity-70"></div>
-
-                {/* Giant Logo Container */}
-                <div className="relative z-10 w-full max-w-[500px] mx-auto">
-                  <div className="flex flex-col items-center">
-                    {/* Giant Logo */}
-                    <img
-                      src="/images/logo2.png"
-                      alt="Agua International Education"
-                      className="w-80 h-80 md:w-120 md:h-120 object-contain mb-6"
-                    />
-
-                    {/* Logo Text - Minimal */}
-                    <div className="text-center">
-                      <div className="text-3xl font-bold mb-1">AGUA</div>
-                      <div className="text-lg">International Education</div>
+                      {/* Quote */}
+                      <div className="pt-4 border-t border-gray-100">
+                        <p className="text-gray-600 italic text-sm manrope-light">
+                          "{mentor.quote}"
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Background Pattern */}
-              <div className="absolute inset-0 overflow-hidden opacity-10">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-white rounded-full"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-2 border-white rounded-full"></div>
-              </div>
+                );
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="bg-[#1B2340] text-white">
-        {/* Main Footer Content */}
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center mb-4">
-                <img
-                  src="/images/logo2.png"
-                  alt="Agua International Education"
-                  className="h-10 w-auto mr-3"
-                />
-                <h3 className="text-2xl font-semibold">
-                  Agua International Education
-                </h3>
-              </div>
+        {/* Mentor Matching - Redesigned */}
+        <section ref={mentorMatchingRef} className="py-20 manrope-regular">
+          <div className="container mx-auto px-5">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Content */}
+              <div>
+                <h2 className="text-4xl md:text-5xl manrope-bold mb-6 leading-tight text-[#0974B6] leading-relaxed">
+                  {tContent.matchingTitle}
+                </h2>
 
-              <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <span className="sr-only">Facebook</span>
-                  <svg
-                    className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <span className="sr-only">YouTube</span>
-                  <svg
-                    className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <span className="sr-only">LinkedIn</span>
-                  <svg
-                    className="h-6 w-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+                <p className="text-lg mb-8 text-gray-700 leading-relaxed manrope-regular">
+                  {tContent.matchingSubtitle}
+                </p>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">
-                {language === "vi" ? "Liên kết nhanh" : "Quick Links"}
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="/home"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {tContent.footerLinks.home}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/services"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {tContent.footerLinks.programs}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/about"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {tContent.footerLinks.people}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/philosophy"
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {tContent.footerLinks.opportunities}
-                  </a>
-                </li>
-              </ul>
-            </div>
+                {/* Button with Icon */}
+                <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-full manrope-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md w-fit sm:w-auto text-sm sm:text-base">
+                  <span className="flex items-center">
+                    <svg
+                      className="w-6 h-6 mr-3 group-hover:animate-pulse"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                      />
+                    </svg>
+                    {tContent.buttonText}
+                  </span>
+                </button>
 
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">
-                {language === "vi" ? "Liên hệ" : "Contact"}
-              </h4>
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-start">
+                {/* Small note */}
+                <p className="py-10 text-gray-700 leading-relaxed text-sm flex items-center mb-12 manrope-regular">
                   <svg
-                    className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0"
+                    className="w-4 h-4 mr-2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -1143,87 +908,45 @@ const About = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                     />
                   </svg>
-                  <span>{tContent.footerContact.address}</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="h-5 w-5 mr-3 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <span>{tContent.footerContact.phone}</span>
-                </li>
-                <li className="flex items-center">
-                  <svg
-                    className="h-5 w-5 mr-3 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span>{tContent.footerContact.email}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Footer */}
-        <div className="border-t border-gray-800">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-center md:text-left mb-4 md:mb-0">
-                <p className="text-gray-400 text-sm">
-                  {tContent.footerBottom.copyright}
+                  {tContent.privacyNote}
                 </p>
               </div>
-              <div className="flex flex-wrap justify-center space-x-6 text-sm">
-                <a
-                  href="/privacy"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {tContent.footerBottom.privacy}
-                </a>
-                <a
-                  href="/terms"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {tContent.footerBottom.terms}
-                </a>
-                <a
-                  href="/sitemap"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  {tContent.footerBottom.sitemap}
-                </a>
+
+              {/* Right Column - Extra Large Logo */}
+              <div className="relative">
+                <div className="relative flex items-center justify-center">
+                  <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-blue-500/30 via-white-500/20 to-cyan-500/30 rounded-full blur-3xl opacity-70"></div>
+
+                  <div className="relative z-10 w-full max-w-[500px] mx-auto">
+                    <div className="flex flex-col items-center">
+                      <img
+                        src="/images/logo2.png"
+                        alt="Agua International Education"
+                        className="w-80 h-80 md:w-120 md:h-120 object-contain mb-6"
+                      />
+
+                      <div className="text-center text-[#0974B6]">
+                        <div className="text-3xl manrope-bold mb-1">AGUA</div>
+                        <div className="text-lg manrope-regular">
+                          International Education
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 overflow-hidden opacity-10">
+                  <div className="absolute top-1/4 left-1/4 w-64 h-64 border-2 border-white rounded-full"></div>
+                  <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-2 border-white rounded-full"></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </section>
+      </div>
     </div>
   );
 };

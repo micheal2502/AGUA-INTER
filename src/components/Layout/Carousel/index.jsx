@@ -6,19 +6,19 @@ const DEFAULT_ITEMS = [
     title: "Agua khai mở chương trình lãnh đạo trẻ",
     description: "Tin tức giáo dục",
     id: 1,
-    image: "images/1.png",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
   },
   {
     title: "Hội thảo tương lai giáo dục trong kỉ nguyên số",
     description: "Sự kiện học thuật",
     id: 2,
-    image: "images/2.png",
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
   },
   {
     title: "Từ học viên Agua đến đại học quốc tế ",
     description: "Câu chuyện học viên",
     id: 3,
-    image: "images/3.png",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
   },
 ];
 

@@ -3,80 +3,33 @@ import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const navigate = useNavigate();
-  const [count, setCount] = useState(0);
-  const [logoOpacity, setLogoOpacity] = useState(0);
   const [buttonScale, setButtonScale] = useState(1);
+
+  // Animation states
   const [leftTextVisible, setLeftTextVisible] = useState(false);
   const [rightTextVisible, setRightTextVisible] = useState(false);
-  const [counterVisible, setCounterVisible] = useState(false);
+  const [centerLogoVisible, setCenterLogoVisible] = useState(false);
+  const [aguaTextVisible, setAguaTextVisible] = useState(false);
+  const [sectionsVisible, setSectionsVisible] = useState(false);
 
-  // Transition states
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [circleSize, setCircleSize] = useState(0);
-  const [contentOpacity, setContentOpacity] = useState(1);
-  const [showCircle, setShowCircle] = useState(false);
-  const [circleColor, setCircleColor] = useState("");
-
-  // Count from 0 to 100 with logo fade-in
+  // Animation sequence
   useEffect(() => {
-    if (count < 100) {
-      const timer = setTimeout(() => {
-        setCount(count + 1);
+    const sequence = [
+      { time: 300, action: () => setSectionsVisible(true) },
+      { time: 600, action: () => setLeftTextVisible(true) },
+      { time: 900, action: () => setCenterLogoVisible(true) },
+      { time: 1000, action: () => setAguaTextVisible(true) },
+      { time: 1200, action: () => setRightTextVisible(true) },
+    ];
 
-        // Gradually increase logo opacity as count progresses
-        if (count >= 50) {
-          setLogoOpacity((count - 50) / 50); // Fade in from 50-100
-        }
+    sequence.forEach(({ time, action }) => {
+      setTimeout(action, time);
+    });
+  }, []);
 
-        // Text fade-in timing
-        if (count === 10) {
-          setLeftTextVisible(true);
-        }
-        if (count === 15) {
-          setCounterVisible(true);
-        }
-        if (count === 20) {
-          setRightTextVisible(true);
-        }
-      }, 30);
-      return () => clearTimeout(timer);
-    } else {
-      // Ensure everything is fully visible when count reaches 100
-      setLogoOpacity(1);
-      setLeftTextVisible(true);
-      setRightTextVisible(true);
-      setCounterVisible(true);
-    }
-  }, [count]);
-
-  // Handle button click for transition
+  // Handle button click
   const handleDiscoverClick = () => {
-    // Set circle color to match background gradient
-    setCircleColor("bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900");
-
-    // Start transition sequence
-    setIsTransitioning(true);
-
-    // 1. Fade out all content
-    setContentOpacity(0);
-
-    // Small delay then show circle
-    setTimeout(() => {
-      setShowCircle(true);
-
-      // 2. Create small filled circle
-      setCircleSize(100);
-
-      // 3. Expand circle to fill screen
-      setTimeout(() => {
-        setCircleSize(3000); // Large enough to cover screen
-
-        // 4. Navigate to home page after circle fully expands
-        setTimeout(() => {
-          navigate("/home");
-        }, 800);
-      }, 300);
-    }, 400);
+    navigate("/home");
   };
 
   // Button hover effect
@@ -84,153 +37,222 @@ const Landing = () => {
   const handleMouseLeave = () => setButtonScale(1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex flex-col items-center justify-center text-white p-4 overflow-hidden relative">
-      {/* Transition Circle */}
-      {showCircle && (
+    <div className="min-h-screen bg-[#0974B6] flex flex-col items-center justify-center text-white p-4 overflow-hidden relative">
+      {/* Main Container with 5 Vertical Sections */}
+      <div className="absolute inset-0 flex pointer-events-none">
+        {/* Section 1 - Left 20% */}
         <div
-          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full ${circleColor} transition-all duration-700 ease-out z-50`}
-          style={{
-            width: `${circleSize}px`,
-            height: `${circleSize}px`,
-            transition: "all 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
-          }}
-        ></div>
-      )}
+          className={`w-1/5 h-full transition-all duration-1000 ease-out ${sectionsVisible ? "border-l border-r border-gray-300/30" : "border-l border-r border-transparent"}`}
+        >
+          <div
+            className={`h-full w-full ${sectionsVisible ? "border-r border-gray-300/20" : "border-r border-transparent"}`}
+          ></div>
+        </div>
 
-      {/* Animated background elements */}
-      <div
-        className="absolute inset-0 overflow-hidden transition-opacity duration-500"
-        style={{ opacity: contentOpacity }}
-      >
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-slower"></div>
-      </div>
+        {/* Section 2 - Next 20% */}
+        <div
+          className={`w-1/5 h-full transition-all duration-1000 ease-out delay-100 ${sectionsVisible ? "border-r border-gray-300/30" : "border-r border-transparent"}`}
+        >
+          <div
+            className={`h-full w-full ${sectionsVisible ? "border-l border-gray-300/20 border-r border-gray-300/20" : "border-l border-transparent border-r border-transparent"}`}
+          ></div>
+        </div>
 
-      {/* Logo with fade-in animation */}
-      <div
-        className={`absolute top-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-out ${count >= 50 ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
-        style={{ opacity: logoOpacity * contentOpacity }}
-      >
-        <div className="relative">
-          <div className="text-center">
-            <div className="font-['Cinzel'] text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-300 to-cyan-200 bg-clip-text text-transparent tracking-widest">
-              AGUA
-            </div>
-            <div className="font-['Cormorant_Garamond'] text-lg md:text-xl text-gray-400 italic tracking-wider mt-2">
-              International Education
-            </div>
+        {/* Section 3 - Middle 20% (contains main content) */}
+        <div
+          className={`w-1/5 h-full transition-all duration-1000 ease-out delay-200 ${sectionsVisible ? "border-l border-gray-300/40 border-r border-gray-300/40" : "border-l border-transparent border-r border-transparent"}`}
+        >
+          <div className="h-full w-full relative">
+            {/* Decorative corner for this section */}
+            <div
+              className={`absolute top-0 left-0 w-4 h-4 border-t border-l border-gray-300/40 transition-all duration-1500 ease-out ${sectionsVisible ? "opacity-100" : "opacity-0"}`}
+            ></div>
+            <div
+              className={`absolute top-0 right-0 w-4 h-4 border-t border-r border-gray-300/40 transition-all duration-1500 ease-out ${sectionsVisible ? "opacity-100" : "opacity-0"}`}
+            ></div>
+            <div
+              className={`absolute bottom-0 left-0 w-4 h-4 border-b border-l border-gray-300/40 transition-all duration-1500 ease-out ${sectionsVisible ? "opacity-100" : "opacity-0"}`}
+            ></div>
+            <div
+              className={`absolute bottom-0 right-0 w-4 h-4 border-b border-r border-gray-300/40 transition-all duration-1500 ease-out ${sectionsVisible ? "opacity-100" : "opacity-0"}`}
+            ></div>
           </div>
-          {/* Elegant underline */}
-          <div className="h-px w-48 mx-auto mt-4 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
+        </div>
+
+        {/* Section 4 - Next 20% */}
+        <div
+          className={`w-1/5 h-full transition-all duration-1000 ease-out delay-300 ${sectionsVisible ? "border-l border-gray-300/30" : "border-l border-transparent"}`}
+        >
+          <div
+            className={`h-full w-full ${sectionsVisible ? "border-l border-gray-300/20 border-r border-gray-300/20" : "border-l border-transparent border-r border-transparent"}`}
+          ></div>
+        </div>
+
+        {/* Section 5 - Right 20% */}
+        <div
+          className={`w-1/5 h-full transition-all duration-1000 ease-out delay-400 ${sectionsVisible ? "border-l border-gray-300/30 border-r border-gray-300/30" : "border-l border-transparent border-r border-transparent"}`}
+        >
+          <div
+            className={`h-full w-full ${sectionsVisible ? "border-l border-gray-300/20" : "border-l border-transparent"}`}
+          ></div>
         </div>
       </div>
 
-      {/* Main content container - Full width with edge-to-edge layout */}
+      {/* Horizontal dividers for visual grid */}
       <div
-        className="relative z-10 w-full max-w-[95vw] mx-auto px-4 md:px-8 transition-opacity duration-500"
-        style={{ opacity: contentOpacity }}
+        className={`absolute inset-0 flex flex-col justify-between pointer-events-none transition-all duration-1500 ease-out ${sectionsVisible ? "opacity-10" : "opacity-0"}`}
       >
-        {/* Three column layout with extreme edge positioning */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16">
-          {/* Left Column - Pushed to far left with fade-in */}
-          <div className="text-right md:w-[40%] md:pr-0 lg:pr-4 relative">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300/30 to-transparent mt-[25%]"></div>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300/30 to-transparent mt-[50%]"></div>
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300/30 to-transparent mt-[75%]"></div>
+      </div>
+
+      {/* Additional floating elements to fill space */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Top left decorative elements */}
+        <div
+          className={`absolute top-20 left-20 transition-all duration-1500 ease-out ${sectionsVisible ? "opacity-20" : "opacity-0"}`}
+        >
+          <div className="w-6 h-6 border border-blue-300/20 rotate-45"></div>
+        </div>
+
+        {/* Top right decorative elements */}
+        <div
+          className={`absolute top-24 right-24 transition-all duration-1500 ease-out delay-300 ${sectionsVisible ? "opacity-20" : "opacity-0"}`}
+        >
+          <div className="w-4 h-4 border border-cyan-300/20 rotate-45"></div>
+        </div>
+
+        {/* Bottom left decorative elements */}
+        <div
+          className={`absolute bottom-28 left-32 transition-all duration-1500 ease-out delay-500 ${sectionsVisible ? "opacity-15" : "opacity-0"}`}
+        >
+          <div className="w-5 h-5 border border-blue-300/15 rotate-45"></div>
+        </div>
+
+        {/* Bottom right decorative elements */}
+        <div
+          className={`absolute bottom-32 right-28 transition-all duration-1500 ease-out delay-700 ${sectionsVisible ? "opacity-15" : "opacity-0"}`}
+        >
+          <div className="w-3 h-3 border border-cyan-300/15 rotate-45"></div>
+        </div>
+
+        {/* Center decorative dots */}
+        <div
+          className={`absolute top-1/3 left-1/3 transition-all duration-1500 ease-out delay-400 ${sectionsVisible ? "opacity-10" : "opacity-0"}`}
+        >
+          <div className="w-2 h-2 bg-blue-300/30 rounded-full"></div>
+        </div>
+        <div
+          className={`absolute bottom-1/3 right-1/3 transition-all duration-1500 ease-out delay-600 ${sectionsVisible ? "opacity-10" : "opacity-0"}`}
+        >
+          <div className="w-2 h-2 bg-cyan-300/30 rounded-full"></div>
+        </div>
+      </div>
+
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-slower"></div>
+        {/* Additional subtle background elements */}
+        <div className="absolute top-1/2 left-10 w-32 h-32 bg-blue-400/3 rounded-full blur-2xl animate-pulse-slow"></div>
+        <div className="absolute bottom-10 right-1/3 w-40 h-40 bg-cyan-400/3 rounded-full blur-2xl animate-pulse-slower"></div>
+      </div>
+
+      {/* Main content container - Centered layout */}
+      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 md:px-8 flex flex-col items-center justify-center">
+        {/* Centered content with logo left, text right */}
+        <div className="flex flex-col md:flex-row items-center justify-center w-full mb-16">
+          {/* Logo Column - Left side */}
+          <div className="md:w-1/2 flex justify-center md:justify-end mb-12 md:mb-0 md:pr-12">
+            <div
+              className={`transition-all duration-1000 ease-out ${centerLogoVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+            >
+              {/* Logo container */}
+              <div className="relative">
+                {/* Logo image with fade-in animation */}
+                <div
+                  className={`transition-all duration-1500 ease-out ${centerLogoVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
+                >
+                  <img
+                    src="images/landing.png"
+                    alt="Agua Logo"
+                    className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
+                    style={{
+                      filter: "drop-shadow(0 4px 20px rgba(59, 130, 246, 0.3))",
+                    }}
+                  />
+                </div>
+
+                {/* Subtle pulse animation */}
+                <div
+                  className={`absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/10 to-cyan-400/5 animate-pulse-slow transition-all duration-1000 ease-out ${centerLogoVisible ? "opacity-30" : "opacity-0"}`}
+                ></div>
+
+                {/* Decorative rings around logo */}
+                <div
+                  className={`absolute -inset-4 rounded-full border border-blue-300/10 transition-all duration-2000 ease-out delay-300 ${centerLogoVisible ? "opacity-50" : "opacity-0"}`}
+                ></div>
+                <div
+                  className={`absolute -inset-6 rounded-full border border-cyan-300/5 transition-all duration-2500 ease-out delay-500 ${centerLogoVisible ? "opacity-30" : "opacity-0"}`}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Text Column - Right side */}
+          <div className="md:w-1/2 text-left md:pl-12">
             <div
               className={`relative transition-all duration-1000 ease-out transform ${leftTextVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
             >
-              {/* Decorative left element */}
-              <div className="hidden md:block absolute -left-8 top-1/2 transform -translate-y-1/2">
-                <div className="h-0.5 w-6 bg-gradient-to-l from-blue-400/40 to-transparent"></div>
-              </div>
 
-              <div className="font-['Cormorant_Garamond'] text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-light text-blue-100/90 h-32 flex items-center justify-end leading-tight">
-                Forging futures
-              </div>
-
-              {/* Extended decorative line */}
-              <div className="hidden md:flex absolute -right-20 top-1/2 transform -translate-y-1/2 items-center">
-                <div className="text-3xl text-blue-400/50 mx-4 font-light">
-                  |
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Middle Column - Counter with fade-in */}
-          <div className="md:w-[20%] text-center my-12 md:my-0 relative min-w-[200px]">
-            <div
-              className={`transition-all duration-1000 ease-out ${counterVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-            >
-              {/* Counter with tight spacing */}
-              <div className="relative">
-                <div className="font-['Cinzel'] text-8xl md:text-[8rem] lg:text-[9rem] font-bold text-white tracking-tighter relative">
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent opacity-20 blur-lg rounded-lg"></div>
-                  <span className="relative z-10">
-                    {counterVisible ? count : 0}
-                  </span>
-                </div>
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-blue-300/80 text-xs md:text-sm uppercase tracking-[0.3em] whitespace-nowrap font-light">
-                  through
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column - Pushed to far right with fade-in */}
-          <div className="text-left md:w-[40%] md:pl-0 lg:pl-4 relative">
-            <div
-              className={`relative transition-all duration-1000 ease-out transform ${rightTextVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}
-            >
-              {/* Extended decorative line */}
-              <div className="hidden md:flex absolute -left-20 top-1/2 transform -translate-y-1/2 items-center">
-                <div className="text-3xl text-cyan-400/50 mx-4 font-light">
-                  |
+              {/* International Education - Extra large text */}
+              <div
+                className={`mt-1 transition-all text-white duration-1000 ease-out delay-300 ${rightTextVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}
+              >
+                <div className="landing-text text-5xl md:text-6xl lg:text-[4rem] xl:text-[6rem] font-light text-white/90 leading-none">
+                  AGUA International Education
                 </div>
               </div>
 
-              <div className="font-['Cormorant_Garamond'] text-5xl md:text-6xl lg:text-[4.5rem] xl:text-[5rem] font-light text-cyan-100/90 h-32 flex items-center justify-start leading-tight">
-                guided discovery
-              </div>
+              {/* Decorative line - closer to text */}
+              <div
+                className={`h-px w-32 mt-2 bg-gradient-to-r from-blue-400/40 to-transparent transition-all duration-1200 ease-out delay-500 ${centerLogoVisible ? "opacity-100" : "opacity-0"}`}
+              ></div>
 
-              {/* Decorative right element */}
-              <div className="hidden md:block absolute -right-8 top-1/2 transform -translate-y-1/2">
-                <div className="h-0.5 w-6 bg-gradient-to-r from-cyan-400/40 to-transparent"></div>
+              {/* Subtle tagline */}
+              <div
+                className={`mt-4 transition-all duration-1000 ease-out delay-700 ${rightTextVisible ? "opacity-70 translate-y-0" : "opacity-0 translate-y-4"}`}
+              >
+                <div className="landing-text text-lg text-white/80 italic max-w-md">
+                  Forging futures through guided discovery
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Horizontal divider for mobile */}
+        {/* Decorative connector line between logo and text */}
         <div
-          className={`md:hidden flex justify-center my-12 transition-all duration-1000 ease-out ${counterVisible ? "opacity-100" : "opacity-0"}`}
+          className={`hidden md:block absolute left-1/2 top-1/2 transform -translate-y-1/2 transition-all duration-1500 ease-out delay-800 ${centerLogoVisible ? "opacity-20" : "opacity-0"}`}
         >
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-blue-400/40 to-transparent"></div>
-          <div className="text-2xl text-blue-400/60 mx-6 font-light">✦</div>
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"></div>
+          <div className="h-px w-24 bg-gradient-to-r from-transparent via-blue-300/20 to-transparent"></div>
         </div>
 
-        {/* Elegant Button */}
+        {/* Elegant Button - Centered */}
         <div
-          className={`flex justify-center mt-32 transition-all duration-1000 ease-out ${count === 100 ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
+          className={`landing-text flex justify-center w-full transition-all duration-1000 ease-out ${rightTextVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-10 scale-95"}`}
         >
           <button
             onClick={handleDiscoverClick}
-            disabled={isTransitioning}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{ transform: `scale(${buttonScale})` }}
-            className={`group relative bg-transparent border border-blue-400/30 text-white px-14 py-5 rounded-full font-light text-xl hover:shadow-2xl transition-all duration-500 tracking-widest overflow-hidden ${isTransitioning ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`landing-text bg-white text-[#0974B6] px-14 py-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 relative group`}
           >
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-cyan-800/20 to-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            {/* Animated border */}
-            <div className="absolute inset-0 rounded-full p-[1px]">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 rounded-full opacity-0 group-hover:opacity-30 blur-sm transition-opacity duration-500"></div>
-            </div>
-
             {/* Button content */}
             <span className="relative z-10 flex items-center justify-center gap-3">
-              <span className="font-['Cormorant_Garamond'] text-2xl font-medium tracking-widest">
+              <span className="text-2xl font-medium tracking-widest">
                 Discover More
               </span>
               <svg
@@ -248,18 +270,23 @@ const Landing = () => {
               </svg>
             </span>
 
-            {/* Hover shine effect */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700">
-              <div className="h-full w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"></div>
-            </div>
+            {/* Button glow effect */}
+            <span className="absolute inset-0 rounded-full bg-white/20 blur-xl group-hover:opacity-30 transition-opacity duration-300 opacity-0"></span>
           </button>
+        </div>
+        {/* Horizontal divider - centered */}
+        <div
+          className={`flex justify-center my-12 w-full transition-all duration-1000 ease-out ${centerLogoVisible ? "opacity-100" : "opacity-0"}`}
+        >
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-blue-400/40 to-transparent"></div>
+          <div className="text-2xl text-blue-400/60 mx-6 font-light">✦</div>
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"></div>
         </div>
       </div>
 
-      {/* Footer text */}
+      {/* Footer text - Centered */}
       <div
-        className={`absolute bottom-8 text-gray-500/70 text-sm font-['Cormorant_Garamond'] tracking-widest transition-all duration-1000 ease-out ${count === 100 ? "opacity-100" : "opacity-0"}`}
-        style={{ opacity: contentOpacity }}
+        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500/70 text-sm tracking-widest transition-all duration-1000 ease-out ${rightTextVisible ? "opacity-100" : "opacity-0"}`}
       >
         <div className="flex items-center gap-2">
           <div className="h-px w-8 bg-gradient-to-r from-transparent to-gray-500/50"></div>
@@ -270,20 +297,16 @@ const Landing = () => {
 
       {/* Decorative corner elements - also fade in */}
       <div
-        className={`absolute top-8 left-8 w-16 h-16 border-t border-l border-blue-400/20 transition-all duration-1500 ease-out ${counterVisible ? "opacity-100" : "opacity-0"}`}
-        style={{ opacity: contentOpacity }}
+        className={`absolute top-8 left-8 w-16 h-16 border-t border-l border-blue-400/20 transition-all duration-1500 ease-out z-20 ${centerLogoVisible ? "opacity-100" : "opacity-0"}`}
       ></div>
       <div
-        className={`absolute top-8 right-8 w-16 h-16 border-t border-r border-cyan-400/20 transition-all duration-1500 ease-out ${counterVisible ? "opacity-100" : "opacity-0"}`}
-        style={{ opacity: contentOpacity }}
+        className={`absolute top-8 right-8 w-16 h-16 border-t border-r border-cyan-400/20 transition-all duration-1500 ease-out z-20 ${centerLogoVisible ? "opacity-100" : "opacity-0"}`}
       ></div>
       <div
-        className={`absolute bottom-8 left-8 w-16 h-16 border-b border-l border-blue-400/20 transition-all duration-1500 ease-out ${count === 100 ? "opacity-100" : "opacity-0"}`}
-        style={{ opacity: contentOpacity }}
+        className={`absolute bottom-8 left-8 w-16 h-16 border-b border-l border-blue-400/20 transition-all duration-1500 ease-out z-20 ${rightTextVisible ? "opacity-100" : "opacity-0"}`}
       ></div>
       <div
-        className={`absolute bottom-8 right-8 w-16 h-16 border-b border-r border-cyan-400/20 transition-all duration-1500 ease-out ${count === 100 ? "opacity-100" : "opacity-0"}`}
-        style={{ opacity: contentOpacity }}
+        className={`absolute bottom-8 right-8 w-16 h-16 border-b border-r border-cyan-400/20 transition-all duration-1500 ease-out z-20 ${rightTextVisible ? "opacity-100" : "opacity-0"}`}
       ></div>
     </div>
   );

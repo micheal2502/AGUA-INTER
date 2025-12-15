@@ -705,6 +705,660 @@ export const getDataByLanguage = (language = "vie") => {
   };
 };
 
+// constants/luminaryTable.js
+export const luminaryTable = {
+  vie: {
+    announcement: {
+      title: "Lộ Trình Tỏa Sáng Vô Tận",
+    },
+    corePhilosophy: {
+      title: "Thiết lý cốt lõi",
+      content:
+        "Sạ giá trị đến từng. Niềm vui học tập - Tư duy sáng tạo – Học tập cộng tác được tích hợp xuyên suốt chương trình, để mỗi học sinh không chỉ đạt mục tiêu học thuật mà còn tìm thấy niềm vui và sự kết nối trong hành trình.",
+    },
+    value: {
+      title: "Giá Trị",
+      price: "$50,000",
+    },
+    lifetimeBenefits: {
+      title: "Quyền lợi trọn đời",
+      items: [
+        "Hơn 100 gói mentoring 1-1 cá nhân hóa",
+        "4 lớp học quốc tế mỗi năm",
+        "1 tuần Creative Camp (Việt Nam/Đông Nam Á)",
+        "Hỗ trợ hồ sơ, học bổng, visa",
+      ],
+    },
+    experienceDesign: {
+      title: "Thiết kế trải nghiệm",
+      items: [
+        {
+          title: "Niềm vui học tập",
+          desc: "Curiosity Walks, thử thách 21 ngày hạnh phúc",
+        },
+        {
+          title: "Tư duy sáng tạo",
+          desc: "Moon-shot Studio, hackathon trong vòng 48 giờ",
+        },
+        {
+          title: "Học tập cộng tác",
+          desc: "Đường xuyên biên giới, vòng tròn phản hồi",
+        },
+      ],
+    },
+    journeyStages: {
+      title: "Các giai đoạn hành trình",
+      items: [
+        {
+          phase: "Khám phá & Định hình",
+          desc: "Thấu hiểu điểm mạnh và mục đích",
+          duration: "2 tháng",
+        },
+        {
+          phase: "Phát triển chuyên sâu",
+          desc: "Mentoring 1-1, lớp học quốc tế",
+          duration: "6-12 tháng",
+        },
+        {
+          phase: "Trình diễn tác động",
+          desc: "Hoàn thiện hồ sơ, demo-day",
+          duration: "3-6 tháng",
+        },
+        {
+          phase: "Đồng hành trọn đời",
+          desc: "2 buổi check-in/năm trọn đời",
+          duration: "Trọn đời",
+        },
+      ],
+    },
+    valueCommitment: {
+      title: "Cam kết giá trị",
+      items: [
+        "Kết quả rõ ràng - học bổng - IELTS, chỉ số hạnh phúc",
+        "Hoàn tiền 50% nếu KP không đạt",
+        "Mentor tạo 1% (tuyển chọn 4 vòng, đào tạo 40 giờ)",
+        "95% doanh thu tái đầu tư vào chuyên gia & Tài liệu",
+      ],
+    },
+  },
+  en: {
+    announcement: {
+      title: "Boundless Glory Trail",
+    },
+    corePhilosophy: {
+      title: "Core Philosophy",
+      content:
+        "Value delivered to every individual. Joy of Learning - Creative Thinking - Collaborative Learning are integrated throughout the program, so each student not only achieves academic goals but also finds joy and connection in the journey.",
+    },
+    value: {
+      title: "Value",
+      price: "$50,000",
+    },
+    lifetimeBenefits: {
+      title: "Lifetime Benefits",
+      items: [
+        "Over 100 personalized 1-1 mentoring packages",
+        "4 international classes per year",
+        "1 week Creative Camp (Vietnam/Southeast Asia)",
+        "Support for profiles, scholarships, visas",
+      ],
+    },
+    experienceDesign: {
+      title: "Experience Design",
+      items: [
+        {
+          title: "Joy of Learning",
+          desc: "Curiosity Walks, 21-day happiness challenge",
+        },
+        {
+          title: "Creative Thinking",
+          desc: "Moon-shot Studio, 48-hour hackathon",
+        },
+        {
+          title: "Collaborative Learning",
+          desc: "Cross-border journey, feedback circles",
+        },
+      ],
+    },
+    journeyStages: {
+      title: "Journey Stages",
+      items: [
+        {
+          phase: "Exploration & Shaping",
+          desc: "Understanding strengths and purpose",
+          duration: "2 months",
+        },
+        {
+          phase: "In-depth Development",
+          desc: "1-1 mentoring, international classes",
+          duration: "6-12 months",
+        },
+        {
+          phase: "Impact Demonstration",
+          desc: "Profile completion, demo-day",
+          duration: "3-6 months",
+        },
+        {
+          phase: "Lifetime Partnership",
+          desc: "2 check-in sessions/year for life",
+          duration: "Lifetime",
+        },
+      ],
+    },
+    valueCommitment: {
+      title: "Value Commitment",
+      items: [
+        "Clear results - scholarships - IELTS, happiness index",
+        "50% refund if KPIs not achieved",
+        "Top 1% mentors (4-round selection, 40-hour training)",
+        "95% revenue reinvested in experts & Materials",
+      ],
+    },
+  },
+};
+
+// constants/investmentComparison.js
+export const investmentComparison = {
+  vie: {
+    title: "SO SÁNH GÓI ĐẦU TƯ",
+    note: "*Lưu ý: So sánh này thể hiện sự khác biệt cốt lõi giữa các gói đầu tư giáo dục, giúp phụ huynh và học sinh đưa ra quyết định phù hợp với nhu cầu và mục tiêu cá nhân.",
+    headers: {
+      criteria: "Tiêu Chí",
+      pathway1: "Lộ Trình Khác Biệt",
+      pathway2: "Lộ Trình Tỏa Sáng Vô Tận",
+      significance: "Ý Nghĩa",
+    },
+    rows: [
+      {
+        criteria: "Thời Lượng",
+        pathway1: "6-10 buổi",
+        pathway2: "Hành trình chuyển hóa (trọn đời)",
+        significance: "Cá nhân hóa sâu sắc và lâu dài",
+      },
+      {
+        criteria: "Mục tiêu",
+        pathway1: "Kết quả chiến thuật (HĐTTS, hồ sơ)",
+        pathway2: "Sáng tạo tác động cộng đồng",
+        significance: "Từ 'đạt mục tiêu' → 'tạo tác động bền vững'",
+      },
+      {
+        criteria: "Phạm vi học tập",
+        pathway1: "Học thuật & tuyển sinh",
+        pathway2: "Phát triển toàn diện (kỹ năng, tư duy, lãnh đạo)",
+        significance: "Chuẩn bị cho tương lai vượt ngoài lớp học",
+      },
+      {
+        criteria: "Trải nghiệm toàn cầu",
+        pathway1: "Hạn chế",
+        pathway2: "Đa dạng quốc tế (lớp học, trại hè, networking)",
+        significance: "Sự tự lực và hội nhập văn hóa, tư duy toàn cầu",
+      },
+      {
+        criteria: "Hệ thống hỗ trợ",
+        pathway1: "Chủ yếu mentor",
+        pathway2: "Đa dạng mentor, hỗ trợ toàn diện",
+        significance: "Tiếp cận từ nhiều góc nhìn chuyên môn",
+      },
+    ],
+  },
+  en: {
+    title: "INVESTMENT PACKAGE COMPARISON",
+    note: "*Note: This comparison highlights core differences between educational investment packages, helping parents and students make informed decisions aligned with personal needs and goals.",
+    headers: {
+      criteria: "Criteria",
+      pathway1: "Different Pathways",
+      pathway2: "Endless Radiance Pathway",
+      significance: "Significance",
+    },
+    rows: [
+      {
+        criteria: "Duration",
+        pathway1: "6-10 sessions",
+        pathway2: "Transformative journey (lifetime)",
+        significance: "Deep and long-term personalization",
+      },
+      {
+        criteria: "Objectives",
+        pathway1: "Tactical results (university applications, profiles)",
+        pathway2: "Creating community impact",
+        significance: "From 'achieving goals' → 'creating sustainable impact'",
+      },
+      {
+        criteria: "Learning Scope",
+        pathway1: "Academic & admissions",
+        pathway2: "Holistic development (skills, mindset, leadership)",
+        significance: "Preparation for future beyond classrooms",
+      },
+      {
+        criteria: "Global Experience",
+        pathway1: "Limited",
+        pathway2: "Diverse international (classes, camps, networking)",
+        significance: "Self-reliance, cultural integration, global mindset",
+      },
+      {
+        criteria: "Support System",
+        pathway1: "Primarily mentor",
+        pathway2: "Diverse mentors, comprehensive support",
+        significance: "Access to multiple professional perspectives",
+      },
+    ],
+  },
+};
+// constants/servicesContent.js
+export const servicesContent = {
+  vie: {
+    hero: {
+      title: "Các chương trình học",
+      subtitle: "Các gói học tập thiết kế riêng",
+      description: "cho từng học sinh",
+    },
+    comparisonSection: {
+      title: "3 Lộ Trình Khác Biệt",
+      description:
+        "Lựa chọn lộ trình phù hợp với độ tuổi và mục tiêu phát triển của học sinh",
+    },
+    luminarySection: {
+      title: "LỘ TRÌNH TỎA SÁNG VÔ TẬN",
+      subtitle:
+        "Chương trình thành viên trọn đời - Đầu tư một lần, đồng hành suốt đời",
+    },
+    faqSection: {
+      title: "Câu Hỏi Thường Gặp",
+      description:
+        "Tìm câu trả lời cho những thắc mắc phổ biến về chương trình AGUA",
+    },
+    ctaSection: {
+      title: "Bắt Đầu Hành Trình Cùng AGUA",
+      description:
+        "Đăng ký khảo sát miễn phí để nhận đánh giá toàn diện và lộ trình học tập cá nhân hóa cho con bạn.",
+      benefits: [
+        "Đánh giá năng lực toàn diện miễn phí",
+        "Tư vấn 1-1 với chuyên gia giáo dục",
+        "Lộ trình học tập cá nhân hóa",
+      ],
+      button: "Đăng Ký Khảo Sát Miễn Phí",
+      quote:
+        '"Giáo dục không phải là đổ đầy một cái bình, mà là thắp sáng một ngọn lửa"',
+      author: "William Butler Yeats",
+    },
+    footer: {
+      companyName: "AGUA EDUCATION",
+      description:
+        "AGUA - Nơi kiến tạo cuộc sống hạnh phúc thông qua giáo dục. Chúng tôi đồng hành cùng học sinh trên hành trình khám phá bản thân và chinh phục ước mơ.",
+      quickLinks: "Liên kết nhanh",
+      home: "Trang Chủ",
+      programs: "Gói Học Tập",
+      people: "Con Người",
+      opportunities: "Cơ Hội",
+      contact: "Liên hệ",
+      address:
+        "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+      phone: "+84 28 1234 5678",
+      email: "info@agua.edu.vn",
+      copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
+      privacy: "Chính sách bảo mật",
+      terms: "Điều khoản sử dụng",
+      sitemap: "Sitemap",
+    },
+  },
+  en: {
+    hero: {
+      title: "Learning Programs",
+      subtitle: "Personalized learning packages designed",
+      description: "for each student",
+    },
+    comparisonSection: {
+      title: "3 Distinctive Pathways",
+      description:
+        "Choose the pathway that fits your child's age and development goals",
+    },
+    luminarySection: {
+      title: "ENDLESS SHINING PATHWAY",
+      subtitle:
+        "Lifetime membership program - One-time investment, lifelong companionship",
+    },
+    faqSection: {
+      title: "Frequently Asked Questions",
+      description: "Find answers to common questions about the AGUA program",
+    },
+    ctaSection: {
+      title: "Start Your Journey with AGUA",
+      description:
+        "Register for a free survey to receive a comprehensive assessment and personalized learning pathway for your child.",
+      benefits: [
+        "Comprehensive free ability assessment",
+        "1-1 consultation with education experts",
+        "Personalized learning pathway",
+      ],
+      button: "Register for Free Survey",
+      quote:
+        '"Education is not the filling of a pail, but the lighting of a fire"',
+      author: "William Butler Yeats",
+    },
+    footer: {
+      companyName: "AGUA EDUCATION",
+      description:
+        "AGUA - Where happy lives are created through education. We accompany students on their journey of self-discovery and dream achievement.",
+      quickLinks: "Quick Links",
+      home: "Home",
+      programs: "Learning Packages",
+      people: "Our People",
+      opportunities: "Opportunities",
+      contact: "Contact",
+      address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
+      phone: "+84 28 1234 5678",
+      email: "info@agua.edu.vn",
+      copyright: "© {year} Agua International Education. All rights reserved.",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
+      sitemap: "Sitemap",
+    },
+  },
+};
+
+// constants/contactContent.js
+export const contactContent = {
+  vi: {
+    heroTitle: "Kết nối với chúng tôi",
+    heroSubtitle:
+      "Chúng tôi luôn sẵn sàng đồng hành cùng bạn trên hành trình giáo dục quốc tế",
+    scrollText: "Vuốt để xem tiếp",
+
+    sectionTitle: "Liên hệ với chúng tôi",
+    sectionDescription:
+      "Agua International Education luôn sẵn sàng lắng nghe và hỗ trợ bạn trên hành trình giáo dục quốc tế. Chúng tôi cam kết mang đến những giải pháp giáo dục tốt nhất cho tương lai của bạn.",
+
+    contactInfoTitle: "Thông tin liên hệ chi tiết",
+    headquarters: "Trụ sở chính tại Việt Nam",
+    address:
+      "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+    workingHours: "Giờ làm việc: Thứ 2 - Thứ 6: 8:00 - 17:00",
+
+    phone: "Điện thoại",
+    vietnamPhone: "Việt Nam:",
+    internationalPhone: "Quốc tế:",
+    hotline: "Hotline:",
+
+    email: "Email",
+    generalInquiry: "Tổng đài:",
+    admission: "Tư vấn:",
+    partnership: "Hợp tác:",
+
+    departmentContacts: "Liên hệ theo bộ phận",
+    departments: [
+      {
+        name: "Tuyển sinh & Học thuật",
+        email: "admission@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "101",
+      },
+      {
+        name: "Hỗ trợ học sinh quốc tế",
+        email: "international@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "102",
+      },
+      {
+        name: "Đối tác & Hợp tác",
+        email: "partnership@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "103",
+      },
+      {
+        name: "Truyền thông & Marketing",
+        email: "marketing@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "104",
+      },
+    ],
+
+    quickContactTitle: "Gửi tin nhắn cho chúng tôi",
+    quickContactSubtitle:
+      "Để lại thông tin, chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ",
+
+    formLabels: {
+      name: "Họ và tên *",
+      email: "Email *",
+      phone: "Số điện thoại",
+      subject: "Chủ đề *",
+      message: "Nội dung *",
+      submit: "Gửi tin nhắn",
+    },
+
+    subjectOptions: [
+      { value: "", label: "Chọn chủ đề" },
+      { value: "admission", label: "Tư vấn tuyển sinh" },
+      { value: "program", label: "Thông tin chương trình" },
+      { value: "partnership", label: "Hợp tác đối tác" },
+      { value: "other", label: "Khác" },
+    ],
+
+    responseTime: "Thời gian phản hồi",
+    responseItems: [
+      "Email: Phản hồi trong vòng 24 giờ",
+      "Điện thoại: Trong giờ hành chính",
+      "Tin nhắn trực tuyến: 24/7",
+    ],
+
+    mapTitle: "Mạng lưới toàn cầu của chúng tôi",
+    mapDescription:
+      "Agua International Education có mặt tại hơn 20 quốc gia với mạng lưới đối tác giáo dục uy tín trên toàn thế giới",
+
+    mainOffice: "Trụ sở chính tại Việt Nam",
+    officeDescription1:
+      "Tọa lạc tại khu đô thị hiện đại Phú Mỹ Hưng, trụ sở chính của Agua International Education được thiết kế với không gian học tập và làm việc tiêu chuẩn quốc tế.",
+    officeDescription2:
+      "Với vị trí thuận lợi, dễ dàng kết nối với các trường quốc tế, đại sứ quán và các tổ chức giáo dục hàng đầu.",
+
+    travelGuide: "Hướng dẫn di chuyển",
+    travelItems: [
+      "Từ sân bay Tân Sơn Nhất: 15-20 phút",
+      "Gần trạm xe buýt: 500m",
+      "Bãi đậu xe miễn phí cho khách tham quan",
+    ],
+
+    branchOffices: "Các văn phòng đại diện",
+    branches: [
+      {
+        city: "London",
+        country: "Anh",
+        email: "uk@agua.edu.vn",
+        phone: "+44 20 1234 5678",
+      },
+      {
+        city: "Sydney",
+        country: "Úc",
+        email: "aus@agua.edu.vn",
+        phone: "+61 2 1234 5678",
+      },
+      {
+        city: "Toronto",
+        country: "Canada",
+        email: "ca@agua.edu.vn",
+        phone: "+1 416 123 4567",
+      },
+      {
+        city: "Singapore",
+        country: "Singapore",
+        email: "sg@agua.edu.vn",
+        phone: "+65 6123 4567",
+      },
+    ],
+
+    footerLinks: {
+      quickLinks: "Liên kết nhanh",
+      contact: "Liên hệ",
+      home: "Trang Chủ",
+      programs: "Gói Học Tập",
+      people: "Con Người",
+      opportunities: "Cơ Hội",
+    },
+
+    footerContact: {
+      address:
+        "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+      phone: "+84 28 1234 5678",
+      email: "info@agua.edu.vn",
+    },
+
+    footerBottom: {
+      copyright: "© {year} Agua International Education. Bảo lưu mọi quyền.",
+      privacy: "Chính sách bảo mật",
+      terms: "Điều khoản sử dụng",
+      sitemap: "Sitemap",
+    },
+  },
+  en: {
+    heroTitle: "Connect With Us",
+    heroSubtitle:
+      "We're always ready to accompany you on your international education journey",
+    scrollText: "Scroll to continue",
+
+    sectionTitle: "Contact Us",
+    sectionDescription:
+      "Agua International Education is always ready to listen and support you on your international education journey. We are committed to providing the best educational solutions for your future.",
+
+    contactInfoTitle: "Detailed Contact Information",
+    headquarters: "Headquarters in Vietnam",
+    address:
+      "20 My Giang 2A, Phu My Hung Urban Area, District 7, Ho Chi Minh City",
+    workingHours: "Working Hours: Monday - Friday: 8:00 AM - 5:00 PM",
+
+    phone: "Phone",
+    vietnamPhone: "Vietnam:",
+    internationalPhone: "International:",
+    hotline: "Hotline:",
+
+    email: "Email",
+    generalInquiry: "General Inquiry:",
+    admission: "Admission:",
+    partnership: "Partnership:",
+
+    departmentContacts: "Contact by Department",
+    departments: [
+      {
+        name: "Admission & Academic",
+        email: "admission@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "101",
+      },
+      {
+        name: "International Student Support",
+        email: "international@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "102",
+      },
+      {
+        name: "Partnership & Cooperation",
+        email: "partnership@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "103",
+      },
+      {
+        name: "Media & Marketing",
+        email: "marketing@agua.edu.vn",
+        phone: "028 1234 5678",
+        ext: "104",
+      },
+    ],
+
+    quickContactTitle: "Send Us a Message",
+    quickContactSubtitle:
+      "Leave your information and we'll contact you within 24 hours",
+
+    formLabels: {
+      name: "Full Name *",
+      email: "Email *",
+      phone: "Phone Number",
+      subject: "Subject *",
+      message: "Message *",
+      submit: "Send Message",
+    },
+
+    subjectOptions: [
+      { value: "", label: "Select a subject" },
+      { value: "admission", label: "Admission Consultation" },
+      { value: "program", label: "Program Information" },
+      { value: "partnership", label: "Partnership" },
+      { value: "other", label: "Other" },
+    ],
+
+    responseTime: "Response Time",
+    responseItems: [
+      "Email: Response within 24 hours",
+      "Phone: During business hours",
+      "Online Message: 24/7",
+    ],
+
+    mapTitle: "Our Global Network",
+    mapDescription:
+      "Agua International Education operates in over 20 countries with a network of trusted education partners worldwide",
+
+    mainOffice: "Headquarters in Vietnam",
+    officeDescription1:
+      "Located in the modern Phu My Hung urban area, Agua International Education's headquarters is designed with international-standard learning and working spaces.",
+    officeDescription2:
+      "With a convenient location, it's easy to connect with international schools, embassies, and leading educational organizations.",
+
+    travelGuide: "Travel Guide",
+    travelItems: [
+      "From Tan Son Nhat Airport: 15-20 minutes",
+      "Near bus station: 500m",
+      "Free parking for visitors",
+    ],
+
+    branchOffices: "Representative Offices",
+    branches: [
+      {
+        city: "London",
+        country: "UK",
+        email: "uk@agua.edu.vn",
+        phone: "+44 20 1234 5678",
+      },
+      {
+        city: "Sydney",
+        country: "Australia",
+        email: "aus@agua.edu.vn",
+        phone: "+61 2 1234 5678",
+      },
+      {
+        city: "Toronto",
+        country: "Canada",
+        email: "ca@agua.edu.vn",
+        phone: "+1 416 123 4567",
+      },
+      {
+        city: "Singapore",
+        country: "Singapore",
+        email: "sg@agua.edu.vn",
+        phone: "+65 6123 4567",
+      },
+    ],
+
+    footerLinks: {
+      quickLinks: "Quick Links",
+      contact: "Contact",
+      home: "Home",
+      programs: "Study Packages",
+      people: "Our People",
+      opportunities: "Opportunities",
+    },
+
+    footerContact: {
+      address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
+      phone: "+84 28 1234 5678",
+      email: "info@agua.edu.vn",
+    },
+
+    footerBottom: {
+      copyright: "© {year} Agua International Education. All rights reserved.",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
+      sitemap: "Sitemap",
+    },
+  },
+};
+
 // You can also create a default export if you prefer
 export default {
   comparisonTable,
@@ -713,4 +1367,8 @@ export default {
   outcomesData,
   faqData,
   getDataByLanguage,
+  luminaryTable,
+  investmentComparison,
+  servicesContent,
+  contactContent,
 };
