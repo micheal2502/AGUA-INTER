@@ -649,7 +649,6 @@ const Home = () => {
                 className="w-2 h-2 bg-white rounded-full group-hover:bg-amber-200 transition-colors duration-300"
               ></div>
             </div>
-            {/* Animated text */}
             <div className="flex flex-col items-center">
               <span className="text-white text-xs font-light tracking-widest opacity-80 group-hover:opacity-100 transition-opacity duration-300 mb-1">
                 {t.hero.scrollText}
@@ -660,56 +659,44 @@ const Home = () => {
       </section>
 
       {/* First Section */}
-      <section className="py-16 bg-white" ref={firstSectionRef}>
-        <div className="container mx-auto px-6 md:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Phần text bên TRÁI */}
-            <div className="space-y-6" ref={textContentRef}>
+      <section className="py-12 md:py-16 bg-white" ref={firstSectionRef}>
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Text Section */}
+            <div className="space-y-4 md:space-y-6" ref={textContentRef}>
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#3d76b8] mt-2">
                   {t.firstSection.title}
                 </h2>
               </div>
 
-              <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed">
                 {t.firstSection.mainText}
               </p>
 
-              <div className="space-y-4 relative">
+              <div className="space-y-3 md:space-y-4 relative">
                 {/* Item 1 */}
                 <div className="group flex items-start space-x-3 cursor-pointer relative z-30">
-                  {/* Bullet point với animation */}
-                  <div className="relative w-6 h-6 flex items-center justify-center mt-1 flex-shrink-0">
-                    <div
-                      className="absolute top-1 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1"
-                    />
-                    <div
-                      className="absolute top-3 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:w-3"
-                    />
-                    <div
-                      className="absolute top-5 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1"
-                    />
+                  <div className="relative w-5 h-5 md:w-6 md:h-6 flex items-center justify-center mt-1 flex-shrink-0">
+                    <div className="absolute top-1 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1" />
+                    <div className="absolute top-3 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-3" />
+                    <div className="absolute top-5 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1" />
                   </div>
 
-                  {/* Text với underline */}
-                  <p className="text-gray-700 relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
+                  <p className="text-gray-700 text-sm sm:text-base relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
                     {t.firstSection.bullet1}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-full"></span>
                   </p>
 
-                  {/* Expanded content */}
                   <div
-                    className="absolute top-full left-0 w-full max-w-2xl bg-white shadow-2xl rounded-lg p-6 mt-2 
+                    className="absolute top-full left-0 w-full max-w-md sm:max-w-2xl bg-white shadow-2xl rounded-lg p-4 md:p-6 mt-2 
                         opacity-0 invisible scale-95 transition-all duration-500 ease-out
                         group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:mt-4
                         border border-gray-100 z-40 pointer-events-none
                         group-hover:pointer-events-auto"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div className="relative h-40 md:h-48 lg:h-full rounded-lg overflow-hidden">
                         <img
                           src="/images/collaboration.png"
                           alt={
@@ -723,10 +710,10 @@ const Home = () => {
                       </div>
 
                       <div className="flex flex-col justify-center">
-                        <h3 className="text-xl font-bold text-[#1B2340] mb-3">
+                        <h3 className="text-lg md:text-xl font-bold text-[#1B2340] mb-2 md:mb-3">
                           {t.firstSection.bullet1Title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                           {t.firstSection.bullet1Desc}
                         </p>
                       </div>
@@ -734,37 +721,28 @@ const Home = () => {
                   </div>
                 </div>
 
-                {/* Item 2 - Fixed với z-index cao hơn */}
+                {/* Item 2 */}
                 <div className="group flex items-start space-x-3 cursor-pointer relative z-20">
-                  <div className="relative w-6 h-6 flex items-center justify-center mt-1 flex-shrink-0">
-                    <div
-                      className="absolute top-1 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1"
-                    />
-                    <div
-                      className="absolute top-3 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:w-3"
-                    />
-                    <div
-                      className="absolute top-5 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1"
-                    />
+                  <div className="relative w-5 h-5 md:w-6 md:h-6 flex items-center justify-center mt-1 flex-shrink-0">
+                    <div className="absolute top-1 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1" />
+                    <div className="absolute top-3 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-3" />
+                    <div className="absolute top-5 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1" />
                   </div>
 
-                  <p className="text-gray-700 relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
+                  <p className="text-gray-700 text-sm sm:text-base relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
                     {t.firstSection.bullet2}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-full"></span>
                   </p>
 
                   <div
-                    className="absolute top-full left-0 w-full max-w-2xl bg-white shadow-2xl rounded-lg p-6 mt-2 
+                    className="absolute top-full left-0 w-full max-w-md sm:max-w-2xl bg-white shadow-2xl rounded-lg p-4 md:p-6 mt-2 
                         opacity-0 invisible scale-95 transition-all duration-500 ease-out
                         group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:mt-4
                         border border-gray-100 z-30 pointer-events-none
                         group-hover:pointer-events-auto"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div className="relative h-40 md:h-48 lg:h-full rounded-lg overflow-hidden">
                         <img
                           src="/images/best.png"
                           alt={
@@ -778,10 +756,10 @@ const Home = () => {
                       </div>
 
                       <div className="flex flex-col justify-center">
-                        <h3 className="text-xl font-bold text-[#1B2340] mb-3">
+                        <h3 className="text-lg md:text-xl font-bold text-[#1B2340] mb-2 md:mb-3">
                           {t.firstSection.bullet2Title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                           {t.firstSection.bullet2Desc}
                         </p>
                       </div>
@@ -789,37 +767,28 @@ const Home = () => {
                   </div>
                 </div>
 
-                {/* Item 3 - Fixed với z-index thấp hơn */}
+                {/* Item 3 */}
                 <div className="group flex items-start space-x-3 cursor-pointer relative z-10">
-                  <div className="relative w-6 h-6 flex items-center justify-center mt-1 flex-shrink-0">
-                    <div
-                      className="absolute top-1 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1"
-                    />
-                    <div
-                      className="absolute top-3 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:w-3"
-                    />
-                    <div
-                      className="absolute top-5 left-0 w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 
-                          group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1"
-                    />
+                  <div className="relative w-5 h-5 md:w-6 md:h-6 flex items-center justify-center mt-1 flex-shrink-0">
+                    <div className="absolute top-1 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:top-2 group-hover:w-3 group-hover:rotate-45 group-hover:left-1" />
+                    <div className="absolute top-3 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-3" />
+                    <div className="absolute top-5 left-0 w-5 md:w-6 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:top-4 group-hover:w-3 group-hover:-rotate-45 group-hover:left-1" />
                   </div>
 
-                  <p className="text-gray-700 relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
+                  <p className="text-gray-700 text-sm sm:text-base relative pb-1 transition-all duration-300 group-hover:text-[#3d76b8] group-hover:font-medium">
                     {t.firstSection.bullet3}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3d76b8] transition-all duration-300 group-hover:w-full"></span>
                   </p>
 
                   <div
-                    className="absolute top-full left-0 w-full max-w-2xl bg-white shadow-2xl rounded-lg p-6 mt-2 
+                    className="absolute top-full left-0 w-full max-w-md sm:max-w-2xl bg-white shadow-2xl rounded-lg p-4 md:p-6 mt-2 
                         opacity-0 invisible scale-95 transition-all duration-500 ease-out
                         group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:mt-4
                         border border-gray-100 z-20 pointer-events-none
                         group-hover:pointer-events-auto"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="relative h-48 md:h-full rounded-lg overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                      <div className="relative h-40 md:h-48 lg:h-full rounded-lg overflow-hidden">
                         <img
                           src="/images/innovation.png"
                           alt={
@@ -833,10 +802,10 @@ const Home = () => {
                       </div>
 
                       <div className="flex flex-col justify-center">
-                        <h3 className="text-xl font-bold text-[#1B2340] mb-3">
+                        <h3 className="text-lg md:text-xl font-bold text-[#1B2340] mb-2 md:mb-3">
                           {t.firstSection.bullet3Title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                           {t.firstSection.bullet3Desc}
                         </p>
                       </div>
@@ -845,18 +814,18 @@ const Home = () => {
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2 md:pt-4">
                 <Link to="/philosophy">
-                  <button className="bg-[#0d68a5] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#267bb4] transform hover:scale-105 transition-all duration-300 shadow-lg">
+                  <button className="bg-[#0d68a5] text-white px-6 py-2 md:px-8 md:py-3 rounded-lg font-semibold hover:bg-[#267bb4] transform hover:scale-105 transition-all duration-300 shadow-lg text-sm md:text-base">
                     {t.firstSection.button}
                   </button>
                 </Link>
               </div>
             </div>
 
-            {/* Phần hình ảnh bên PHẢI */}
+            {/* Image Section */}
             <div className="relative" ref={imageRef}>
-              <div className="relative overflow-hidden rounded-2xl">
+              <div className="relative overflow-hidden rounded-xl md:rounded-2xl">
                 <img
                   src="/images/Agua1.png"
                   alt="Agua International Education"
@@ -868,58 +837,58 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="minimap-section ">
+      {/* Minimap Section */}
+      <section className="minimap-section py-8 md:py-12">
         <div className="grid-container">
-          {/* Hàng 1 - tỉ lệ 6:4 */}
           <div className="grid-row first-row">
-            {/* Ô 1 - 60% */}
-            <div className="grid-cell cell-60 dotted-border-right">
+            <div className="grid-cell cell-60 dotted-border-right p-4 md:p-6">
               <div className="map-container">
-                <div className="map-layout">
-                  <div className="map-content">
-                    <h2 className="missions-title">{t.minimap.title}</h2>
-                    <h3 className="section-description">
+                <div className="map-layout flex flex-col lg:flex-row gap-6">
+                  <div className="map-content w-full lg:w-1/2">
+                    <h2 className="missions-title text-xl sm:text-2xl md:text-3xl">{t.minimap.title}</h2>
+                    <h3 className="section-description text-base sm:text-lg md:text-xl">
                       {t.minimap.subtitle}
                     </h3>
-                    <p>{t.minimap.description}</p>
+                    <p className="text-sm sm:text-base">{t.minimap.description}</p>
 
-                    <div className="highlighted-countries">
+                    <div className="highlighted-countries mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <div className="country-item">
                         <span className="country-dot usa-dot"></span>
-                        <span className="country-name">United States</span>
+                        <span className="country-name text-sm">United States</span>
                       </div>
                       <div className="country-item">
                         <span className="country-dot uk-dot"></span>
-                        <span className="country-name">United Kingdom</span>
+                        <span className="country-name text-sm">United Kingdom</span>
                       </div>
                       <div className="country-item">
                         <span className="country-dot aus-dot"></span>
-                        <span className="country-name">Australia</span>
+                        <span className="country-name text-sm">Australia</span>
                       </div>
                       <div className="country-item">
                         <span className="country-dot canada-dot"></span>
-                        <span className="country-name">Canada</span>
+                        <span className="country-name text-sm">Canada</span>
                       </div>
                       <div className="country-item">
                         <span className="country-dot singapore-dot"></span>
-                        <span className="country-name">Singapore</span>
+                        <span className="country-name text-sm">Singapore</span>
                       </div>
                       <div className="country-item">
                         <span className="country-dot nz-dot"></span>
-                        <span className="country-name">New Zealand</span>
+                        <span className="country-name text-sm">New Zealand</span>
                       </div>
-                      <div className="country-item">
+                      <div className="country-item sm:col-span-2">
                         <span className="country-dot hk-dot"></span>
-                        <span className="country-name">Hong Kong</span>
+                        <span className="country-name text-sm">Hong Kong</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="map-visual">
+                  <div className="map-visual w-full lg:w-1/2">
                     <ComposableMap
-                      projectionConfig={{ scale: 100, center: [0, 20] }}
-                      width={500}
-                      height={280}
+                      projectionConfig={{ scale: 60, center: [0, 20] }}
+                      width={300}
+                      height={200}
+                      className="w-full h-auto"
                     >
                       <Geographies geography={geoUrl}>
                         {({ geographies }) =>
@@ -964,14 +933,15 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Ô 2 - 40% */}
-            <div className="grid-cell cell-40">
+            <div className="grid-cell cell-40 p-4 md:p-6">
               <div className="content">
-                <h2>{t.minimap.networkTitle}</h2>
-                <p>{t.minimap.networkDesc}</p>
-                <ul className="special-text country-list">
+                <h2 className="text-lg sm:text-xl md:text-2xl">{t.minimap.networkTitle}</h2>
+                <p className="text-sm sm:text-base mb-4">{t.minimap.networkDesc}</p>
+                <ul className="special-text country-list space-y-2">
                   {t.minimap.countries.map((country, index) => (
-                    <li key={index}>{country}</li>
+                    <li key={index} className="text-xs sm:text-sm md:text-base">
+                      {country}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -980,31 +950,26 @@ const Home = () => {
         </div>
       </section>
 
-      {/*Second Section*/}
+      {/* Second Section */}
       <section
-        className="py-16 bg-gradient-to-tr from-blue-50 to-[#0974B6]"
+        className="py-12 md:py-16 bg-gradient-to-tr from-blue-50 to-[#0974B6]"
         ref={secondSectionRef}
       >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Grid lớn - 2/3 */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             <div className="lg:col-span-2">
-              <div className="space-y-6">
-                {/* Title và Subtitle */}
-                <div className="space-y-4">
-                  <h2 className="section-description text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
+              <div className="space-y-4 md:space-y-6">
+                <div className="space-y-3 md:space-y-4">
+                  <h2 className="section-description text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#3d76b8]">
                     {t.secondSection.title}
                   </h2>
-                  <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed">
+                  <p className="text-lg sm:text-xl md:text-2xl leading-relaxed">
                     {t.secondSection.description}
                   </p>
                 </div>
 
-                {/* Ảnh */}
                 <Link to="/services">
-                  {" "}
-                  {/* or whatever route you want to link to */}
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl cursor-pointer transition-transform duration-500 ease-out hover:scale-105">
+                  <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl cursor-pointer transition-transform duration-500 ease-out hover:scale-105">
                     <img
                       src="/images/plan.jpg"
                       alt={
@@ -1012,53 +977,42 @@ const Home = () => {
                           ? "Hành trình giáo dục"
                           : "Educational journey"
                       }
-                      className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
+                      className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                   </div>
                 </Link>
-                {/* Description */}
-                <div className="space-y-4">
-                  {/* Phiên bản desktop - hiển thị trên cùng 1 dòng */}
+
+                <div className="space-y-3">
                   <div className="hidden md:block">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2 sm:gap-3">
-                      <p className="text-gray-700 leading-relaxed text-lg sm:mr-2">
+                      <p className="text-gray-700 leading-relaxed text-base sm:text-lg sm:mr-2">
                         {t.secondSection.subDescription}
                       </p>
-                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                        <Link to="/services">
-                          {" "}
-                          {/* or whatever route you want to link to */}
-                          {t.secondSection.packages.map((pkg, index) => (
-                            <span
-                              key={index}
-                              className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
+                        {t.secondSection.packages.map((pkg, index) => (
+                          <span
+                            key={index}
+                            className="plan-text text-base sm:text-lg md:text-xl font-bold text-[#1B2340] whitespace-nowrap 
                             cursor-pointer transition-all duration-300 ease-in-out
-                            hover:text-[#2c5a8a] hover:scale-105 hover:underline
-                            active:scale-95"
-                            >
-                              {pkg}
-                            </span>
-                          ))}
-                        </Link>
+                            hover:text-[#2c5a8a] hover:scale-105 hover:underline"
+                          >
+                            {pkg}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
 
-                  {/* Phiên bản mobile - hiển thị thành 2 dòng */}
                   <div className="block md:hidden">
-                    <Link to="/services">
-                      {" "}
-                      {/* or whatever route you want to link to */}
-                      <p className="text-gray-700 leading-relaxed text-lg mb-3">
-                        {t.secondSection.subDescription}
-                      </p>
-                    </Link>
-                    <div className="flex flex-wrap items-center gap-3 md:gap-4">
+                    <p className="text-gray-700 leading-relaxed text-base mb-3">
+                      {t.secondSection.subDescription}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
                       {t.secondSection.packages.map((pkg, index) => (
                         <span
                           key={index}
-                          className="plan-text text-xl font-bold text-[#3d76b8]"
+                          className="plan-text text-lg font-bold text-[#3d76b8]"
                         >
                           {pkg}
                         </span>
@@ -1067,8 +1021,8 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-2 text-[#3d76b8] font-medium cursor-pointer group">
-                <span>{t.secondSection.explore}</span>
+              <div className="flex items-center space-x-2 text-[#3d76b8] font-medium cursor-pointer group mt-4">
+                <span className="text-sm sm:text-base">{t.secondSection.explore}</span>
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
@@ -1085,17 +1039,14 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Grid bé - 1/3 */}
-            <div className="space-y-8">
-              {/* Description trên ảnh */}
-              <div className="space-y-4">
-                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed">
+            <div className="space-y-6 md:space-y-8">
+              <div className="space-y-3 md:space-y-4">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   {t.secondSection.rightDescription}
                 </p>
               </div>
 
-              {/* Ảnh ở giữa */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg ">
+              <div className="relative rounded-lg md:rounded-xl overflow-hidden shadow-md">
                 <img
                   src="/images/flower.png"
                   alt={
@@ -1103,14 +1054,13 @@ const Home = () => {
                       ? "Phương pháp học tập"
                       : "Learning method"
                   }
-                  className="w-full h-64 object-cover transition-transform duration-500 ease-out hover:scale-105"
+                  className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 ease-out hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
               </div>
 
-              {/* Description dưới ảnh */}
-              <div className="space-y-4">
-                <p className="text-gray-600 leading-relaxed">
+              <div className="space-y-3">
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   {t.secondSection.journey}
                 </p>
               </div>
@@ -1119,23 +1069,21 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Third Section */}
       <section
-        className="py-16 bg-gradient-to-tl from-[#0974B6] to-blue-50"
+        className="py-12 md:py-16 bg-gradient-to-tl from-[#0974B6] to-blue-50"
         ref={thirdSectionRef}
       >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Grid 1 */}
-            <div className="space-y-6">
-              {/* Title */}
-              <h3 className="section-description text-5xl md:text-6xl font-bold text-[#3d76b8]">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="space-y-4 md:space-y-6">
+              <h3 className="section-description text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#3d76b8]">
                 {t.thirdSection.title1}
               </h3>
-              <h3 className="section-description text-5xl md:text-6xl font-bold text-[#3d76b8]">
+              <h3 className="section-description text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#3d76b8]">
                 {t.thirdSection.title2}
               </h3>
-              {/* Ảnh */}
-              <div className="relative rounded-2xl overflow-hidden shadow-lg transition-transform duration-500 ease-out hover:scale-105">
+              <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg transition-transform duration-500 ease-out hover:scale-105">
                 <img
                   src="/images/R0003935.JPG"
                   alt={
@@ -1143,25 +1091,22 @@ const Home = () => {
                       ? "Lộ trình Khám phá"
                       : "Discovery Pathway"
                   }
-                  className="w-full h-100 object-cover"
+                  className="w-full h-64 sm:h-80 md:h-96 object-cover"
                 />
               </div>
 
-              {/* Description */}
-              <div className="space-y-4">
-                <p className="text-gray-700 leading-relaxed">
+              <div className="space-y-3">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.thirdSection.description1}
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.thirdSection.timeline1}
                 </p>
               </div>
             </div>
 
-            {/* Grid 2 */}
-            <div className="space-y-6 pt-30">
-              {/* Ảnh */}
-              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+            <div className="space-y-4 md:space-y-6">
+              <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="/images/R0003260.JPG"
                   alt={
@@ -1169,51 +1114,46 @@ const Home = () => {
                       ? "Lộ trình Momentum"
                       : "Momentum Pathway"
                   }
-                  className="w-full h-60 object-cover transition-transform duration-700 hover:scale-105"
+                  className="w-full h-48 sm:h-60 md:h-80 object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent"></div>
               </div>
 
-              {/* Description */}
-              <div className="space-y-4">
-                <p className="text-gray-700 leading-relaxed">
+              <div className="space-y-3">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.thirdSection.description2}
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.thirdSection.timeline2}
                 </p>
               </div>
             </div>
 
-            {/* Grid 3 */}
-            <div className="space-y-6">
-              {/* Title */}
-              <p className="text-base md:text-lg lg:text-xl leading-relaxed">
+            <div className="space-y-4 md:space-y-6">
+              <p className="text-base sm:text-lg leading-relaxed">
                 {t.thirdSection.introText}
               </p>
-              <div className="flex justify-end items-center">
-                <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
+              <div className="flex justify-end">
+                <button className="bg-white text-blue-600 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md text-sm sm:text-base">
                   {t.thirdSection.button}
                 </button>
               </div>
-              {/* Ảnh */}
-              <div className="relative rounded-2xl overflow-hidden shadow-lg">
+              <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
                 <img
                   src="/images/dive.png"
                   alt={
                     language === "vie" ? "Lộ trình Launch" : "Launch Pathway"
                   }
-                  className="w-full h-80 object-cover transition-transform duration-700 hover:scale-105"
+                  className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent"></div>
               </div>
 
-              {/* Description */}
-              <div className="space-y-4">
-                <p className="text-gray-700 leading-relaxed">
+              <div className="space-y-3">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.thirdSection.description3}
                 </p>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.thirdSection.timeline3}
                 </p>
               </div>
@@ -1222,28 +1162,26 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Fourth Section */}
       <section
-        className="py-16 bg-gradient-to-tr from-blue-50 to-[#0974B6]"
+        className="py-12 md:py-16 bg-gradient-to-tr from-blue-50 to-[#0974B6]"
         ref={fourthSectionRef}
       >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Grid lớn - 2/3 */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
             <div className="lg:col-span-2">
-              <div className="space-y-6">
-                {/* Title và Subtitle */}
+              <div className="space-y-4 md:space-y-6">
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <h2 className="section-description text-4xl md:text-5xl font-bold text-[#3d76b8] mt-2">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                    <h2 className="section-description text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#3d76b8]">
                       {t.fourthSection.title}
                     </h2>
-                    <button className="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md">
+                    <button className="bg-white text-blue-600 px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md text-sm sm:text-base w-fit">
                       {t.fourthSection.button}
                     </button>
                   </div>
                 </div>
-                {/* Ảnh */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl">
                   <img
                     src="/images/Mentor1.png"
                     alt={
@@ -1251,39 +1189,33 @@ const Home = () => {
                         ? "Hành trình giáo dục"
                         : "Educational journey"
                     }
-                    className="w-full h-180 object-cover transition-transform duration-700 hover:scale-105"
+                    className="w-full h-64 sm:h-80 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                 </div>
 
-                {/* Description */}
-                <div className="space-y-4">
-                  {/* Phiên bản desktop - hiển thị trên cùng 1 dòng */}
+                <div className="space-y-3">
                   <div className="hidden md:block">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2 sm:gap-3">
-                      <p className="text-gray-700 leading-relaxed text-lg sm:mr-2">
+                      <p className="text-gray-700 leading-relaxed text-base sm:text-lg sm:mr-2">
                         {t.fourthSection.description}
                       </p>
-                      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                        <span
-                          className="plan-text text-lg sm:text-xl lg:text-2xl font-bold text-[#1B2340] whitespace-nowrap 
+                      <div className="flex items-center gap-3">
+                        <span className="plan-text text-base sm:text-lg font-bold text-[#1B2340] whitespace-nowrap 
                         cursor-pointer transition-all duration-300 ease-in-out
-                        hover:text-[#2c5a8a] hover:scale-105 hover:underline
-                        active:scale-95"
-                        >
+                        hover:text-[#2c5a8a] hover:scale-105 hover:underline">
                           {t.fourthSection.teamName}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Phiên bản mobile - hiển thị thành 2 dòng */}
                   <div className="block md:hidden">
-                    <p className="text-gray-700 leading-relaxed text-lg mb-3">
+                    <p className="text-gray-700 leading-relaxed text-base mb-3">
                       {t.fourthSection.description}
                     </p>
-                    <div className="flex flex-wrap items-center gap-3 md:gap-4">
-                      <span className="plan-text text-xl font-bold text-[#3d76b8]">
+                    <div className="flex items-center gap-3">
+                      <span className="plan-text text-lg font-bold text-[#3d76b8]">
                         {t.fourthSection.teamName}
                       </span>
                     </div>
@@ -1292,11 +1224,9 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Grid bé - 1/3 */}
-            <div className="space-y-8">
-              {/* Description trên ảnh */}
-              <div className="space-y-4">
-                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed">
+            <div className="space-y-6 md:space-y-8">
+              <div className="space-y-3 md:space-y-4">
+                <p className="text-base sm:text-lg md:text-xl leading-relaxed">
                   {t.fourthSection.rightDescription}
                 </p>
               </div>
@@ -1305,72 +1235,65 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Fifth Section */}
       <section
-        className="py-16 bg-gradient-to-tl from-[#0974B6] to-blue-50"
+        className="py-12 md:py-16 bg-gradient-to-tl from-[#0974B6] to-blue-50"
         ref={fifthSectionRef}
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Grid bé - 1/3 */}
-            <div className="space-y-6 lg:space-y-8">
-              <div className="space-y-4">
-                <h2 className="section-description text-3xl sm:text-4xl md:text-5xl font-bold text-[#3d76b8]">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+            <div className="space-y-4 md:space-y-6">
+              <div className="space-y-3 md:space-y-4">
+                <h2 className="section-description text-2xl sm:text-3xl md:text-4xl font-bold text-[#3d76b8]">
                   {t.fifthSection.title}
                 </h2>
-                <p className="text-gray-700 leading-relaxed text-lg mb-3">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                   {t.fifthSection.description}
                 </p>
-                <button className="bg-white text-blue-600 px-4 sm:px-6 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md w-fit sm:w-auto text-sm sm:text-base">
+                <button className="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold border border-blue-600 cursor-pointer transform hover:scale-105 transition-all duration-300 shadow-md text-sm sm:text-base w-fit">
                   {t.fifthSection.button}
                 </button>
               </div>
             </div>
 
-            {/* Grid lớn - 2/3 - Mở rộng carousel */}
             <div className="lg:col-span-2">
-              <div className="space-y-6">
-                {/* Title và Subtitle */}
-                <div className="space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:justify-end sm:items-center gap-4"></div>
-                </div>
-
-                {/* Carousel - Mở rộng toàn bộ width */}
-                <div className="w-full">
-                  <Carousel baseWidth={1000} round={false} />
-                </div>
+              <div className="w-full overflow-hidden">
+                <Carousel baseWidth={800} round={false} />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-tr from-blue-50 to-[#0974B6]">
-        <div className="section-description flex flex-col items-center space-y-4">
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed">
-            {t.inheritanceSection.subtitle}
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#3d76b8]">
-            {t.inheritanceSection.title}
-          </h2>
-          <p className="text-gray-700 leading-relaxed text-lg">
-            {t.inheritanceSection.description}
-          </p>
+      {/* Inheritance Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-tr from-blue-50 to-[#0974B6]">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col items-center space-y-3 md:space-y-4 text-center">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed">
+              {t.inheritanceSection.subtitle}
+            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#3d76b8]">
+              {t.inheritanceSection.title}
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-2xl">
+              {t.inheritanceSection.description}
+            </p>
+          </div>
         </div>
       </section>
-      <section className="bg-gradient-to-tl from-[#0974B6] to-blue-50">
-        <div className="flex flex-col items-center space-y-4">
-          {" "}
+
+      {/* Logo Marquee Section */}
+      <section className="bg-gradient-to-tl from-[#0974B6] to-blue-50 py-8 md:py-12 overflow-hidden">
+        <div className="w-full">
           <div className="marquee-content">
-            {/* Original logos */}
             {logos.map((logo) => (
               <div key={logo.id} className="logo-item">
-                <img src={logo.logo} alt={logo.name} className="logo-image" />
+                <img src={logo.logo} alt={logo.name} className="logo-image h-8 sm:h-10 md:h-12 object-contain" />
               </div>
             ))}
-            {/* Duplicate logos for seamless loop */}
             {logos.map((logo) => (
               <div key={`${logo.id}-duplicate`} className="logo-item">
-                <img src={logo.logo} alt={logo.name} className="logo-image" />
+                <img src={logo.logo} alt={logo.name} className="logo-image h-8 sm:h-10 md:h-12 object-contain" />
               </div>
             ))}
           </div>

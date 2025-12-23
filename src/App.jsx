@@ -21,6 +21,7 @@ import ContactStep4 from "./pages/Connect/step4";
 import ContactComplete from "./pages/Connect/complete";
 import BlogPage from "./pages/Blog";
 import Footer from "./components/Footer";
+import Experience from "./pages/Experience";
 
 const App = () => {
   const location = useLocation();
@@ -41,6 +42,8 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<Contact />} />
+                        <Route path="/experience" element={<Experience />} />
+
             <Route path="/connect/step1" element={<ContactInfoForm />} />
             <Route path="/connect/step2" element={<ContactStep2 />} />
             <Route path="/connect/step3" element={<ContactStep3 />} />

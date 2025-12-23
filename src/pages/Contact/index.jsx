@@ -16,6 +16,7 @@ const Contact = () => {
   const contactMapRef = useRef(null);
   const globalNetworkRef = useRef(null);
 
+  // Hero animation fix - only fade out once when scrolling
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50 && !scrolled) {
@@ -42,7 +43,7 @@ const Contact = () => {
           ease: "power3.out",
         });
         tl.to(
-          ".hero-section",
+          ".philosophy-hero",
           { filter: "brightness(0.7)", duration: 1, ease: "power2.out" },
           "-=0.8",
         );
@@ -52,6 +53,16 @@ const Contact = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrolled]);
+  // Initial hero animation
+  useEffect(() => {
+    if (heroTextRef.current) {
+      gsap.fromTo(
+        heroTextRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.3 }
+      );
+    }
+  }, []);
 
   // Add animation for scroll dot
   useEffect(() => {
@@ -66,50 +77,47 @@ const Contact = () => {
     }
   }, []);
 
-  // Animation cho Section 1 (Contact Info)
+  // Animation cho Section 1 (Contact Info) - Fixed: only animate in
   useEffect(() => {
     const ctx = gsap.context(() => {
       const sectionTl = gsap.timeline({
         scrollTrigger: {
           trigger: contactInfoRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
-          toggleActions: "play reverse play reverse",
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none",
         },
       });
 
       // Animation cho title
-      sectionTl.fromTo(
-        contactInfoRef.current.querySelector(".text-center h2"),
-        { y: -50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0,
-      );
+      const title = contactInfoRef.current?.querySelector(".text-center h2");
+      if (title) {
+        gsap.set(title, { y: -50, opacity: 0 });
+        sectionTl.to(title, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0);
+      }
 
       // Animation cho description
-      sectionTl.fromTo(
-        contactInfoRef.current.querySelector(".text-center p"),
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0.2,
-      );
+      const description = contactInfoRef.current?.querySelector(".text-center p");
+      if (description) {
+        gsap.set(description, { y: 50, opacity: 0 });
+        sectionTl.to(description, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.2);
+      }
 
       // Animation cho main contact card
-      sectionTl.fromTo(
-        contactInfoRef.current.querySelector(".lg\\:col-span-2 .bg-white"),
-        { y: 80, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" },
-        0.4,
-      );
+      const mainCard = contactInfoRef.current?.querySelector(".lg\\:col-span-2 .bg-white");
+      if (mainCard) {
+        gsap.set(mainCard, { y: 80, opacity: 0, scale: 0.95 });
+        sectionTl.to(mainCard, { y: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" }, 0.4);
+      }
 
       // Animation cho các phần tử bên trong card
       const cardElements = contactInfoRef.current?.querySelectorAll(
         ".lg\\:col-span-2 .bg-white > *",
       );
       if (cardElements) {
-        sectionTl.fromTo(
+        gsap.set(cardElements, { y: 30, opacity: 0 });
+        sectionTl.to(
           cardElements,
-          { y: 30, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
           0.6,
         );
@@ -119,9 +127,9 @@ const Contact = () => {
       const departmentCards =
         contactInfoRef.current?.querySelectorAll(".grid > div");
       if (departmentCards) {
-        sectionTl.fromTo(
+        gsap.set(departmentCards, { y: 50, opacity: 0 });
+        sectionTl.to(
           departmentCards,
-          { y: 50, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
           0.8,
         );
@@ -131,160 +139,150 @@ const Contact = () => {
     return () => ctx.revert();
   }, [language]);
 
-  // Animation cho Section 2 (Contact Form)
+  // Animation cho Section 2 (Contact Form) - Fixed: only animate in
   useEffect(() => {
     const ctx = gsap.context(() => {
       const sectionTl = gsap.timeline({
         scrollTrigger: {
           trigger: contactFormRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
-          toggleActions: "play reverse play reverse",
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none",
         },
       });
 
       // Animation cho form card
-      sectionTl.fromTo(
+      gsap.set(contactFormRef.current, { x: 100, opacity: 0, rotation: 5 });
+      sectionTl.to(
         contactFormRef.current,
-        { x: 100, opacity: 0, rotation: 5 },
         { x: 0, opacity: 1, rotation: 0, duration: 1, ease: "back.out(1.4)" },
         0,
       );
 
       // Animation cho form title
-      sectionTl.fromTo(
-        contactFormRef.current.querySelector("h3"),
-        { y: -30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0.2,
-      );
+      const formTitle = contactFormRef.current?.querySelector("h3");
+      if (formTitle) {
+        gsap.set(formTitle, { y: -30, opacity: 0 });
+        sectionTl.to(formTitle, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.2);
+      }
 
       // Animation cho form description
-      sectionTl.fromTo(
-        contactFormRef.current.querySelector("p.mb-8"),
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0.3,
-      );
+      const formDescription = contactFormRef.current?.querySelector("p.mb-8");
+      if (formDescription) {
+        gsap.set(formDescription, { y: 30, opacity: 0 });
+        sectionTl.to(formDescription, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.3);
+      }
 
       // Animation cho form inputs
       const formInputs = contactFormRef.current?.querySelectorAll("form > div");
       if (formInputs) {
-        sectionTl.fromTo(
+        gsap.set(formInputs, { x: 30, opacity: 0 });
+        sectionTl.to(
           formInputs,
-          { x: 30, opacity: 0 },
           { x: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
           0.4,
         );
       }
 
       // Animation cho button
-      sectionTl.fromTo(
-        contactFormRef.current.querySelector("button"),
-        { y: 30, opacity: 0, scale: 0.9 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.7)" },
-        0.8,
-      );
+      const button = contactFormRef.current?.querySelector("button");
+      if (button) {
+        gsap.set(button, { y: 30, opacity: 0, scale: 0.9 });
+        sectionTl.to(button, { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.7)" }, 0.8);
+      }
 
       // Animation cho response time section
-      sectionTl.fromTo(
-        contactFormRef.current.querySelector(".mt-8"),
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        1,
-      );
+      const responseTime = contactFormRef.current?.querySelector(".mt-8");
+      if (responseTime) {
+        gsap.set(responseTime, { y: 50, opacity: 0 });
+        sectionTl.to(responseTime, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 1);
+      }
     }, contactFormRef);
 
     return () => ctx.revert();
   }, [language]);
 
-  // Animation cho Section 3 (Map Section)
+  // Animation cho Section 3 (Map Section) - Fixed: only animate in
   useEffect(() => {
     const ctx = gsap.context(() => {
       const sectionTl = gsap.timeline({
         scrollTrigger: {
           trigger: contactMapRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
-          toggleActions: "play reverse play reverse",
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none",
         },
       });
 
       // Animation cho section title
-      sectionTl.fromTo(
-        contactMapRef.current.querySelector(".text-center h2"),
-        { y: -50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0,
-      );
+      const mapTitle = contactMapRef.current?.querySelector(".text-center h2");
+      if (mapTitle) {
+        gsap.set(mapTitle, { y: -50, opacity: 0 });
+        sectionTl.to(mapTitle, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0);
+      }
 
       // Animation cho section description
-      sectionTl.fromTo(
-        contactMapRef.current.querySelector(".text-center p"),
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0.2,
-      );
+      const mapDescription = contactMapRef.current?.querySelector(".text-center p");
+      if (mapDescription) {
+        gsap.set(mapDescription, { y: 50, opacity: 0 });
+        sectionTl.to(mapDescription, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.2);
+      }
 
       // Animation cho left content
-      sectionTl.fromTo(
-        contactMapRef.current.querySelector(
-          ".lg\\:grid-cols-2 > div:first-child",
-        ),
-        { x: -100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, ease: "power2.out" },
-        0.4,
+      const leftContent = contactMapRef.current?.querySelector(
+        ".lg\\:grid-cols-2 > div:first-child",
       );
+      if (leftContent) {
+        gsap.set(leftContent, { x: -100, opacity: 0 });
+        sectionTl.to(leftContent, { x: 0, opacity: 1, duration: 1, ease: "power2.out" }, 0.4);
+      }
 
       // Animation cho right map
-      sectionTl.fromTo(
-        contactMapRef.current.querySelector(
-          ".lg\\:grid-cols-2 > div:last-child",
-        ),
-        { x: 100, opacity: 0, scale: 0.9 },
-        { x: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" },
-        0.6,
+      const rightMap = contactMapRef.current?.querySelector(
+        ".lg\\:grid-cols-2 > div:last-child",
       );
+      if (rightMap) {
+        gsap.set(rightMap, { x: 100, opacity: 0, scale: 0.9 });
+        sectionTl.to(rightMap, { x: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)" }, 0.6);
+      }
 
       // Animation cho travel guide
-      sectionTl.fromTo(
-        contactMapRef.current.querySelector(".bg-gray-50"),
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0.8,
-      );
+      const travelGuide = contactMapRef.current?.querySelector(".bg-gray-50");
+      if (travelGuide) {
+        gsap.set(travelGuide, { y: 50, opacity: 0 });
+        sectionTl.to(travelGuide, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.8);
+      }
     }, contactMapRef);
 
     return () => ctx.revert();
   }, [language]);
 
-  // Animation cho Section 4 (Global Network)
+  // Animation cho Section 4 (Global Network) - Fixed: only animate in
   useEffect(() => {
     const ctx = gsap.context(() => {
       const sectionTl = gsap.timeline({
         scrollTrigger: {
           trigger: globalNetworkRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
-          toggleActions: "play reverse play reverse",
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none",
         },
       });
 
       // Animation cho section title
-      sectionTl.fromTo(
-        globalNetworkRef.current.querySelector(".text-center h3"),
-        { y: -50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        0,
-      );
+      const globalTitle = globalNetworkRef.current?.querySelector(".text-center h3");
+      if (globalTitle) {
+        gsap.set(globalTitle, { y: -50, opacity: 0 });
+        sectionTl.to(globalTitle, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0);
+      }
 
       // Animation cho office cards
       const officeCards =
         globalNetworkRef.current?.querySelectorAll(".grid > div");
       if (officeCards) {
-        sectionTl.fromTo(
+        gsap.set(officeCards, { y: 100, opacity: 0, scale: 0.9 });
+        sectionTl.to(
           officeCards,
-          { y: 100, opacity: 0, scale: 0.9 },
           {
             y: 0,
             opacity: 1,
@@ -301,9 +299,9 @@ const Contact = () => {
       officeCards?.forEach((card, index) => {
         const cardContent = card.querySelectorAll(".p-6 > *");
         if (cardContent) {
-          sectionTl.fromTo(
+          gsap.set(cardContent, { y: 30, opacity: 0 });
+          sectionTl.to(
             cardContent,
-            { y: 30, opacity: 0 },
             {
               y: 0,
               opacity: 1,
@@ -320,45 +318,19 @@ const Contact = () => {
     return () => ctx.revert();
   }, [language]);
 
-  // Effect để detect section đang active
+  // Remove the console.log debug section effect since it's not needed
   useEffect(() => {
-    const sections = [
-      contactInfoRef,
-      contactFormRef,
-      contactMapRef,
-      globalNetworkRef,
-    ];
-
-    const scrollTriggers = sections.map((sectionRef, index) => {
-      return ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top 50%",
-        end: "bottom 50%",
-        onEnter: () => {
-          console.log(`Contact: Entering section ${index + 1}`);
-        },
-        onEnterBack: () => {
-          console.log(`Contact: Re-entering section ${index + 1}`);
-        },
-        onLeave: () => {
-          console.log(`Contact: Leaving section ${index + 1}`);
-        },
-        onLeaveBack: () => {
-          console.log(`Contact: Leaving back from section ${index + 1}`);
-        },
-      });
-    });
-
     return () => {
-      scrollTriggers.forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
-  // Translation content
+
+  // Translation content (same as before)
   const translations = {
     vi: {
       heroTitle: "Kết nối với chúng tôi",
       heroSubtitle:
-        "Chúng tôi luôn sẵn sàng đồng hành cùng bạn trên hành trình giáo dục quốc tế",
+        "Chúng tôi sẵn sàng đồng hành cùng bạn trên hành trình giáo dục quốc tế",
       scrollText: "Vuốt để xem tiếp",
 
       sectionTitle: "Liên hệ với chúng tôi",
@@ -481,27 +453,6 @@ const Contact = () => {
           phone: "+65 6123 4567",
         },
       ],
-
-      footerLinks: {
-        home: "Trang Chủ",
-        programs: "Gói Học Tập",
-        people: "Con Người",
-        opportunities: "Cơ Hội",
-      },
-
-      footerContact: {
-        address:
-          "20 Mỹ Giang 2A, Khu biệt thự Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
-        phone: "+84 28 1234 5678",
-        email: "info@agua.edu.vn",
-      },
-
-      footerBottom: {
-        copyright: `© ${new Date().getFullYear()} Agua International Education. Bảo lưu mọi quyền.`,
-        privacy: "Chính sách bảo mật",
-        terms: "Điều khoản sử dụng",
-        sitemap: "Sitemap",
-      },
     },
     en: {
       heroTitle: "Connect With Us",
@@ -629,38 +580,16 @@ const Contact = () => {
           phone: "+65 6123 4567",
         },
       ],
-
-      footerLinks: {
-        home: "Home",
-        programs: "Study Packages",
-        people: "Our People",
-        opportunities: "Opportunities",
-      },
-
-      footerContact: {
-        address: "20 My Giang 2A, Phu My Hung, District 7, Ho Chi Minh City",
-        phone: "+84 28 1234 5678",
-        email: "info@agua.edu.vn",
-      },
-
-      footerBottom: {
-        copyright: `© ${new Date().getFullYear()} Agua International Education. All rights reserved.`,
-        privacy: "Privacy Policy",
-        terms: "Terms of Use",
-        sitemap: "Sitemap",
-      },
     },
   };
 
   const tContent = translations[language] || translations.vi;
 
   return (
-    <div
-      className={`contact-page ${scrolled ? "scrolled" : ""} manrope-regular`}
-    >
+    <div className={`contact-page ${scrolled ? "scrolled" : ""} manrope-regular`}>
       {/* Hero Section với animation giống Home */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden hero-section">
-        {/* Background Image with Overlay */}
+      <section className="relative min-h-[70vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden hero-section">
+        {/* Background Image với responsive overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
@@ -670,22 +599,23 @@ const Contact = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/60"></div>
         </div>
 
-        {/* Hero Content với animation */}
+        {/* Hero Content với responsive text sizing */}
         <div
           ref={heroTextRef}
-          className="relative z-10 container mx-auto px-5 text-center text-white"
+          className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 text-center text-white"
         >
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-fade-in">
+          <div className="max-w-4xl mx-auto px-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">
               {tContent.heroTitle}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 font-light">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-blue-100 font-light px-4">
               {tContent.heroSubtitle}
             </p>
+            
             {/* Scroll Indicator giống Home */}
-            <div className="flex flex-col items-center space-y-3 mt-10">
+            <div className="flex flex-col items-center space-y-3 mt-8 md:mt-10">
               <div
-                className="w-8 h-14 border-2 border-white rounded-full flex items-start justify-center p-1 cursor-pointer group hover:border-[#ff8800] transition-colors duration-300"
+                className="w-7 h-12 sm:w-8 sm:h-14 border-2 border-white rounded-full flex items-start justify-center p-1 cursor-pointer group hover:border-[#ff8800] transition-colors duration-300"
                 onClick={() =>
                   window.scrollTo({
                     top: window.innerHeight,
@@ -695,10 +625,9 @@ const Contact = () => {
               >
                 <div
                   ref={scrollDotRef}
-                  className="w-2 h-2 bg-white rounded-full group-hover:bg-amber-200 transition-colors duration-300"
+                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full group-hover:bg-amber-200 transition-colors duration-300"
                 ></div>
               </div>
-              {/* Animated text */}
               <div className="flex flex-col items-center">
                 <span className="text-white text-xs font-light tracking-widest opacity-80 group-hover:opacity-100 transition-opacity duration-300 mb-1">
                   {tContent.scrollText}
@@ -709,36 +638,36 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Main Contact Section với ref */}
-      <section className="contact-page py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="container mx-auto px-5">
+      {/* Main Contact Section với responsive padding và spacing */}
+      <section className="contact-page py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Contact Info Section */}
           <div ref={contactInfoRef}>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">
+            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-gray-900">
                 {tContent.sectionTitle}
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-2">
                 {tContent.sectionDescription}
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-12">
+            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
               {/* Contact Info Card */}
-              <div className="lg:col-span-2 space-y-12">
-                <div className="bg-white p-10 rounded-2xl shadow-xl space-y-8">
-                  <div className="text-center mb-8">
-                    <h3 className="text-3xl font-bold mb-4 text-gray-800">
+              <div className="lg:col-span-2 space-y-8 md:space-y-12">
+                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl space-y-6 md:space-y-8">
+                  <div className="text-center mb-6 md:mb-8">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-gray-800">
                       {tContent.contactInfoTitle}
                     </h3>
                   </div>
 
-                  {/* Headquarters */}
+                  {/* Headquarters - Responsive flex layout */}
                   <div className="space-y-4">
-                    <div className="flex items-center justify-center">
-                      <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start sm:justify-center">
+                      <div className="bg-blue-100 p-3 rounded-lg mb-3 sm:mb-0 sm:mr-4 flex-shrink-0">
                         <svg
-                          className="w-6 h-6 text-blue-600"
+                          className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -751,17 +680,15 @@ const Contact = () => {
                           />
                         </svg>
                       </div>
-                      <div>
+                      <div className="text-center sm:text-left">
                         <h4 className="font-bold text-lg mb-2">
                           {tContent.headquarters}
                         </h4>
-                        <p className="text-gray-700">
+                        <p className="text-gray-700 text-sm sm:text-base">
                           {tContent.address}
                           <br />
                           <span className="font-medium">
-                            {language === "vi"
-                              ? "Giờ làm việc:"
-                              : "Working Hours:"}
+                            {language === "vi" ? "Giờ làm việc:" : "Working Hours:"}
                           </span>{" "}
                           {language === "vi"
                             ? "Thứ 2 - Thứ 6: 8:00 - 17:00"
@@ -771,12 +698,12 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Contact Methods */}
-                  <div className="grid md:grid-cols-2 gap-6 pt-8 border-t">
+                  {/* Contact Methods - Responsive grid */}
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6 pt-6 md:pt-8 border-t">
                     <div className="text-center">
-                      <div className="bg-blue-50 p-4 rounded-xl inline-block mb-3">
+                      <div className="bg-blue-50 p-3 sm:p-4 rounded-xl inline-block mb-2 sm:mb-3">
                         <svg
-                          className="w-8 h-8 text-blue-600"
+                          className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -789,8 +716,8 @@ const Contact = () => {
                           />
                         </svg>
                       </div>
-                      <h5 className="font-bold mb-2">{tContent.phone}</h5>
-                      <p className="text-gray-700">
+                      <h5 className="font-bold mb-2 text-sm sm:text-base">{tContent.phone}</h5>
+                      <p className="text-gray-700 text-xs sm:text-sm">
                         {tContent.vietnamPhone}{" "}
                         <a
                           href="tel:+842812345678"
@@ -818,9 +745,9 @@ const Contact = () => {
                     </div>
 
                     <div className="text-center">
-                      <div className="bg-green-50 p-4 rounded-xl inline-block mb-3">
+                      <div className="bg-green-50 p-3 sm:p-4 rounded-xl inline-block mb-2 sm:mb-3">
                         <svg
-                          className="w-8 h-8 text-green-600"
+                          className="w-6 h-6 sm:w-8 sm:h-8 text-green-600"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -833,8 +760,8 @@ const Contact = () => {
                           />
                         </svg>
                       </div>
-                      <h5 className="font-bold mb-2">{tContent.email}</h5>
-                      <p className="text-gray-700">
+                      <h5 className="font-bold mb-2 text-sm sm:text-base">{tContent.email}</h5>
+                      <p className="text-gray-700 text-xs sm:text-sm">
                         {tContent.generalInquiry}{" "}
                         <a
                           href="mailto:info@agua.edu.vn"
@@ -863,24 +790,24 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Department Contacts */}
-                <div className="bg-white p-10 rounded-2xl shadow-xl">
-                  <h3 className="text-2xl font-bold mb-8 text-gray-800">
+                {/* Department Contacts - Responsive grid */}
+                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-6 text-gray-800">
                     {tContent.departmentContacts}
                   </h3>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                     {tContent.departments.map((dept, index) => (
                       <div
                         key={index}
-                        className="border border-gray-200 rounded-lg p-5 hover:border-blue-400 transition-colors hover:shadow-lg"
+                        className="border border-gray-200 rounded-lg p-4 sm:p-5 hover:border-blue-400 transition-colors hover:shadow-md"
                       >
-                        <h4 className="font-bold text-lg mb-3 text-gray-800">
+                        <h4 className="font-bold text-base sm:text-lg mb-2 sm:mb-3 text-gray-800">
                           {dept.name}
                         </h4>
-                        <div className="space-y-2">
-                          <p className="flex items-center text-gray-700">
+                        <div className="space-y-1 sm:space-y-2">
+                          <p className="flex items-center text-gray-700 text-xs sm:text-sm">
                             <svg
-                              className="w-4 h-4 mr-2 text-blue-500"
+                              className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-blue-500"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -894,14 +821,14 @@ const Contact = () => {
                             </svg>
                             <a
                               href={`mailto:${dept.email}`}
-                              className="hover:text-blue-600 transition-colors"
+                              className="hover:text-blue-600 transition-colors truncate"
                             >
                               {dept.email}
                             </a>
                           </p>
-                          <p className="flex items-center text-gray-700">
+                          <p className="flex items-center text-gray-700 text-xs sm:text-sm">
                             <svg
-                              className="w-4 h-4 mr-2 text-green-500"
+                              className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-green-500"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -924,104 +851,81 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Quick Contact Form với ref riêng */}
+              {/* Quick Contact Form với responsive sizing */}
               <div
                 ref={contactFormRef}
-                className="bg-gradient-to-br from-blue-500 to-blue-400 to-blue-300 text-white p-10 rounded-2xl shadow-xl"
+                className="bg-gradient-to-br from-blue-500 to-blue-400 to-blue-300 text-white p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl"
               >
-                <h3 className="text-2xl font-bold mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
                   {tContent.quickContactTitle}
                 </h3>
-                <p className="mb-8 text-blue-100">
+                <p className="mb-6 sm:mb-8 text-blue-100 text-sm sm:text-base">
                   {tContent.quickContactSubtitle}
                 </p>
 
-                <form className="space-y-6">
-                  <div>
-                    <label className="block mb-2 text-sm font-medium">
-                      {tContent.formLabels.name}
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                      placeholder={
-                        language === "vi" ? "Nguyễn Văn A" : "John Smith"
-                      }
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block mb-2 text-sm font-medium">
-                      {tContent.formLabels.email}
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                      placeholder="example@email.com"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block mb-2 text-sm font-medium">
-                      {tContent.formLabels.phone}
-                    </label>
-                    <input
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                      placeholder="+84 123 456 789"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block mb-2 text-sm font-medium">
-                      {tContent.formLabels.subject}
-                    </label>
-                    <select className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all">
-                      {tContent.subjectOptions.map((option, index) => (
-                        <option
-                          key={index}
-                          value={option.value}
-                          className="text-gray-800"
-                        >
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block mb-2 text-sm font-medium">
-                      {tContent.formLabels.message}
-                    </label>
-                    <textarea
-                      rows="4"
-                      className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
-                      placeholder={
-                        language === "vi"
-                          ? "Xin chào Agua, tôi quan tâm đến..."
-                          : "Hello Agua, I'm interested in..."
-                      }
-                      required
-                    ></textarea>
-                  </div>
+                <form className="space-y-4 sm:space-y-6">
+                  {["name", "email", "phone", "subject", "message"].map((field) => (
+                    <div key={field}>
+                      <label className="block mb-1 sm:mb-2 text-xs sm:text-sm font-medium">
+                        {tContent.formLabels[field]}
+                      </label>
+                      {field === "subject" ? (
+                        <select className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all">
+                          {tContent.subjectOptions.map((option, index) => (
+                            <option
+                              key={index}
+                              value={option.value}
+                              className="text-gray-800"
+                            >
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      ) : field === "message" ? (
+                        <textarea
+                          rows="3"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm sm:text-base placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
+                          placeholder={
+                            language === "vi"
+                              ? "Xin chào Agua, tôi quan tâm đến..."
+                              : "Hello Agua, I'm interested in..."
+                          }
+                          required
+                        />
+                      ) : (
+                        <input
+                          type={field === "email" ? "email" : "text"}
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm sm:text-base placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all"
+                          placeholder={
+                            field === "name"
+                              ? language === "vi" ? "Nguyễn Văn A" : "John Smith"
+                              : field === "email"
+                              ? "example@email.com"
+                              : "+84 123 456 789"
+                          }
+                          required={field !== "phone"}
+                        />
+                      )}
+                    </div>
+                  ))}
 
                   <button
                     type="submit"
-                    className="w-full bg-white text-blue-600 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors transform hover:-translate-y-1 duration-300"
+                    className="w-full bg-white text-blue-600 py-2 sm:py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-100 transition-colors transform hover:-translate-y-0.5 sm:hover:-translate-y-1 duration-300"
                   >
                     {tContent.formLabels.submit}
                   </button>
                 </form>
 
-                <div className="mt-8 pt-8 border-t border-white/20">
-                  <h4 className="font-bold mb-4">{tContent.responseTime}</h4>
-                  <ul className="space-y-2 text-sm text-blue-100">
+                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/20">
+                  <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">
+                    {tContent.responseTime}
+                  </h4>
+                  <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-blue-100">
                     {tContent.responseItems.map((item, index) => (
                       <li key={index} className="flex items-center">
                         <svg
-                          className="w-4 h-4 mr-2 text-green-400"
+                          className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-green-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -1044,35 +948,35 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Interactive Map Section với ref */}
-      <section ref={contactMapRef} className="contact-map py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+      {/* Interactive Map Section với responsive height */}
+      <section ref={contactMapRef} className="contact-map py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-gray-900">
               {tContent.mapTitle}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               {tContent.mapDescription}
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-6">{tContent.mainOffice}</h3>
-              <div className="space-y-4 mb-8">
-                <p className="text-gray-700">{tContent.officeDescription1}</p>
-                <p className="text-gray-700">{tContent.officeDescription2}</p>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">{tContent.mainOffice}</h3>
+              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                <p className="text-gray-700 text-sm sm:text-base">{tContent.officeDescription1}</p>
+                <p className="text-gray-700 text-sm sm:text-base">{tContent.officeDescription2}</p>
               </div>
 
-              <div className="bg-gray-50 p-6 rounded-xl">
-                <h4 className="font-bold mb-4 text-lg">
+              <div className="bg-gray-50 p-4 sm:p-6 rounded-xl">
+                <h4 className="font-bold mb-3 sm:mb-4 text-lg">
                   {tContent.travelGuide}
                 </h4>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {tContent.travelItems.map((item, index) => (
                     <li key={index} className="flex items-center">
                       <svg
-                        className="w-5 h-5 text-green-600 mr-3"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 mr-2 sm:mr-3"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -1084,14 +988,14 @@ const Contact = () => {
                           d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      <span>{item}</span>
+                      <span className="text-sm sm:text-base">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            <div className="w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+            <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden shadow-lg sm:shadow-xl md:shadow-2xl border-2 sm:border-4 border-white">
               <iframe
                 title="Agua International Education Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.132407374581!2d106.7151061152603!3d10.742615092343622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f28a1cde6a5%3A0x3b3b0e1234567890!2s20%20M%C4%83y%20Giang%202A%2C%20Ph%C3%BA%20M%E1%BB%B9%20H%C6%B0ng%2C%20Qu%E1%BA%ADn%207%2C%20TP.%20HCM!5e0!3m2!1sen!2s!4v1695000000000!5m2!1sen!2s"
@@ -1101,22 +1005,22 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              />
             </div>
           </div>
 
-          {/* Global Network với ref riêng */}
-          <div ref={globalNetworkRef} className="mt-20">
-            <h3 className="text-2xl font-bold mb-8 text-center">
+          {/* Global Network với responsive grid */}
+          <div ref={globalNetworkRef} className="mt-12 sm:mt-16 md:mt-20">
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">
               {tContent.branchOffices}
             </h3>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {tContent.branches.map((office, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-40 sm:h-48 overflow-hidden">
                     <img
                       src={
                         [
@@ -1130,14 +1034,14 @@ const Contact = () => {
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
-                    <h4 className="font-bold text-lg mb-2">
+                  <div className="p-4 sm:p-6">
+                    <h4 className="font-bold text-base sm:text-lg mb-1 sm:mb-2">
                       {office.city}, {office.country}
                     </h4>
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <p className="flex items-center">
+                    <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-600">
+                      <p className="flex items-center truncate">
                         <svg
-                          className="w-4 h-4 mr-2 text-blue-500"
+                          className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-blue-500 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -1149,11 +1053,11 @@ const Contact = () => {
                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                           />
                         </svg>
-                        {office.email}
+                        <span className="truncate">{office.email}</span>
                       </p>
                       <p className="flex items-center">
                         <svg
-                          className="w-4 h-4 mr-2 text-green-500"
+                          className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-green-500 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

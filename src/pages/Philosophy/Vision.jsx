@@ -379,7 +379,7 @@ const Vision = () => {
           trigger: gridSectionRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -437,7 +437,7 @@ const Vision = () => {
           trigger: visionSectionRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -541,7 +541,7 @@ const Vision = () => {
           trigger: timelineSectionRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "play reverse play reverse",
+          toggleActions: "play none none none",
         },
       });
 
@@ -1177,9 +1177,6 @@ const Vision = () => {
                     >
                       {isActive && (
                         <div className="p-4">
-                          <div className="section-title text-sm font-bold text-blue-900 mb-2">
-                            {item.title}
-                          </div>
                           <div className="text-xs text-gray-600 leading-relaxed">
                             {item.description}
                           </div>
